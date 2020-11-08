@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
 
     unauthenticated do
-      root 'devise/sessions#new'
+      root 'pages#index'
     end
 
   end

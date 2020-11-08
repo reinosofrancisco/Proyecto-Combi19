@@ -2,8 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/menu.css">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <title>Portfolio</title>
   </head>
@@ -11,28 +10,13 @@
 
     <div class="menu-wrap">
      <!-- Toggler is the checkbox that makes the menu pop -->
-      <input type="checkbox" class="toggler">
 
-      <div class="topBtn"> <div></div></div>
 
+      <!-- <input type="checkbox" class="toggler"> -->
+      <!-- <div class="topBtn"> <div></div></div> -->
       <!-- This is the information that will pop when you click the toggler -->
-      <div class="menu">
-        <div>
-          <div>
-            <ul>
-              <!-- CAMBIAR LOS LINKS A ALGUNOS QUE ANDEN POSTA -->
-              <%= link_to 'Usuario', '/'%>
-              <%= link_to 'Chofer', '/'%>
-              <%= link_to 'Administrador', '/admin'%>
-
-            </ul>
-
-          </div>
-        </div>
-      </div>
-
+      <!-- So... SOmehow I broke the toggler... no spinning button for you. Sorry! -->
     </div>
-
 
 
 <!-- showcase  - contiene
@@ -46,9 +30,9 @@
     <h2> Por favor, elija una opcion</h2>
     <!-- CAMBIAR LOS LINKS A ALGUNOS QUE ANDEN POSTA -->
     <li>
-      <%= link_to 'Usuario', '/' , class: "a-primary" %>
-      <%= link_to 'Chofer', '/' , class: "a-primary" %>
-      <%= link_to 'Administrador', '/admin' , class: "a-primary"%>
+      <%= link_to 'Usuario', '/users/sign_in' , class: "a-primary" %>
+      <%= link_to 'Chofer', '/chofers/sign_in' , class: "a-primary" %>
+      <%= link_to 'Administrador', '/admin/sign_in' , class: "a-primary"%>
     </li>
   </div>
 
