@@ -22,6 +22,12 @@ body {
   line-height: 1.4;
 }
 
+/* COLOR PARA LOS LINKS QUE SINO QUEDAN RE FEOS */
+.a-primary{
+  color: white;
+}
+
+
 .showcase .showcase-inner .boxForPic {
   width: 200px;
   height: 200px;
@@ -30,7 +36,7 @@ body {
   border-style: solid;
   border-color: black;
   border-radius: 50%;
-  background: url('https://i.pinimg.com/originals/63/f7/be/63f7bec732df06659f500d929fb45a7d.jpg') no-repeat center ;
+  background: url('https://1.bp.blogspot.com/-fUld3Vpf5Ws/Xh8xauQVFjI/AAAAAAAAM_o/ldDCKMrzqWoOKBZ6rS6Ud0zirGKWFlYagCLcBGAsYHQ/s640/15892868159_4ae6147e27_b.jpg') no-repeat center ;
   background-size: cover;
 }
 
@@ -51,7 +57,7 @@ body {
 .showcase:before {
   content: '';
   /* background: url('https://images.pexels.com/photos/533923/pexels-photo-533923.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat center */
-  background: url('https://i.ibb.co/Dfjfg8g/47-AD74-D4-9102-4-EA3-B0-A4-9-F8949546712.jpg') no-repeat center
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Fachada_de_la_Terminal_de_%C3%93mnibus_de_La_Plata.jpg/1200px-Fachada_de_la_Terminal_de_%C3%93mnibus_de_La_Plata.jpg') no-repeat center
   /* background: url('https://vignette.wikia.nocookie.net/tmnt/images/0/07/Konami.jpg/revision/latest/scale-to-width-down/250?cb=20190425183448') no-repeat center */
 
   /* https://i.ibb.co/Dfjfg8g/47-AD74-D4-9102-4-EA3-B0-A4-9-F8949546712.jpg  */

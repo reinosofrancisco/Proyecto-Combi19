@@ -9,15 +9,7 @@
   </head>
   <body>
 
-
-
     <div class="menu-wrap">
-      <!-- Menu-wrap  -  Contiene
-            toggler
-            hamburger
-            menu
-     -->
-
      <!-- Toggler is the checkbox that makes the menu pop -->
       <input type="checkbox" class="toggler">
 
@@ -32,7 +24,6 @@
               <%= link_to 'Usuario', '/'%>
               <%= link_to 'Chofer', '/'%>
               <%= link_to 'Administrador', '/admin'%>
-
 
             </ul>
 
@@ -52,9 +43,13 @@
 
   <div class="container showcase-inner">
     <div class="boxForPic"></div>
-    <h1> Welcome!!</h1>
-    <p>Hideo Kojima is a Japanese video game designer, writer, director and producer. Regarded as an auteur of video games, he developed a strong passion for action/adventure cinema and literature during his childhood and adolescence.</p>
-    <a href="aboutMe.html" class="btn">Read More...</a>
+    <h2> Por favor, elija una opcion</h2>
+    <!-- CAMBIAR LOS LINKS A ALGUNOS QUE ANDEN POSTA -->
+    <li>
+      <%= link_to 'Usuario', '/' , class: "a-primary" %>
+      <%= link_to 'Chofer', '/' , class: "a-primary" %>
+      <%= link_to 'Administrador', '/admin' , class: "a-primary"%>
+    </li>
   </div>
 
 </header>
