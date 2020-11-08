@@ -3,6 +3,34 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
+  <!-- CAMPOS AGREGADOS MANUALMENTE -->
+  <!-- CAMPOS AGREGADOS MANUALMENTE -->
+  <!-- CAMPOS AGREGADOS MANUALMENTE -->
+
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre, autofocus: true, autocomplete: "nombre" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :apellido %><br />
+    <%= f.text_field :apellido, autofocus: true, autocomplete: "apellido" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dni %><br />
+    <%= f.text_field :dni, autofocus: true, autocomplete: "dni" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telefono %><br />
+    <%= f.text_field :telefono, autofocus: true, autocomplete: "telefono" %>
+  </div>
+
+  <!-- CAMPOS AGREGADOS MANUALMENTE -->
+  <!-- CAMPOS AGREGADOS MANUALMENTE -->
+  <!-- CAMPOS AGREGADOS MANUALMENTE -->
+
 
   <div class="field">
     <%= f.label :email %><br />

@@ -7,7 +7,16 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  #Cambia la ruta por defecto a la ruta de "Log_IN" de la gema Devise
+  #Creo una ruta /sign_out para chofers y usuarios. Admin usa rails_admin, la cual ya tiene una forma de cerrar Sesion
+  devise_scope :user do
+      get 'sign_out' => "devise/sessions#destroy"
+  end
+  devise_scope :chofers do
+      get 'sign_out' => "devise/sessions#destroy"
+  end
+
+
+  #Cambia la ruta por defecto a la ruta especificada segun el device
   devise_scope :admin do
 
     #Si sos administrador te manda a la pagian de /ADMIN
