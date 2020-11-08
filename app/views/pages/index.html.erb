@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <title>Portfolio</title>
+  </head>
+  <body>
+
+
+
+    <div class="menu-wrap">
+      <!-- Menu-wrap  -  Contiene
+            toggler
+            hamburger
+            menu
+     -->
+
+     <!-- Toggler is the checkbox that makes the menu pop -->
+      <input type="checkbox" class="toggler">
+
+      <div class="topBtn"> <div></div></div>
+
+      <!-- This is the information that will pop when you click the toggler -->
+      <div class="menu">
+        <div>
+          <div>
+            <ul>
+              <!-- CAMBIAR LOS LINKS A ALGUNOS QUE ANDEN POSTA -->
+              <%= link_to 'Usuario', '/'%>
+              <%= link_to 'Chofer', '/'%>
+              <%= link_to 'Administrador', '/admin'%>
+
+
+            </ul>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+<!-- showcase  - contiene
+        container showcase-inner  -> Text that contains basic information
+      -->
+<!-- This is the actual text that appears in the webpage  -->
+<header class="showcase">
+
+  <div class="container showcase-inner">
+    <div class="boxForPic"></div>
+    <h1> Welcome!!</h1>
+    <p>Hideo Kojima is a Japanese video game designer, writer, director and producer. Regarded as an auteur of video games, he developed a strong passion for action/adventure cinema and literature during his childhood and adolescence.</p>
+    <a href="aboutMe.html" class="btn">Read More...</a>
+  </div>
+
+</header>
+  </body>
+</html>

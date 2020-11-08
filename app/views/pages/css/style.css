@@ -1,0 +1,141 @@
+
+*= require_tree .
+*= require_self
+
+
+:root {
+  --primary-color: rgba(13, 110, 139, 0.75);
+  --overlay-color: rgba(24, 39, 51, 0.85);
+  --menu-speed: 0.75s;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.4;
+}
+
+.showcase .showcase-inner .boxForPic {
+  width: 200px;
+  height: 200px;
+  /* object-fit: contain; */
+  opacity: 1;
+  border-style: solid;
+  border-color: black;
+  border-radius: 50%;
+  background: url('https://i.pinimg.com/originals/63/f7/be/63f7bec732df06659f500d929fb45a7d.jpg') no-repeat center ;
+  background-size: cover;
+}
+
+.container {
+  max-width: 960px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 3rem;
+}
+
+.showcase {
+  background-color: var(--primary-color);
+  color: #fff;
+  height: 100vh;
+  position: relative;
+}
+
+.showcase:before {
+  content: '';
+  /* background: url('https://images.pexels.com/photos/533923/pexels-photo-533923.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat center */
+  background: url('https://i.ibb.co/Dfjfg8g/47-AD74-D4-9102-4-EA3-B0-A4-9-F8949546712.jpg') no-repeat center
+  /* background: url('https://vignette.wikia.nocookie.net/tmnt/images/0/07/Konami.jpg/revision/latest/scale-to-width-down/250?cb=20190425183448') no-repeat center */
+
+  /* https://i.ibb.co/Dfjfg8g/47-AD74-D4-9102-4-EA3-B0-A4-9-F8949546712.jpg  */
+  /* background: url("../img/Firewatch.jpg") no-repeat center */
+  center/cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+}
+
+.showcase .showcase-inner {
+  display: flex;
+  flex-direction: column;
+  /* display: grid;
+  grid-template-columns: 70% 30%; */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+
+}
+
+.showcase h1 {
+  font-size: 4rem;
+}
+
+.showcase p {
+  font-size: 1.3rem;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+  text-decoration: none;
+  transition: opacity 1s ease-in;
+}
+
+.instaIcon {
+  background: url("../img/instaIcon.png") no-repeat center;
+  transition: opacity 1s ease-in;
+  /* border-radius: 50%; */
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.btn:hover {
+  opacity: 0.7;
+}
+
+.wssp {
+  background: url("../img/wsppicon.jpg") no-repeat center ;
+  height: 30px ;
+  width: 30px;
+  /* position: relative; */
+
+  opacity: 1;
+  border-style: none;
+  border-radius: 50%;
+  background-size: auto;
+}
+
+.mailIcon {
+  background: url("../img/mailIcon.png") no-repeat center ;
+  height: 30px ;
+  width: 30px;
+  /* position: relative; */
+  opacity: 1;
+  border-style: none;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.iconTextContainer {
+display: grid;
+grid-template-columns: 10% 90% ;
+grid-gap: 1em;
+}
