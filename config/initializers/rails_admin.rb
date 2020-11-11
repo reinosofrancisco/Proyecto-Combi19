@@ -46,6 +46,10 @@ RailsAdmin.config do |config|
     #config.excluded_models = ["Clase1","Clase2",...]
 
 
+    #Soy un crack kapo idolo mastodonte fiera
+    config.model Ciudad do 
+      object_label_method :nombre
+    end
 
   end
 end

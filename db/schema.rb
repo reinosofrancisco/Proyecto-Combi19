@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_11_022529) do
+ActiveRecord::Schema.define(version: 2020_11_11_214008) do
 
   create_table "aditionals", force: :cascade do |t|
     t.string "name"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(version: 2020_11_11_022529) do
     t.index ["reset_password_token"], name: "index_chofers_on_reset_password_token", unique: true
   end
 
+  create_table "ciudades", force: :cascade do |t|
+    t.string "nombre"
+    t.integer "ruta_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ruta_id"], name: "index_ciudades_on_ruta_id"
+  end
+
   create_table "combis", force: :cascade do |t|
     t.string "patente"
     t.string "tipo"
@@ -64,8 +72,10 @@ ActiveRecord::Schema.define(version: 2020_11_11_022529) do
   end
 
   create_table "rutas", force: :cascade do |t|
-    t.string "origen"
-    t.string "destino"
+    t.string "nombre"
+    t.string "descripcion"
+    t.integer "origen_id"
+    t.integer "destino_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

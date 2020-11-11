@@ -18,4 +18,5 @@
 
 ActiveSupport::Inflector.inflections do |inflect|
     inflect.irregular 'ruta', 'rutas'
+    inflect.irregular 'ciudad','ciudades'
    end
