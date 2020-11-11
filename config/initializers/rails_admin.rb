@@ -37,5 +37,15 @@ RailsAdmin.config do |config|
     ## With an audit adapter, you can add:
     # history_index
     # history_show
+
+
+
+    #Si queremos que un modelo no aparezca en /admin
+    #Blacklist de modelos(?
+    #config.excluded_models << "ClassName"
+    #config.excluded_models = ["Clase1","Clase2",...]
+
+
+
   end
 end

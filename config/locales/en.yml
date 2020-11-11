@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+  # activerecord:
+  #   models:
+  #     ruta:
+  #       one: "Ruta"
+  #       other: "Rutas"

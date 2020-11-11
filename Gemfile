@@ -59,3 +59,7 @@ gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', github: 'sferik/rails_admin'
 gem 'rails_admin_rollincode', '~> 1.0'
 gem "devise"
+
+
+#gema para has_many? F no anda
+#gem "rails_admin_simple_has_many"
