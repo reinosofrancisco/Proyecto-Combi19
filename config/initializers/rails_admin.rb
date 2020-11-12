@@ -44,12 +44,17 @@ RailsAdmin.config do |config|
     #Blacklist de modelos(?
     #config.excluded_models << "ClassName"
     #config.excluded_models = ["Clase1","Clase2",...]
-
-
-    #Soy un crack kapo idolo mastodonte fiera
-    config.model Ciudad do 
-      object_label_method :nombre
-    end
-
   end
+
+  #Soy un crack kapo idolo mastodonte fiera
+
+  config.model 'Ciudad' do 
+    object_label_method do
+       :nombre
+    end
+    create do
+      field :nombre #para que solo me pida ingresar nombre
+    end
+  end
+
 end

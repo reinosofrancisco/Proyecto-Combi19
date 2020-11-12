@@ -56,10 +56,8 @@ ActiveRecord::Schema.define(version: 2020_11_11_214008) do
 
   create_table "ciudades", force: :cascade do |t|
     t.string "nombre"
-    t.integer "ruta_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["ruta_id"], name: "index_ciudades_on_ruta_id"
   end
 
   create_table "combis", force: :cascade do |t|

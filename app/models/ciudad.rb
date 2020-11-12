@@ -1,5 +1,8 @@
 class Ciudad < ApplicationRecord
-    validates :nombre, presence: true, uniqueness: true
-    belongs_to :ruta, :dependent => :destroy, :inverse_of => :origen
-    belongs_to :ruta, :dependent => :destroy, :inverse_of => :destino
+    validates :nombre, uniqueness: true, presence: true
+
+    has_one :ruta, foreign_key: :origen,  :dependent => :destroy
+    has_one :ruta, foreign_key: :destino,  :dependent => :destroy
+
+
 end
