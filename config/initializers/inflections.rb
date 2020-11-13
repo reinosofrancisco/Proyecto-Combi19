@@ -16,8 +16,10 @@
 # end
 
 
+
+#Cambia la forma en la que funcionan los plurales
 ActiveSupport::Inflector.inflections do |inflect|
     inflect.irregular 'ruta', 'rutas'
     inflect.irregular 'ciudad','ciudades'
-    inflect.irregular 'chofer','choferes'
+    #inflect.irregular 'chofer','choferes'
    end
