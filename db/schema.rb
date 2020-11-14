@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_11_214008) do
+ActiveRecord::Schema.define(version: 2020_11_14_150321) do
 
   create_table "aditionals", force: :cascade do |t|
     t.string "name"
@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 2020_11_11_214008) do
   create_table "combis", force: :cascade do |t|
     t.string "patente"
     t.string "tipo"
-    t.boolean "en_viaje"
     t.integer "nro_combi"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -92,6 +91,17 @@ ActiveRecord::Schema.define(version: 2020_11_11_214008) do
     t.string "telefono"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "viajes", force: :cascade do |t|
+    t.string "nombre"
+    t.date "fecha"
+    t.float "duracion"
+    t.integer "ruta_id"
+    t.integer "chofer_id"
+    t.integer "combi_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

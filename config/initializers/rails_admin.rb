@@ -48,9 +48,13 @@ RailsAdmin.config do |config|
 
   #Soy un crack kapo idolo mastodonte fiera
 
-  config.model 'Ciudad' do 
+  config.model 'Ciudad' do
     object_label_method do
        :nombre
+    end
+    config.model 'Viaje' do
+      object_label_method do
+        :nombre
     end
     create do
       field :nombre #para que solo me pida ingresar nombre
