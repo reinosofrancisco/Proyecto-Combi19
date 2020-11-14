@@ -56,6 +56,8 @@ RailsAdmin.config do |config|
       object_label_method do
         :nombre
     end
+  end
+
     create do
       field :nombre #para que solo me pida ingresar nombre
     end
