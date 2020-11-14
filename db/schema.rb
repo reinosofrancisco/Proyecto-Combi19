@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_150321) do
     t.integer "ruta_id"
     t.integer "chofer_id"
     t.integer "combi_id"
+    t.float "hora_salida"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

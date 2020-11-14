@@ -52,11 +52,21 @@ RailsAdmin.config do |config|
     object_label_method do
        :nombre
     end
-    config.model 'Viaje' do
+    config.model 'Chofer' do
       object_label_method do
         :nombre
     end
   end
+  config.model 'Ruta' do
+    object_label_method do
+      :nombre
+  end
+end
+config.model 'Combi' do
+  object_label_method do
+    :patente
+end
+end
 
     create do
       field :nombre #para que solo me pida ingresar nombre
