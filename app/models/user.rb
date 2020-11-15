@@ -7,4 +7,12 @@ class User < ApplicationRecord
   validates :nombre, presence: true
   validates :apellido, presence: true
   validates :dni, presence: true, uniqueness: true
+  validates :fecha_nacimiento , presence: true
+  validate :mayor_18
+
+  #Valida que el usuario a crear sea mayor de 18 años
+  protected
+    def mayor_18
+    end
+  end
 end
