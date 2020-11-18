@@ -13,6 +13,9 @@ class User < ApplicationRecord
   #Valida que el usuario a crear sea mayor de 18 años
   protected
     def mayor_18
+      f=Time.now()
+      f_18= Date.new(18/0/0)
+      if (fecha_nacimiento + f_18) < f
+        errors[:fecha_nacimiento] << 'No se puede acceder al sitio siendo menor de 18 años'
     end
-  end
 end

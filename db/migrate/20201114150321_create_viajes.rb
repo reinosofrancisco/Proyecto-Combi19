@@ -3,11 +3,11 @@ class CreateViajes < ActiveRecord::Migration[6.0]
     create_table :viajes do |t|
       t.string :nombre
       t.date :fecha
-      t.float :duracion
+      t.time :duracion
       t.integer :ruta_id
       t.integer :chofer_id
       t.integer :combi_id
-      t.float :hora_salida
+      t.time :hora_salida
       t.timestamps
     end
   end

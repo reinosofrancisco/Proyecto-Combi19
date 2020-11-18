@@ -85,9 +85,9 @@ ActiveRecord::Schema.define(version: 2020_11_14_150321) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.date "fecha_nacimiento"
-    t.string "nombre"
     t.integer "edad"
+    t.string "nombre"
+    t.date "fecha_nacimiento"
     t.string "apellido"
     t.string "dni"
     t.string "telefono"
@@ -98,11 +98,11 @@ ActiveRecord::Schema.define(version: 2020_11_14_150321) do
   create_table "viajes", force: :cascade do |t|
     t.string "nombre"
     t.date "fecha"
-    t.float "duracion"
+    t.time "duracion"
     t.integer "ruta_id"
     t.integer "chofer_id"
     t.integer "combi_id"
-    t.float "hora_salida"
+    t.time "hora_salida"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
