@@ -9,11 +9,8 @@ class Viaje < ApplicationRecord
 
   validate :combi_no_ocupada
   validate :chofer_no_ocupado
-<<<<<<< HEAD
   validate :fecha_pasada
 
-=======
->>>>>>> 59fb47556f6038bb66fb98f5453840a5df162a7a
   #Valida que la combi a utilizar en el viaje no este ocupada
 
   
