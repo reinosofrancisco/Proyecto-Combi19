@@ -13,9 +13,9 @@ class Viaje < ApplicationRecord
 
   #Valida que la combi a utilizar en el viaje no este ocupada
 
-  
+
   protected
-  
+
   # validate :validaciones_generales
   # def validaciones_generales
   #   combi_no_ocupada
