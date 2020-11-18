@@ -40,5 +40,14 @@ class DeviseCreateChofers < ActiveRecord::Migration[6.0]
     add_index :chofers, :reset_password_token, unique: true
     # add_index :chofers, :confirmation_token,   unique: true
     # add_index :chofers, :unlock_token,         unique: true
+    #
+  
+  
+    #Agregar columnas a choferes
+    add_column :chofers, :nombre, :string
+    add_column :chofers, :apellido, :string
+    add_column :chofers, :dni, :string
+    add_column :chofers, :telefono, :string
+
   end
 end
