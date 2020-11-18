@@ -10,21 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_14_150321) do
-
-  create_table "aditionals", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "aditionals_rutas", id: false, force: :cascade do |t|
-    t.integer "ruta_id"
-    t.integer "aditional_id"
-    t.index ["aditional_id"], name: "index_aditionals_rutas_on_aditional_id"
-    t.index ["ruta_id"], name: "index_aditionals_rutas_on_ruta_id"
-  end
+ActiveRecord::Schema.define(version: 2020_11_08_225155) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -54,25 +40,11 @@ ActiveRecord::Schema.define(version: 2020_11_14_150321) do
     t.index ["reset_password_token"], name: "index_chofers_on_reset_password_token", unique: true
   end
 
-  create_table "ciudades", force: :cascade do |t|
-    t.string "nombre"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "combis", force: :cascade do |t|
     t.string "patente"
     t.string "tipo"
+    t.boolean "en_viaje"
     t.integer "nro_combi"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "rutas", force: :cascade do |t|
-    t.string "nombre"
-    t.string "descripcion"
-    t.integer "origen_id"
-    t.integer "destino_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -85,16 +57,24 @@ ActiveRecord::Schema.define(version: 2020_11_14_150321) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+<<<<<<< HEAD
     t.integer "edad"
     t.string "nombre"
+=======
+    t.string "nombre"
+<<<<<<< HEAD
+=======
+>>>>>>> 59fb47556f6038bb66fb98f5453840a5df162a7a
     t.date "fecha_nacimiento"
     t.string "apellido"
     t.string "dni"
     t.string "telefono"
+>>>>>>> 7970d0e16786961b6621a0d50210ac5b1d9c852b
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+<<<<<<< HEAD
   create_table "viajes", force: :cascade do |t|
     t.string "nombre"
     t.date "fecha"
@@ -107,4 +87,6 @@ ActiveRecord::Schema.define(version: 2020_11_14_150321) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+=======
+>>>>>>> 59fb47556f6038bb66fb98f5453840a5df162a7a
 end
