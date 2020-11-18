@@ -42,23 +42,23 @@
         <th> Nombre </th>
         <th> Origen </th>
         <th> Destino </th>
+        <th> Fecha </th>
         <th> Duracion </th>
-        <th>  </th>
+        
       </tr>
 
-      <% @viajes.each do |monstruo| %>
+      <% @viajes.each do |v| %>
         <tr>
-          <td>  </td>
-          <td>  </td>
-          <td>  </td>
-          <td>
-            
-          </td>
+          <td> <%=v.nombre%> </td>
+          <td> <%=Ciudad.find(v.origen_id)%> </td>
+          <td> <%=Ciudad.find(v.destino_id)%> </td>
+          <td> <%=v.fecha%> </td>
+          <td> <%=v.duracion%> </td>
         </tr>
       <% end %>
 
-      <% if monstruos.size == 0 %>
-        <tr> <td colspan="3"> No hay monstruos </td> </tr>
+      <% if viajes.size == 0 %>
+        <tr> <td colspan="3"> No hay viajes disponibles. </td> </tr>
       <% end %>
 
     </table>
