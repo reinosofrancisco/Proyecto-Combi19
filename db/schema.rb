@@ -62,8 +62,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_150321) do
 
   create_table "combis", force: :cascade do |t|
     t.string "patente"
-    t.string "tipo"
-    t.integer "nro_combi"
+    t.string "cantidad_de_asientos"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -85,19 +84,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_150321) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "edad"
     t.string "nombre"
-<<<<<<< HEAD
-=======
-=======
-    t.string "nombre"
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 59fb47556f6038bb66fb98f5453840a5df162a7a
->>>>>>> f328fb3aaebab998060a49d192b60fd1d0b8b1c1
->>>>>>> b61453d48d40d8e42b49c7ae6bc42f5231f83c13
     t.date "fecha_nacimiento"
     t.string "apellido"
     t.string "dni"
@@ -108,33 +95,13 @@ ActiveRecord::Schema.define(version: 2020_11_14_150321) do
 
   create_table "viajes", force: :cascade do |t|
     t.string "nombre"
-    t.date "fecha"
-    t.float "duracion"
-    t.integer "ruta_id"
-    t.integer "chofer_id"
-    t.integer "combi_id"
-    t.float "hora_salida"
-=======
-<<<<<<< HEAD
-  create_table "viajes", force: :cascade do |t|
-    t.string "nombre"
-    t.date "fecha"
+    t.datetime "fecha_y_hora"
     t.time "duracion"
     t.integer "ruta_id"
     t.integer "chofer_id"
     t.integer "combi_id"
-    t.time "hora_salida"
->>>>>>> f328fb3aaebab998060a49d192b60fd1d0b8b1c1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 59fb47556f6038bb66fb98f5453840a5df162a7a
->>>>>>> f328fb3aaebab998060a49d192b60fd1d0b8b1c1
->>>>>>> b61453d48d40d8e42b49c7ae6bc42f5231f83c13
 end

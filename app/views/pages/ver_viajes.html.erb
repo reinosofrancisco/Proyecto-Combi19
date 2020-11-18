@@ -32,10 +32,6 @@
     <!-- CAMBIAR LOS LINKS A ALGUNOS QUE ANDEN POSTA -->
     <h3 class="card-title"> </h3>
 
-          <%@viajes.each do |t|%>
-              <p class="list-group-item"> <b><i> <%=t.nombre%></i> </b> </p>
-          <%end%>
-
     <table class="table">
 
       <tr>
@@ -50,25 +46,18 @@
       <% @viajes.each do |v| %>
         <tr>
           <td> <%=v.nombre%> </td>
-          <td> <%=Ciudad.find(v.origen_id)%> </td>
-          <td> <%=Ciudad.find(v.destino_id)%> </td>
+          <td> <%=Ciudad.find(v.ruta.origen_id).nombre%> </td>
+          <td> <%=Ciudad.find(v.ruta.destino_id).nombre%> </td>
           <td> <%=v.fecha%> </td>
           <td> <%=v.duracion%> </td>
         </tr>
       <% end %>
 
-      <% if viajes.size == 0 %>
+      <% if @viajes.size == 0 %>
         <tr> <td colspan="3"> No hay viajes disponibles. </td> </tr>
       <% end %>
 
     </table>
-
-
-
-
-
-
-
     <li>
       <%= link_to 'Cerrar Sesion', 'sign_out' , class: "a-primary"%>
     </li>

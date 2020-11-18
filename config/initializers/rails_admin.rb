@@ -58,6 +58,9 @@ RailsAdmin.config do |config|
     object_label_method do
        :nombre
     end
+    create do
+      field :nombre #para que solo me pida ingresar nombre
+    end
   end
   
   config.model 'Chofer' do
@@ -75,11 +78,28 @@ RailsAdmin.config do |config|
     object_label_method do
       :patente
     end
+  end
+
+
+  config.model 'User' do
     create do
-      field :nombre #para que solo me pida ingresar nombre
+      exclude_fields :reset_password_sent_at,:remember_created_at #para que solo me pida ingresar nombre
+
     end
   end
 
+  config.model 'Chofer' do
+    create do
+      exclude_fields :reset_password_sent_at,:remember_created_at #para que solo me pida ingresar nombre
+
+    end
+  end
+  config.model 'Admin' do
+    create do
+      exclude_fields :reset_password_sent_at,:remember_created_at #para que solo me pida ingresar nombre
+
+    end
+  end
   
 end
 
