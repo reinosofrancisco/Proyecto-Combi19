@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_150321) do
   create_table "combis", force: :cascade do |t|
     t.string "patente"
     t.string "tipo"
+    t.boolean "en_viaje"
     t.integer "nro_combi"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -85,9 +86,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_150321) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.date "fecha_nacimiento"
     t.string "nombre"
-    t.integer "edad"
     t.string "apellido"
     t.string "dni"
     t.string "telefono"

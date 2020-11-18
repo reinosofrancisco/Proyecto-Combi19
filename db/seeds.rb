@@ -20,6 +20,7 @@
 
 Ruta.destroy_all
 Aditional.destroy_all
+Admin.destroy_all
 
 
 
@@ -45,29 +46,32 @@ a5=Aditional.find_or_create_by(
 )
 
 
+#
+# Ruta.find_or_create_by(
+#     origen: "La Plata",
+#     destino: "Buenos Aires",
+#     aditionals_ids: [a1,a2,a3]
+# )
+# Ruta.find_or_create_by(
+#     origen: "La Plata",
+#     destino: "BuRSACO",
+#     aditionals_ids: a2
+# )
+# Ruta.find_or_create_by(
+#     origen: "Mar del Plata",
+#     destino: "Buenos Aires",
+#     aditionals_ids: a3
+# )
+# Ruta.find_or_create_by(
+#     origen: "El Condor",
+#     destino: "Buenos Aires",
+#     aditionals_ids: a4
+# )
+# Ruta.find_or_create_by(
+#     origen: "Buenos Aires",
+#     destino: "Mar del Plata",
+#     aditionals_ids: [a1,a2,a3,a4,a5]
+# )
 
-Ruta.find_or_create_by(
-    origen: "La Plata",
-    destino: "Buenos Aires",
-    aditionals_ids: [a1,a2,a3]
-)
-Ruta.find_or_create_by(
-    origen: "La Plata",
-    destino: "BuRSACO",
-    aditionals_ids: a2
-)
-Ruta.find_or_create_by(
-    origen: "Mar del Plata",
-    destino: "Buenos Aires",
-    aditionals_ids: a3
-)
-Ruta.find_or_create_by(
-    origen: "El Condor",
-    destino: "Buenos Aires",
-    aditionals_ids: a4
-)
-Ruta.find_or_create_by(
-    origen: "Buenos Aires",
-    destino: "Mar del Plata",
-    aditionals_ids: [a1,a2,a3,a4,a5]
-)
+
+Admin.create(email: "admin@hotmail.com", password: "admin1234", password_confirmation: "admin1234")
