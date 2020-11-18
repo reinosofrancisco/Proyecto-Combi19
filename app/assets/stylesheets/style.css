@@ -27,8 +27,10 @@ body {
   color: white;
 }
 
+/* La tabla tiene un background negro transparente */
 .table{
   color: white;
+  background-color: rgba(0,0,0,0.6);
 }
 
 
@@ -47,7 +49,7 @@ body {
 }
 
 .container {
-  max-width: 960px;
+  max-width: 1200px;
   margin: auto;
   overflow: hidden;
   padding: 0 3rem;
