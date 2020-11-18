@@ -85,7 +85,17 @@ ActiveRecord::Schema.define(version: 2020_11_14_150321) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+<<<<<<< HEAD
+    t.integer "edad"
     t.string "nombre"
+=======
+    t.string "nombre"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 59fb47556f6038bb66fb98f5453840a5df162a7a
+>>>>>>> f328fb3aaebab998060a49d192b60fd1d0b8b1c1
     t.date "fecha_nacimiento"
     t.string "apellido"
     t.string "dni"
@@ -94,6 +104,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_150321) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+<<<<<<< HEAD
   create_table "viajes", force: :cascade do |t|
     t.string "nombre"
     t.date "fecha"
@@ -102,8 +113,24 @@ ActiveRecord::Schema.define(version: 2020_11_14_150321) do
     t.integer "chofer_id"
     t.integer "combi_id"
     t.float "hora_salida"
+=======
+<<<<<<< HEAD
+  create_table "viajes", force: :cascade do |t|
+    t.string "nombre"
+    t.date "fecha"
+    t.time "duracion"
+    t.integer "ruta_id"
+    t.integer "chofer_id"
+    t.integer "combi_id"
+    t.time "hora_salida"
+>>>>>>> f328fb3aaebab998060a49d192b60fd1d0b8b1c1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 59fb47556f6038bb66fb98f5453840a5df162a7a
+>>>>>>> f328fb3aaebab998060a49d192b60fd1d0b8b1c1
 end

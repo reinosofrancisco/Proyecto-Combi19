@@ -9,6 +9,12 @@ Rails.application.routes.draw do
 
   #Creo una ruta /sign_out para chofers y usuarios. Admin usa rails_admin, la cual ya tiene una forma de cerrar Sesion
   devise_scope :user do
+    authenticated :user do
+      root 'pages#ver_viajes', as: :user
+    end
+
+
+
       get 'sign_out' => "devise/sessions#destroy"
   end
   devise_scope :chofers do
