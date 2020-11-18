@@ -26,11 +26,11 @@ Admin.destroy_all
 
 a1=Aditional.find_or_create_by(
     name: "Equipaje extra 5kg",
-    description: "Sisi, equipaje extra podes llevar pagando bro"
+    description: "Sisi, equipaje extra podes llevar pagando"
 )
 a2=Aditional.find_or_create_by(
     name: "Equipaje extra 10kg",
-    description: "Sisi, diez kilos de equipaje extra podes llevar pagando bro"
+    description: "Sisi, diez kilos de equipaje extra podes llevar pagando"
 )
 a3=Aditional.find_or_create_by(
     name: "Caremelos owo",
@@ -41,8 +41,8 @@ a4=Aditional.find_or_create_by(
     description: "Me aseguro de que te hidrates dandote awa"
 )
 a5=Aditional.find_or_create_by(
-    name: "Cogida",
-    description: "Me aseguro de que la pases bien, te cojo uwu"
+    name: "torta frita",
+    description: "torta frita para el viajero"
 )
 
 
