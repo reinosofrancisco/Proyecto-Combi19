@@ -9,9 +9,17 @@ class Viaje < ApplicationRecord
 
   validate :combi_no_ocupada
   validate :chofer_no_ocupado
-
   #Valida que la combi a utilizar en el viaje no este ocupada
+
+  
   protected
+  
+  # validate :validaciones_generales
+  # def validaciones_generales
+  #   combi_no_ocupada
+  #   chofer_no_ocupado
+  # end
+
   def combi_no_ocupada
     v= Viaje.where(combi:combi).where(fecha: fecha)
     if v != nil
