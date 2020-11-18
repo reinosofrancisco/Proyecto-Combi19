@@ -40,7 +40,7 @@
         <th> Destino </th>
         <th> Fecha </th>
         <th> Duracion </th>
-        
+
       </tr>
 
       <% @viajes.each do |v| %>
@@ -48,8 +48,8 @@
           <td> <%=v.nombre%> </td>
           <td> <%=Ciudad.find(v.ruta.origen_id).nombre%> </td>
           <td> <%=Ciudad.find(v.ruta.destino_id).nombre%> </td>
-          <td> <%=v.fecha%> </td>
-          <td> <%=v.duracion%> </td>
+          <td> <%=v.fecha_y_hora%> </td>
+          <td> <%=v.duracion.to_s(:time)%> hs </td>
         </tr>
       <% end %>
 
