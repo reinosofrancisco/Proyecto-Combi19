@@ -18,4 +18,5 @@ class User < ApplicationRecord
       if (fecha_nacimiento + f_18) < f
         errors[:fecha_nacimiento] << 'No se puede acceder al sitio siendo menor de 18 años'
     end
+  end
 end

@@ -35,6 +35,40 @@
           <%@viajes.each do |t|%>
               <p class="list-group-item"> <b><i> <%=t%></i> </b> </p>
           <%end%>
+
+    <table class="table">
+
+      <tr>
+        <th> Nombre </th>
+        <th> Origen </th>
+        <th> Destino </th>
+        <th> Duracion </th>
+        <th>  </th>
+      </tr>
+
+      <% @viajes.each do |monstruo| %>
+        <tr>
+          <td>  </td>
+          <td>  </td>
+          <td>  </td>
+          <td>
+            
+          </td>
+        </tr>
+      <% end %>
+
+      <% if monstruos.size == 0 %>
+        <tr> <td colspan="3"> No hay monstruos </td> </tr>
+      <% end %>
+
+    </table>
+
+
+
+
+
+
+
     <li>
       <%= link_to 'Cerrar Sesion', 'sign_out' , class: "a-primary"%>
     </li>
