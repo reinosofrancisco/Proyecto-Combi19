@@ -13,6 +13,5 @@ class User < ApplicationRecord
   #Valida que el usuario a crear sea mayor de 18 años
   protected
     def mayor_18
-    end
   end
 end
