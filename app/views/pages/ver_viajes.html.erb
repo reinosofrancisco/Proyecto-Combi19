@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <title>Portfolio</title>
+  </head>
+  <body>
+
+    <div class="menu-wrap">
+     <!-- Toggler is the checkbox that makes the menu pop -->
+
+
+      <!-- <input type="checkbox" class="toggler"> -->
+      <!-- <div class="topBtn"> <div></div></div> -->
+      <!-- This is the information that will pop when you click the toggler -->
+      <!-- So... SOmehow I broke the toggler... no spinning button for you. Sorry! -->
+    </div>
+
+
+<!-- showcase  - contiene
+        container showcase-inner  -> Text that contains basic information
+      -->
+<!-- This is the actual text that appears in the webpage  -->
+<header class="showcase">
+
+  <div class="container showcase-inner">
+    <div class="boxForPic"></div>
+    <h2> Por favor, elija una opcion</h2>
+
+    <!-- CAMBIAR LOS LINKS A ALGUNOS QUE ANDEN POSTA -->
+    <h3 class="card-title">Viajes: </h3>
+
+          <%@viajes.each do |t|%>
+              <p class="list-group-item"> <b><i> <%=t%></i> </b> </p>
+          <%end%>
+    <li>
+      <%= link_to 'Cerrar Sesion', 'sign_out' , class: "a-primary"%>
+    </li>
+  </div>
+
+</header>
+  </body>
+</html>
