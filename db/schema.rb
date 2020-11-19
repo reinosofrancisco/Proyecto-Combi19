@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_150321) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "edad"
     t.string "nombre"
     t.date "fecha_nacimiento"
     t.string "apellido"
