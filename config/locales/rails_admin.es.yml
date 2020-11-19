@@ -45,6 +45,8 @@ es:
     flash:
       successful: "%{name} %{action} con éxito"
       error: "%{name} no se %{action}"
+      chofer_con_viajes: "%{name} tiene viajes asociados"
+      ciudad_con_rutas: "%{name} tiene rutas asociadas"
       noaction: "No se llevó a cabo ninguna acción"
       model_not_found: "El modelo '%{model}' no se pudo encontrar"
       object_not_found: "%{model} con id '%{id}' no se pudo encontrar"

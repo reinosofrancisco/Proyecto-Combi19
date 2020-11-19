@@ -8,4 +8,15 @@ class Chofer < ApplicationRecord
   validates :apellido, presence: true
   validates :dni, presence: true, uniqueness: true
   default_scope -> {order(:apellido)}
+
+  def destroy
+    
+  if !Viaje.where(chofer:self).empty?
+    errors[:nombre] << "Chofer no puede eliminarse"
+    return false
+  else
+    super
+  end
+end
+
 end

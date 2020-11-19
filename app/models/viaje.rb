@@ -10,7 +10,11 @@ class Viaje < ApplicationRecord
   validate :chofer_no_ocupado
   validate :fecha_pasada
 
+  
+  
+  
   #Valida que la combi a utilizar en el viaje no este ocupada
+
 
 
   protected
@@ -25,6 +29,7 @@ class Viaje < ApplicationRecord
     viajes= Viaje.where(combi:combi).where(fecha_y_hora: fecha_y_hora)
     if viajes != nil
       viajes.each do |viaje|
+        next if viaje==self
         if(viaje.fecha_y_hora + viaje.duracion) > fecha_y_hora
           errors[:combi] << 'La combi seleccionada esta ocupada'
         end
@@ -37,6 +42,7 @@ end
     viajes= Viaje.where(chofer: chofer).where(fecha_y_hora: fecha_y_hora)
     if viajes != nil
       viajes.each do |viaje|
+        next if viaje==self
         if(viaje.fecha_y_hora + viaje.duracion) > fecha_y_hora
             errors[:chofer] << 'El chofer seleccionado esta ocupado'
         end
