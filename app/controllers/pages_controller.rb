@@ -3,7 +3,8 @@ class PagesController < ApplicationController
   end
 
   def ver_viajes
-    @viajes = Viaje.all
+    t= Date.today
+    @viajes = Viaje.where(['fecha_y_hora > ? AND fecha_y_hora < ?', t, t+100])
   end
 
 end

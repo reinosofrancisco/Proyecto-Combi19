@@ -48,7 +48,7 @@
           <td> <%=v.nombre%> </td>
           <td> <%=Ciudad.find(v.ruta.origen_id).nombre%> </td>
           <td> <%=Ciudad.find(v.ruta.destino_id).nombre%> </td>
-          <td> <%=v.fecha_y_hora%> </td>
+          <td> <%=v.fecha_y_hora.to_formatted_s(:long)%> </td>
           <td> <%=v.duracion.to_s(:time)%> hs </td>
         </tr>
       <% end %>
