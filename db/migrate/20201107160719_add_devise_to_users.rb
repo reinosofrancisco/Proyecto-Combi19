@@ -3,6 +3,15 @@
 class AddDeviseToUsers < ActiveRecord::Migration[6.0]
   def self.up
     change_table :users do |t|
+
+      #datos personales
+      t.string :nombre
+      t.string :apellido
+      t.string :dni
+      t.date :fecha_nacimiento
+      t.string :telefono
+
+
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -44,18 +53,18 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.0]
 
 
     #Add nombre to user
-    add_column :users, :nombre, :string
-    add_column :users, :fecha_nacimiento, :date
+    #add_column :users, :nombre, :string
+    #add_column :users, :fecha_nacimiento, :date
 
     #Add apellido to user
-    add_column :users, :apellido, :string
+    #add_column :users, :apellido, :string
 
     #Add dni to user
-    add_column :users, :dni, :string
+    #add_column :users, :dni, :string
 
     #Add telefono to user
 
-    add_column :users, :telefono, :string
+    #add_column :users, :telefono, :string
 
   end
 

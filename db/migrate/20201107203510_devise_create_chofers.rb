@@ -3,6 +3,13 @@
 class DeviseCreateChofers < ActiveRecord::Migration[6.0]
   def change
     create_table :chofers do |t|
+
+      t.string :nombre
+      t.string :apellido
+      t.string :dni
+      t.date :fecha_nacimiento
+      t.string :telefono
+
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -42,12 +49,6 @@ class DeviseCreateChofers < ActiveRecord::Migration[6.0]
     # add_index :chofers, :unlock_token,         unique: true
     #
   
-  
-    #Agregar columnas a choferes
-    add_column :chofers, :nombre, :string
-    add_column :chofers, :apellido, :string
-    add_column :chofers, :dni, :string
-    add_column :chofers, :telefono, :string
 
   end
 end

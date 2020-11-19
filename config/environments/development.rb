@@ -6,6 +6,9 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
 
 
+  #PARA EVITAR QUE TIRE ERROR CUANDO QUIERO RECUPERAR CONTRASENA.
+  #POR AHORA NO HACE NADA IGUAL
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   config.cache_classes = false
 
