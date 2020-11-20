@@ -43,6 +43,15 @@
 
     has_and_belongs_to_many :aditionals
 
+    def destroy
+
+        if !(Viaje.where(ruta:self).empty? )
+          errors[:nombre] << "Viaje no puede eliminarse"
+          return false
+       else
+          super
+       end
+      end
 
 
 

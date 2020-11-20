@@ -6,7 +6,7 @@ class DeviseCreateChofers < ActiveRecord::Migration[6.0]
 
       t.string :nombre
       t.string :apellido
-      t.string :dni
+      t.bigint :dni
       t.date :fecha_nacimiento
       t.string :telefono
 

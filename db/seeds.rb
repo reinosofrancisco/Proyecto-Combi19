@@ -26,23 +26,23 @@ Admin.destroy_all
 
 a1=Aditional.find_or_create_by(
     name: "Equipaje extra 5kg",
-    description: "Sisi, equipaje extra podes llevar pagando"
+    description: "Para poder llevar equipaje extra"
 )
 a2=Aditional.find_or_create_by(
     name: "Equipaje extra 10kg",
-    description: "Sisi, diez kilos de equipaje extra podes llevar pagando"
+    description: "Para poder llevar equipaje extra"
 )
 a3=Aditional.find_or_create_by(
-    name: "Caremelos owo",
-    description: "Me aseguro que no tengas hambre, te doy caramelos"
+    name: "Un alfajor",
+    description: "Adicional para disfrutar un alfajor a bordo de la combi"
 )
 a4=Aditional.find_or_create_by(
-    name: "Awa",
-    description: "Me aseguro de que te hidrates dandote awa"
+    name: "Refresco",
+    description: "Adicional para tener un refresco a bordo de la combi"
 )
 a5=Aditional.find_or_create_by(
-    name: "torta frita",
-    description: "torta frita para el viajero"
+    name: "Recuerdo de viaje",
+    description: "Este adicional provee un recuerdo del destino que hallas escogido(personalizado por cada viaje)"
 )
 
 
