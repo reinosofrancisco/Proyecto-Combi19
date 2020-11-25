@@ -47,33 +47,45 @@ RailsAdmin.config do |config|
   end
 
   #Soy un crack kapo idolo mastodonte fiera
-  
-  config.model 'Viaje' do 
+
+  config.model 'Viaje' do
     object_label_method do
       :nombre
     end
   end
-  
+
   config.model 'Ciudad' do
     object_label_method do
        :nombre
     end
     create do
       field :nombre #para que solo me pida ingresar nombre
+      field :provincia
     end
   end
-  
+
   config.model 'Chofer' do
     object_label_method do
-      :nombre
+      :dni
     end
+  #  Chofer.class_eval do
+  #  def custom_label_method
+  #    "#{self.nombre} (#{self.dni})"
+  #  end
+  #end
   end
+
   config.model 'Ruta' do
     object_label_method do
       :nombre
     end
   end
-  
+  config.model 'Provincia' do
+    object_label_method do
+      :nombre
+    end
+  end
+
   config.model 'Combi' do
     object_label_method do
       :patente
@@ -100,6 +112,5 @@ RailsAdmin.config do |config|
 
     end
   end
-  
-end
 
+end
