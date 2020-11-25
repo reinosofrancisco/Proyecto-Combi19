@@ -52,8 +52,13 @@ RailsAdmin.config do |config|
     object_label_method do
       :nombre
     end
+    configure :updated_at do
+        hide
+      end
+      configure :created_at do
+          hide
+        end
   end
-
   config.model 'Ciudad' do
     object_label_method do
        :nombre
@@ -62,6 +67,15 @@ RailsAdmin.config do |config|
       field :nombre #para que solo me pida ingresar nombre
       field :provincia
     end
+    edit do
+      exclude_fields :rutas
+    end
+    configure :updated_at do
+        hide
+      end
+      configure :created_at do
+          hide
+        end
   end
 
   config.model 'Chofer' do
@@ -79,21 +93,51 @@ RailsAdmin.config do |config|
     object_label_method do
       :nombre
     end
+    configure :updated_at do
+        hide
+      end
+      configure :created_at do
+          hide
+        end
   end
   config.model 'Provincia' do
     object_label_method do
       :nombre
     end
+    configure :updated_at do
+        hide
+      end
+      configure :created_at do
+          hide
+        end
   end
 
   config.model 'Combi' do
     object_label_method do
       :patente
     end
+    configure :updated_at do
+        hide
+      end
+      configure :created_at do
+          hide
+        end
   end
 
 
   config.model 'User' do
+    configure :reset_password_sent_at do
+        hide
+      end
+      configure :remember_created_at do
+          hide
+        end
+        configure :updated_at do
+            hide
+          end
+          configure :created_at do
+              hide
+            end
     create do
       exclude_fields :reset_password_sent_at,:remember_created_at #para que solo me pida ingresar nombre
 
@@ -101,12 +145,36 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Chofer' do
+    configure :reset_password_sent_at do
+        hide
+      end
+      configure :remember_created_at do
+          hide
+        end
+        configure :updated_at do
+            hide
+          end
+          configure :created_at do
+              hide
+            end
     create do
       exclude_fields :reset_password_sent_at,:remember_created_at #para que solo me pida ingresar nombre
 
     end
   end
   config.model 'Admin' do
+    configure :reset_password_sent_at do
+        hide
+      end
+      configure :remember_created_at do
+          hide
+        end
+        configure :updated_at do
+            hide
+          end
+          configure :created_at do
+              hide
+            end
     create do
       exclude_fields :reset_password_sent_at,:remember_created_at #para que solo me pida ingresar nombre
 
