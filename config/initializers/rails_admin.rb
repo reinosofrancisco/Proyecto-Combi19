@@ -124,6 +124,12 @@ RailsAdmin.config do |config|
         end
   end
 
+  config.model 'Adicional' do
+    object_label_method do
+      :nombre
+    end
+  end
+
 
   config.model 'User' do
     configure :reset_password_sent_at do

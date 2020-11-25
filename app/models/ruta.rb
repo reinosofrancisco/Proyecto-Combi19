@@ -15,7 +15,7 @@
 
     belongs_to :origen, class_name: 'Ciudad'
     belongs_to :destino, class_name: 'Ciudad'
-
+    has_and_belongs_to_many :adicionales
 
     #validates_uniqueness_of :origen_id, :scope => :destino_id
 
@@ -41,7 +41,7 @@
 
 
 
-    has_and_belongs_to_many :aditionals
+    
 
     def destroy
 

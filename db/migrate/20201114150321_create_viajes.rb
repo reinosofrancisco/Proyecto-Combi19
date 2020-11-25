@@ -8,6 +8,11 @@ class CreateViajes < ActiveRecord::Migration[6.0]
       t.integer :ruta_id
       t.integer :chofer_id
       t.integer :combi_id
+      t.float :precio
+      t.integer :asientos_restantes
+
+
+
       t.timestamps
     end
   end

@@ -5,11 +5,7 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.0]
     change_table :users do |t|
 
       #datos personales
-      t.string :nombre
-      t.string :apellido
-      t.bigint :dni
-      t.date :fecha_nacimiento
-      t.string :telefono
+
 
 
       ## Database authenticatable
