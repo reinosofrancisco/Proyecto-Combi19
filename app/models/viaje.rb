@@ -1,6 +1,7 @@
 class Viaje < ApplicationRecord
   validates :duracion , presence: true
-  validates :fecha_y_hora, presence: true
+  validates :fecha, presence: true
+  validates :hora_salida, presence: true
   belongs_to :combi , class_name: 'Combi'
   belongs_to :chofer, class_name: 'Chofer'
   belongs_to :ruta , class_name: 'Ruta'
@@ -38,11 +39,11 @@ class Viaje < ApplicationRecord
 
 
   def combi_no_ocupada
-    viajes= Viaje.where(combi:combi).where(fecha_y_hora: fecha_y_hora)
+    viajes= Viaje.where(combi:combi).where(fecha: fecha)
     if viajes != nil
       viajes.each do |viaje|
         next if viaje==self
-        if(viaje.fecha_y_hora + viaje.duracion) > fecha_y_hora
+        if(viaje.hora_salida + viaje.duracion).change(year: hora_salida.year , month: hora_salida.month , day: hora_salida.day) > hora_salida
           errors[:combi] << 'La combi seleccionada esta ocupada'
         end
       end
@@ -51,11 +52,11 @@ end
   #Valida que el chofer a utilizar en el viaje no este ocupado
   protected
   def chofer_no_ocupado
-    viajes= Viaje.where(chofer: chofer).where(fecha_y_hora: fecha_y_hora)
+    viajes= Viaje.where(chofer: chofer).where(fecha: fecha)
     if viajes != nil
       viajes.each do |viaje|
         next if viaje==self
-        if(viaje.fecha_y_hora + viaje.duracion) > fecha_y_hora
+        if(viaje.hora_salida + viaje.duracion).change(year: hora_salida.year , month: hora_salida.month , day: hora_salida.day) > hora_salida
             errors[:chofer] << 'El chofer seleccionado esta ocupado'
         end
       end
@@ -63,6 +64,7 @@ end
   end
   protected
   def fecha_pasada
+    fecha_y_hora = DateTime.new(fecha.year,fecha.month, fecha.day, hora_salida.hour, hora_salida.min, hora_salida.sec )
       if(fecha_y_hora.to_s(:number) <= Time.now.to_s(:number))
         errors[:fecha] << 'La fecha seleccionada es anterior al dia de hoy'
       end

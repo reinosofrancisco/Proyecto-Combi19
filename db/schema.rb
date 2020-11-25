@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_11_25_193215) do
+=======
+ActiveRecord::Schema.define(version: 2020_11_25_180450) do
+>>>>>>> ea81597fc508126f6f0eac6ef139de8511275937
 
   create_table "adicionales", force: :cascade do |t|
     t.string "nombre"
@@ -58,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_193215) do
 
   create_table "ciudades", force: :cascade do |t|
     t.string "nombre"
+    t.integer "provincia_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -75,6 +80,12 @@ ActiveRecord::Schema.define(version: 2020_11_25_193215) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_comentarios_on_user_id"
+  end
+
+  create_table "provincia", force: :cascade do |t|
+    t.string "nombre"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "rutas", force: :cascade do |t|
@@ -112,7 +123,8 @@ ActiveRecord::Schema.define(version: 2020_11_25_193215) do
 
   create_table "viajes", force: :cascade do |t|
     t.string "nombre"
-    t.datetime "fecha_y_hora"
+    t.date "fecha"
+    t.time "hora_salida"
     t.time "duracion"
     t.integer "ruta_id"
     t.integer "chofer_id"
