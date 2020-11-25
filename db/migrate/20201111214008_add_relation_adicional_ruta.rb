@@ -3,7 +3,7 @@ class AddRelationAdicionalRuta < ActiveRecord::Migration[6.0]
 
 
 
-    #Could not find table 'aditionals_rutas' 
+    #Could not find table 'aditionals_rutas'
     #crea la tabla de relacion rutas-adicionales. No les asigna id y para cada entrada
 
 
