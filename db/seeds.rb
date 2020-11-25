@@ -19,30 +19,36 @@
 
 
 Ruta.destroy_all
-Aditional.destroy_all
+Adicional.destroy_all
 Admin.destroy_all
 
 
 
-a1=Aditional.find_or_create_by(
-    name: "Equipaje extra 5kg",
-    description: "Para poder llevar equipaje extra"
+
+a1=Adicional.find_or_create_by(
+    nombre: "Equipaje extra 5kg",
+    descripcion: "Para poder llevar equipaje extra",
+    precio: 2005.35
 )
-a2=Aditional.find_or_create_by(
-    name: "Equipaje extra 10kg",
-    description: "Para poder llevar equipaje extra"
+a2=Adicional.find_or_create_by(
+    nombre: "Equipaje extra 10kg",
+    descripcion: "Para poder llevar equipaje extra",
+    precio: 2005.35
 )
-a3=Aditional.find_or_create_by(
-    name: "Un alfajor",
-    description: "Adicional para disfrutar un alfajor a bordo de la combi"
+a3=Adicional.find_or_create_by(
+    nombre: "Un alfajor",
+    descripcion: "Adicional para disfrutar un alfajor a bordo de la combi",
+    precio: 2005.35
 )
-a4=Aditional.find_or_create_by(
-    name: "Refresco",
-    description: "Adicional para tener un refresco a bordo de la combi"
+a4=Adicional.find_or_create_by(
+    nombre: "Refresco",
+    descripcion: "Adicional para tener un refresco a bordo de la combi",
+    precio: 2005.35
 )
-a5=Aditional.find_or_create_by(
-    name: "Recuerdo de viaje",
-    description: "Este adicional provee un recuerdo del destino que hallas escogido(personalizado por cada viaje)"
+a5=Adicional.find_or_create_by(
+    nombre: "Recuerdo de viaje",
+    descripcion: "Este adicional provee un recuerdo del destino que hallas escogido(personalizado por cada viaje)",
+    precio: 2005.35
 )
 
 

@@ -4,13 +4,16 @@ class Viaje < ApplicationRecord
   belongs_to :combi , class_name: 'Combi'
   belongs_to :chofer, class_name: 'Chofer'
   belongs_to :ruta , class_name: 'Ruta'
+  validates :precio, presence:true
 
+
+  has_and_belongs_to_many :users
+  
 
   validate :combi_no_ocupada
   validate :chofer_no_ocupado
   validate :fecha_pasada
-
-
+  validate :asientos_en_rango
 
 
   #Valida que la combi a utilizar en el viaje no este ocupada
@@ -24,6 +27,15 @@ class Viaje < ApplicationRecord
   #   combi_no_ocupada
   #   chofer_no_ocupado
   # end
+
+  def asientos_en_rango
+    if self.asientos_restantes > self.combi.cantidad_de_asientos
+      errors[:asientos] << 'La combi no tiene tantos asientos'
+    end
+  end
+
+
+
 
   def combi_no_ocupada
     viajes= Viaje.where(combi:combi).where(fecha_y_hora: fecha_y_hora)

@@ -12,9 +12,9 @@ class AddRelationAdicionalRuta < ActiveRecord::Migration[6.0]
     #   t.belongs_to :aditional # y tambien a un adicional
     # end
 
-    create_table :aditionals_rutas, id: false do |t|
+    create_table :adicionales_rutas, id: false do |t|
       t.belongs_to :ruta #pertenece a una ruta (para que sea direccionable desde ahi)
-      t.belongs_to :aditional # y tambien a un adicional
+      t.belongs_to :adicional # y tambien a un adicional
     end
 
   end
