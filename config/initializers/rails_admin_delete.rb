@@ -49,6 +49,12 @@ module RailsAdmin
                         elsif @object.class.base_class.name=="Combi"
                             flash[:error] = t("admin.flash.modelo_con_viajes", :name => @model_config.label)
                             redirect_path = back_or_index
+                          elsif @object.class.base_class.name=="Provincia"
+                            flash[:error] = t("admin.flash.modelo_con_ciudades", :name => @model_config.label)
+                            redirect_path = back_or_index
+                          elsif @object.class.base_class.name=="Viaje"
+                            flash[:error] = t("admin.flash.modelo_con_usuarios", :name => @model_config.label)
+                            redirect_path = back_or_index
                     else
                         flash[:error] = t('admin.flash.error', name: @model_config.label, action: t('admin.actions.delete.done'))
                         redirect_path = back_or_index

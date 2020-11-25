@@ -47,6 +47,17 @@ RailsAdmin.config do |config|
   end
 
   #Soy un crack kapo idolo mastodonte fiera
+  config.model 'Adicional' do
+    object_label_method do
+      :nombre
+    end
+    configure :updated_at do
+        hide
+      end
+      configure :created_at do
+          hide
+        end
+  end
 
   config.model 'Viaje' do
     object_label_method do
@@ -57,6 +68,13 @@ RailsAdmin.config do |config|
       end
       configure :created_at do
           hide
+        end
+        edit do
+          exclude_fields :users , :asientos_restantes
+        end
+        create do
+          exclude_fields :users , :asientos_restantes
+
         end
   end
   config.model 'Ciudad' do
@@ -144,9 +162,17 @@ RailsAdmin.config do |config|
           configure :created_at do
               hide
             end
+            configure :viajes do
+                hide
+              end
+              configure :comentarios do
+                  hide
+                end
     create do
-      exclude_fields :reset_password_sent_at,:remember_created_at #para que solo me pida ingresar nombre
-
+      exclude_fields :reset_password_sent_at,:remember_created_at,:viajes , :comentarios#para que solo me pida ingresar nombre
+    end
+    edit do
+      exclude_fields :viajes,  :comentarios
     end
   end
 

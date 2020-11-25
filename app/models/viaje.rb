@@ -9,18 +9,17 @@ class Viaje < ApplicationRecord
 
 
   has_and_belongs_to_many :users
-  
-
   validate :combi_no_ocupada
   validate :chofer_no_ocupado
   validate :fecha_pasada
-  validate :asientos_en_rango
-
+  #validate :asientos_en_rango
+  validate :agregar_asientos
 
   #Valida que la combi a utilizar en el viaje no este ocupada
 
-
-
+  def agregar_asientos
+    self.asientos_restantes = self.combi.cantidad_de_asientos - self.users.length
+  end
   protected
 
   # validate :validaciones_generales
@@ -29,11 +28,7 @@ class Viaje < ApplicationRecord
   #   chofer_no_ocupado
   # end
 
-  def asientos_en_rango
-    if self.asientos_restantes > self.combi.cantidad_de_asientos
-      errors[:asientos] << 'La combi no tiene tantos asientos'
-    end
-  end
+
 
 
 
@@ -69,4 +64,12 @@ end
         errors[:fecha] << 'La fecha seleccionada es anterior al dia de hoy'
       end
   end
+  def destroy
+      if !(self.users.empty?)
+        errors[:nombre] << "Viaje no puede eliminarse"
+        return false
+      else
+        super
+      end
+    end
 end
