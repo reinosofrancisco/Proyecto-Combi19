@@ -9,6 +9,7 @@ class Chofer < ApplicationRecord
   validates :dni, presence: true, uniqueness: true
   default_scope -> {order(:apellido)}
   validate :dni_correcto
+  validate :mayor_18
   def destroy
 
   if !Viaje.where(chofer:self).empty?
@@ -23,6 +24,12 @@ def dni_correcto
   if(dni < 1000000)
     errors[:dni] << 'El dni ingresado no es un documento valido'
   end
+end
+def mayor_18
+  f=Date.today()
+  if ((fecha_nacimiento) > (f - 18.year))
+    errors[:fecha_nacimiento] << 'No se puede crear un chofer menor de 18 años'
+end
 end
 
 end

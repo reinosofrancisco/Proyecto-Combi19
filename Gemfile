@@ -61,6 +61,7 @@ gem 'rails_admin_rollincode', '~> 1.0'
 gem "devise"
 gem "rails-i18n"
 gem 'devise-i18n'
+gem "select2-rails" 
 
 #gema para has_many? F no anda
 #gem "rails_admin_simple_has_many"

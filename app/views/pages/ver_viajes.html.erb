@@ -27,7 +27,44 @@
 
   <div class="container showcase-inner">
     <div class="boxForPic"></div>
-    <h2> Listado de viajes!</h2>
+
+    <h2>Busca tu aventura </h2>
+    <table class="table">
+
+      <tr>
+
+    </div>
+        <th> Origen   <select>
+          <option value=empty>
+
+          </option>
+              <% Ciudad.all.each do |ciudad| %>
+                  <option value="<%= ciudad.nombre %>">
+                      <%= ciudad.nombre %>
+                  </option>
+              <% end %>
+
+          </select>
+        </th>
+        <th>
+        Destino <select>
+          <option value=empty>
+
+          </option>
+         <% Ciudad.all.each do |ciudad| %>
+            <option value="<%= ciudad.nombre %>">
+                <%= ciudad.nombre %>
+            </option>
+        <% end %>
+
+          </select>
+      </th>
+        <th> Fecha   <%= date_field_tag(:buscar) %> </th>
+        <th><%= submit_tag ("Buscar") %>  </th>
+      </tr>
+
+
+
 
     <!-- CAMBIAR LOS LINKS A ALGUNOS QUE ANDEN POSTA -->
     <h3 class="card-title"> </h3>

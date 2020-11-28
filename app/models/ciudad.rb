@@ -20,6 +20,8 @@ class Ciudad < ApplicationRecord
           super
         end
       end
-
+      def boton_rutas
+        link_to 'Ver Viajes', 'pages#ver_rutas' , class: "a-primary"
+      end
 
 end

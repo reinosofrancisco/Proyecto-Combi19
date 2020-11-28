@@ -94,6 +94,24 @@ RailsAdmin.config do |config|
       configure :created_at do
           hide
         end
+        list do
+          field :nombre do
+
+          end
+          field :provincia do
+
+          end
+
+          field :rutas do
+            pretty_value do
+             v = bindings[:view]
+             id= (bindings[:object].id).to_s
+             url= '/ver_rutas/'+id
+             v.link_to "Ver rutas", url
+           end
+         end
+        end
+
   end
 
   config.model 'Chofer' do

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get 'sign_out' => "devise/sessions#destroy"
   end
 
+  get 'ver_rutas/:id', to: 'ver_rutas#show',  as: "rutas"
 
   #Cambia la ruta por defecto a la ruta especificada segun el device
   devise_scope :admin do
@@ -35,8 +36,5 @@ Rails.application.routes.draw do
     end
 
   end
-
-
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
