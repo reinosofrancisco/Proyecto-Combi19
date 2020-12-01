@@ -4,28 +4,11 @@
     <meta charset="utf-8">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <title>Portfolio</title>
   </head>
   <body>
 
-    <div class="menu-wrap">
-     <!-- Toggler is the checkbox that makes the menu pop -->
 
-
-      <!-- <input type="checkbox" class="toggler"> -->
-      <!-- <div class="topBtn"> <div></div></div> -->
-      <!-- This is the information that will pop when you click the toggler -->
-      <!-- So... SOmehow I broke the toggler... no spinning button for you. Sorry! -->
-    </div>
-
-
-<!-- showcase  - contiene
-        container showcase-inner  -> Text that contains basic information
-      -->
-<!-- This is the actual text that appears in the webpage  -->
 <header class="showcase">
-
-
 
   <div class="mainContainer showcase-inner">
     <div class="boxForPic"></div>
@@ -33,37 +16,41 @@
     <h2>Busca tu aventura </h2>
     <table class="table">
 
-      <tr>
 
-    </div>
-        <th> Origen   <select class="js-select2-box">
+
+<!-- COMIENZO DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
+  <tr>
+    <div class="ListadoViajes">
+
+      <th> Origen
+        <select class="js-select2-box">
           <option value=empty>
-
           </option>
-              <% Ciudad.all.each do |ciudad| %>
-                  <option value="<%= ciudad.nombre %>">
-                      <%= ciudad.nombre %>
-                  </option>
-              <% end %>
-
-          </select>
-        </th>
-        <th>
-        Destino <select class="js-select2-box">
-          <option value=empty>
-
-          </option>
-         <% Ciudad.all.each do |ciudad| %>
-            <option value="<%= ciudad.nombre %>">
-                <%= ciudad.nombre %>
-            </option>
-        <% end %>
-
+            <% Ciudad.all.each do |ciudad| %>
+              <option value="<%= ciudad.nombre %>">
+                  <%= ciudad.nombre %>
+              </option>
+            <% end %>
           </select>
       </th>
+
+      <th>  Destino
+        <select class="js-select2-box">
+          <option value=empty>
+          </option>
+            <% Ciudad.all.each do |ciudad| %>
+              <option value="<%= ciudad.nombre %>">
+                <%= ciudad.nombre %>
+              </option>
+            <% end %>
+          </select>
+      </th>
+
         <th> Fecha   <%= date_field_tag(:buscar) %> </th>
+
         <th><%= submit_tag ("Buscar") %>  </th>
-      </tr>
+
+    </tr>
 
 
     <!-- CAMBIAR LOS LINKS A ALGUNOS QUE ANDEN POSTA -->
@@ -71,15 +58,14 @@
 
     <table class="table">
 
-      <tr>
-        <th> Nombre </th>
-        <th> Origen </th>
-        <th> Destino </th>
-        <th> Fecha </th>
-        <th> Hora de salida </th>
-        <th> Duracion </th>
-
-      </tr>
+    <tr>
+      <th> Nombre </th>
+      <th> Origen </th>
+      <th> Destino </th>
+      <th> Fecha </th>
+      <th> Hora de salida </th>
+      <th> Duracion </th>
+    </tr>
 
       <% @viajes.each do |v| %>
         <tr>
@@ -97,7 +83,27 @@
       <% end %>
 
     </table>
+
+    </div>
+    <!-- FIN DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
+
+
+    <div class="Comentarios table">
+
+      <% @comentarios.each do |j| %>
+      <tr>
+        <td> <%= j.mensaje %> </td>
+      </tr>
+      <% end %>
+
+
+      <% if @comentarios.size == 0 %>
+        <tr> <td colspan="3"> No hay comentarios disponibles. </td> </tr>
+      <% end %>
+
   </div>
+
+
 
 </header>
   </body>

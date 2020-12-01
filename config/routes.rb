@@ -40,8 +40,10 @@ Rails.application.routes.draw do
 
 
 
-      get 'ver_rutas/:id', to: 'ver_rutas#show',  as: "rutas"
+
 
   end
+
+  get 'ver_rutas/:id', to: 'ver_rutas#show',  as: "rutas"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
