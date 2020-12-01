@@ -25,10 +25,13 @@
 <!-- This is the actual text that appears in the webpage  -->
 <header class="showcase">
 
-  <div class="container showcase-inner">
+
+
+  <div class="mainContainer showcase-inner">
     <div class="boxForPic"></div>
 
     <h2>Busca tu aventura </h2>
+<<<<<<< HEAD
     <%= form_tag viajes_path ,  method: :get do %>
       <%= label :ciudad, "Origen" %>
       <%= select_tag :origen_id , options_from_collection_for_select(Ciudad.all, "id", "nombre", params[:origen_id]) , class: "form-control"%>
@@ -36,8 +39,42 @@
     <%= select_tag :destino_id , options_from_collection_for_select(Ciudad.all, "id", "nombre", params[:destino_id]) , class: "form-control"%>
       <%= submit_tag 'Buscar' %>
     <%end %>
+=======
+    <table class="table">
 
+      <tr>
 
+    </div>
+        <th> Origen   <select class="js-select2-box">
+          <option value=empty>
+
+          </option>
+              <% Ciudad.all.each do |ciudad| %>
+                  <option value="<%= ciudad.nombre %>">
+                      <%= ciudad.nombre %>
+                  </option>
+              <% end %>
+
+          </select>
+        </th>
+        <th>
+        Destino <select class="js-select2-box">
+          <option value=empty>
+
+          </option>
+         <% Ciudad.all.each do |ciudad| %>
+            <option value="<%= ciudad.nombre %>">
+                <%= ciudad.nombre %>
+            </option>
+        <% end %>
+
+          </select>
+      </th>
+        <th> Fecha   <%= date_field_tag(:buscar) %> </th>
+        <th><%= submit_tag ("Buscar") %>  </th>
+      </tr>
+
+>>>>>>> 3497e18587f509f5ad945d2e1f3a4d7f49b6393b
 
     <!-- CAMBIAR LOS LINKS A ALGUNOS QUE ANDEN POSTA -->
     <h3 class="card-title"> </h3>
@@ -70,9 +107,6 @@
       <% end %>
 
     </table>
-    <li>
-      <%= link_to 'Cerrar Sesion', 'sign_out' , class: "a-primary"%>
-    </li>
   </div>
 
 </header>

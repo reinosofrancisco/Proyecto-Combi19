@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <title>Portfolio</title>
   </head>
   <body>
@@ -25,17 +23,14 @@
 <!-- This is the actual text that appears in the webpage  -->
 <header class="showcase">
 
-  <div class="container showcase-inner">
+  <div class="mainContainer showcase-inner">
     <div class="boxForPic"></div>
-    <h2> Por favor, elija una opcion</h2>
+    <h2> Por favor, elija una opción</h2>
     <!-- CAMBIAR LOS LINKS A ALGUNOS QUE ANDEN POSTA -->
     <li>
       <%= link_to 'Usuario', '/users/sign_in' , class: "a-primary" %>
       <%= link_to 'Chofer', '/chofers/sign_in' , class: "a-primary" %>
       <%= link_to 'Administrador', '/admin/sign_in' , class: "a-primary"%>
-    </li>
-    <li>
-      <%= link_to 'Cerrar Sesion', 'sign_out' , class: "a-primary"%>
     </li>
   </div>
 
