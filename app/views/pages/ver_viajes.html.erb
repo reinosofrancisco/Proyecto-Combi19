@@ -1,7 +1,7 @@
 <header class="showcase">
 
   <div class="mainContainer showcase-inner">
-    <div class="container container-fluid"> 
+    <div class="container container-fluid">
       <div class="row">
         <div class="col align-self-center ml-3">
             <div class="boxForPic"></div>
@@ -10,7 +10,7 @@
           <div class="card">
             <% @comentarios.each do |j| %>
               <div class="card bg-dark m-1">
-              <ul class="font-italic"> "<%= j.mensaje %>" - 
+              <ul class="font-italic"> "<%= j.mensaje %>" -
               <%=j.user_id==nil ? "Usuario Anónimo":(@users.find(j.user_id).empty? @users.find(j.user_id).nombre:"na")%>
               </ul>
               </div>
@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      
+
       <div class="row">
         <div class="container container-fluid">
           <div class="card bg-dark mt-5">
@@ -108,9 +108,9 @@
           </div>
           <!-- FIN DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
       </div>
-    
+
     </div>
-<<<<<<< HEAD
+
     <!-- FIN DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
 
 
@@ -128,8 +128,6 @@
         <tr> <td colspan="3"> No hay comentarios disponibles. </td> </tr>
       <% end %>
 
-=======
->>>>>>> 2d87518cc2494cbe0a1d0cb08ad7fc0783d5fe45
   </div>
 
 </header>
