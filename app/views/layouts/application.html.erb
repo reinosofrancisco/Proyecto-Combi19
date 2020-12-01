@@ -11,6 +11,12 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <!-- This refers to app/javascript/stylesheets/application.scss-->
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+
+
     <meta charset="utf-8">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -21,14 +27,28 @@
   
   <div class="container"> 
     <div class="defaultContainer">
+
   
     <% if flash[:notice] %>
       <div class="alert alert-info"> <%= flash[:notice] %> </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-info"> <%= flash[:alert] %> </div>
     <% end %>
 
     <%= yield %>
     </div>
   </div>
+
+
+<script>
+$( document ).ready(function() {
+  $('.js-select2-box').select2();
+});
+</script>
+
+
+
 
 </body>
 </html>

@@ -17,7 +17,7 @@ class User < ApplicationRecord
   protected
     def mayor_18
       f=Date.today()
-      if ((fecha_nacimiento) > (f - 18.year))
+      if (fecha_nacimiento != nil and (fecha_nacimiento) > (f - 18.year))
         errors[:fecha_nacimiento] << 'No se puede acceder al sitio siendo menor de 18 años'
     end
   end
