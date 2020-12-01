@@ -15,58 +15,41 @@
 
     <h2>Busca tu aventura </h2>
 
-    <table class="table">
 
 
+      <div class="row">
+      <%= form_tag viajes_path ,  method: :get do %>
+        <%= label :ciudad, "Origen" %>
 
-<!-- COMIENZO DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
-  <tr>
-    <div class="ListadoViajes">
+        <%= select_tag :origen_id,
+        options_from_collection_for_select(Ciudad.all, "id", "nombre", params[:origen_id]),
+        include_blank: true,
+        class: "form-control js-select2-box"
+        %>
 
-      <th> Origen
-        <select class="js-select2-box">
-          <option value=empty>
-          </option>
-            <% Ciudad.all.each do |ciudad| %>
-              <option value="<%= ciudad.nombre %>">
-                  <%= ciudad.nombre %>
-              </option>
-            <% end %>
-          </select>
-      </th>
+        <%= label :ciudad,  "Destino" %>
 
-      <th>  Destino
-        <select class="js-select2-box">
-          <option value=empty>
-          </option>
-            <% Ciudad.all.each do |ciudad| %>
-              <option value="<%= ciudad.nombre %>">
-                <%= ciudad.nombre %>
-              </option>
-            <% end %>
-          </select>
-      </th>
+        <%= select_tag :destino_id ,
+        options_from_collection_for_select(Ciudad.all, "id", "nombre", params[:destino_id]),
+        include_blank: true,
+        class: "form-control js-select2-box"
+        %>
+        
+        <%= submit_tag 'Buscar' %>
+      <%end %>
 
-        <th> Fecha   <%= date_field_tag(:buscar) %> </th>
-
-        <th><%= submit_tag ("Buscar") %>  </th>
-
-    </tr>
-
-
-    <%= form_tag viajes_path ,  method: :get do %>
-      <%= label :ciudad, "Origen" %>
-      <%= select_tag :origen_id , options_from_collection_for_select(Ciudad.all, "id", "nombre", params[:origen_id]) , class: "form-control js-select2-box"%>
-      <%= label :ciudad,  "Destino" %>
-    <%= select_tag :destino_id , options_from_collection_for_select(Ciudad.all, "id", "nombre", params[:destino_id]) , class: "form-control js-select2-box"%>
-      <%= submit_tag 'Buscar' %>
-    <%end %>
+      </div>
 
 
     <!-- CAMBIAR LOS LINKS A ALGUNOS QUE ANDEN POSTA -->
-    <h3 class="card-title"> </h3>
 
-    <table class="table">
+    
+<!-- COMIENZO DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
+
+
+  <div class="ListadoViajes">
+
+    <table class="table table-dark">
 
     <tr>
       <th> Nombre </th>
@@ -75,6 +58,7 @@
       <th> Fecha </th>
       <th> Hora de salida </th>
       <th> Duracion </th>
+      <th> Comprar </th>
     </tr>
 
       <% @viajes.each do |v| %>
@@ -85,6 +69,7 @@
           <td> <%=v.fecha.to_formatted_s(:long)%> </td>
           <td> <%=v.hora_salida.to_formatted_s(:time)%> hs </td>
           <td> <%=v.duracion.to_s(:time)%> hs </td>
+          <td class="btn btn-primary"> <%=link_to 'Comprar',''%> </td>
         </tr>
       <% end %>
 
@@ -98,7 +83,7 @@
     <!-- FIN DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
 
 
-    <div class="Comentarios table">
+    <div class="Comentarios table table-dark">
 
       <% @comentarios.each do |j| %>
       <tr>
