@@ -6,6 +6,7 @@ class Viaje < ApplicationRecord
   belongs_to :chofer, class_name: 'Chofer'
   belongs_to :ruta , class_name: 'Ruta'
   validates :precio, presence:true
+  default_scope -> {order(:nombre)}
 
 
   has_and_belongs_to_many :users

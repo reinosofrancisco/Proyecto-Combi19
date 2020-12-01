@@ -25,6 +25,10 @@ Rails.application.routes.draw do
   end
 
 
+
+  get 'ver_rutas/:id', to: 'ver_rutas#show',  as: "rutas"
+  get 'ver_viajes', to: 'pages#ver_viajes', as: "viajes"
+
   #Cambia la ruta por defecto a la ruta especificada segun el device
   devise_scope :admin do
 
@@ -37,11 +41,14 @@ Rails.application.routes.draw do
     unauthenticated do
       root 'pages#index'
     end
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> b03e2d8133d8c9dee1c5871cfcaaecdd2f9b9c7c
   end
 
   get 'ver_rutas/:id', to: 'ver_rutas#show',  as: "rutas"
