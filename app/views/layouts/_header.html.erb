@@ -9,7 +9,15 @@
         <% if user_signed_in? %>
 
           <%= link_to 'VER CUENTA', 'sign_out' , class: "a-primary"%>
-          
+
+          <%= link_to 'Cerrar Sesion', 'sign_out' , class: "a-primary"%>
+
+        <% end %>
+
+        <% if chofer_signed_in? %>
+
+          <%= link_to 'VER CUENTA', 'sign_out' , class: "a-primary"%>
+
           <%= link_to 'Cerrar Sesion', 'sign_out' , class: "a-primary"%>
 
         <% end %>
