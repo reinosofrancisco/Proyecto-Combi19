@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     t= Date.today
     @viajes = Viaje.where(['fecha > ? AND fecha < ?', t, t+100])
     @comentarios = Comentario.all
-
+    @users=User.all
     @destino_id = params[:destino_id]
     @origen_id = params[:origen_id]
     @fecha = params[:fecha]

@@ -4,6 +4,7 @@ class CreateComentarios < ActiveRecord::Migration[6.0]
 
       t.string :mensaje
       t.belongs_to :user
+      t.belongs_to :viaje
 
       t.timestamps
     end

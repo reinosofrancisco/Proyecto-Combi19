@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   get 'ver_rutas/:id', to: 'ver_rutas#show',  as: "rutas"
   get 'ver_viajes', to: 'pages#ver_viajes', as: "viajes"
 
+  get 'armado_pasaje/:viaje_id', to: 'armado_pasaje#main', as: "armado_pasaje"
+
   #Cambia la ruta por defecto a la ruta especificada segun el device
   devise_scope :admin do
 
