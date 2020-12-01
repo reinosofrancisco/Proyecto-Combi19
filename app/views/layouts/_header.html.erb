@@ -1,10 +1,20 @@
 <header>
-    <nav class="navbar p-0 navbar-expand navbar-dark bg-dark">        
+    <nav class="navbar p-0 navbar-expand navbar-dark bg-dark">
       <div class="container">
           <%= link_to root_path, class: 'navbar-brand' do %>
             <%= image_tag "",class: "boxForPic" %>
             <p class='navbar-text'>Combi19</p>
           <% end %>
+
+        <% if user_signed_in? %>
+
+          <%= link_to 'VER CUENTA', 'sign_out' , class: "a-primary"%>
+          
+          <%= link_to 'Cerrar Sesion', 'sign_out' , class: "a-primary"%>
+
+        <% end %>
+
+
       </div>
     </nav>
 
