@@ -113,21 +113,4 @@
 
     <!-- FIN DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
 
-
-<!-- COMENTARIOS tiene mensaje, user_id -->
-    <div class="Comentarios table">
-
-      <% @comentarios.each do |j| %>
-        <%= j.mensaje %>
-        <br>
-        <br>
-      <% end %>
-
-
-      <% if @comentarios.size == 0 %>
-        <tr> <td colspan="3"> No hay comentarios disponibles. </td> </tr>
-      <% end %>
-
-  </div>
-
 </header>
