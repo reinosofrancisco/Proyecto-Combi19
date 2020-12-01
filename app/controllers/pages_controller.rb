@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     @destino_id = params[:destino_id]
     @origen_id = params[:origen_id]
     @fecha = params[:fecha]
-    v=nil
+    v= nil
     if (@origen_id ==nil &&  @destino_id == nil)
       t= Date.today
       @viajes = Viaje.where(['fecha > ? AND fecha < ?', t, t+100])
@@ -30,4 +30,4 @@ class PagesController < ApplicationController
     end
     end
   end
-end
+ end
