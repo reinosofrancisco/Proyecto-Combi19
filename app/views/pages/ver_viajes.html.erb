@@ -14,7 +14,7 @@
     <div class="boxForPic"></div>
 
     <h2>Busca tu aventura </h2>
-<<<<<<< HEAD
+
     <table class="table">
 
 
@@ -53,7 +53,7 @@
 
     </tr>
 
-=======
+
     <%= form_tag viajes_path ,  method: :get do %>
       <%= label :ciudad, "Origen" %>
       <%= select_tag :origen_id , options_from_collection_for_select(Ciudad.all, "id", "nombre", params[:origen_id]) , class: "form-control js-select2-box"%>
@@ -61,7 +61,7 @@
     <%= select_tag :destino_id , options_from_collection_for_select(Ciudad.all, "id", "nombre", params[:destino_id]) , class: "form-control js-select2-box"%>
       <%= submit_tag 'Buscar' %>
     <%end %>
->>>>>>> b03e2d8133d8c9dee1c5871cfcaaecdd2f9b9c7c
+
 
     <!-- CAMBIAR LOS LINKS A ALGUNOS QUE ANDEN POSTA -->
     <h3 class="card-title"> </h3>

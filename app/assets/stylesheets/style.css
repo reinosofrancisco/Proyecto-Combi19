@@ -49,6 +49,30 @@ body {
   background-size: cover;
 }
 
+.centerTheData {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+
+  padding: 250px 0;
+
+ text-align: center;
+
+}
+
+.centerTheDataRegister {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+
+  padding: 150px 0;
+
+ text-align: center;
+
+}
+
 .container {
   max-width: 1200px;
   margin: auto;

@@ -3,11 +3,10 @@ class PagesController < ApplicationController
   end
 
   def ver_viajes
-<<<<<<< HEAD
     t= Date.today
     @viajes = Viaje.where(['fecha > ? AND fecha < ?', t, t+100])
     @comentarios = Comentario.all
-=======
+
     @destino_id = params[:destino_id]
     @origen_id = params[:origen_id]
     @fecha = params[:fecha]
@@ -34,6 +33,5 @@ class PagesController < ApplicationController
         @viajes= v.uniq
     end
     end
->>>>>>> b03e2d8133d8c9dee1c5871cfcaaecdd2f9b9c7c
   end
 end
