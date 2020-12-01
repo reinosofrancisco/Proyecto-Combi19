@@ -24,6 +24,11 @@ Rails.application.routes.draw do
       get 'sign_out' => "devise/sessions#destroy"
   end
 
+<<<<<<< HEAD
+  get 'ver_rutas/:id', to: 'ver_rutas#show',  as: "rutas"
+  get 'ver_viajes', to: 'pages#ver_viajes', as: "viajes"
+=======
+>>>>>>> 3497e18587f509f5ad945d2e1f3a4d7f49b6393b
 
   #Cambia la ruta por defecto a la ruta especificada segun el device
   devise_scope :admin do
