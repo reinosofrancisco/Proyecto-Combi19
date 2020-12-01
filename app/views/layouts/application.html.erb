@@ -21,6 +21,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
+
   </head>
 
 <body>
@@ -44,7 +45,19 @@
 
 <script>
 $( document ).ready(function() {
-  $('.js-select2-box').select2();
+  $('.js-select2-box').select2({
+    placeholder: "¡Elija una ciudad!",
+    allowClear: true
+  });
+});
+</script>
+
+<script>
+$(document).ready(function(){
+  $('.tag-search-form').submit(function(e){
+    var new_action_url = $(this).attr('action') + "/" + $('#tag', this).val();
+    $(this).attr('action', new_action_url)
+  });
 });
 </script>
 

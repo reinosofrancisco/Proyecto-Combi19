@@ -1,100 +1,116 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-  </head>
-  <body>
-
-
 <header class="showcase">
 
   <div class="mainContainer showcase-inner">
-    <div class="boxForPic"></div>
-
-    <h2>Busca tu aventura </h2>
-
-    <table class="table">
-
-
-
-<!-- COMIENZO DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
-  <tr>
-    <div class="ListadoViajes">
-
-      <th> Origen
-        <select class="js-select2-box">
-          <option value=empty>
-          </option>
-            <% Ciudad.all.each do |ciudad| %>
-              <option value="<%= ciudad.nombre %>">
-                  <%= ciudad.nombre %>
-              </option>
+    <div class="container container-fluid"> 
+      <div class="row">
+        <div class="col align-self-center ml-3">
+            <div class="boxForPic"></div>
+        </div>
+        <div class="col-8 mt-2">
+          <div class="card">
+            <% @comentarios.each do |j| %>
+              <div class="card bg-dark m-1">
+              <ul class="font-italic"> "<%= j.mensaje %>" - 
+              <%=j.user_id==nil ? "Usuario Anónimo":(@users.find(j.user_id).empty? @users.find(j.user_id).nombre:"na")%>
+              </ul>
+              </div>
             <% end %>
-          </select>
-      </th>
 
-      <th>  Destino
-        <select class="js-select2-box">
-          <option value=empty>
-          </option>
-            <% Ciudad.all.each do |ciudad| %>
-              <option value="<%= ciudad.nombre %>">
-                <%= ciudad.nombre %>
-              </option>
+
+            <% if @comentarios.size == 0 %>
+              <h1 colspan="3"> Los mejores viajes. </h1>
             <% end %>
-          </select>
-      </th>
+          </div>
+        </div>
+      </div>
 
-        <th> Fecha   <%= date_field_tag(:buscar) %> </th>
+      
+      <div class="row">
+        <div class="container container-fluid">
+          <div class="card bg-dark mt-5">
+            <div class="row">
+              <div class="col">
+              <h2>Busca tu aventura </h2>
+              </div>
+            </div>
+            <%= form_tag viajes_path ,  method: :get do %>
+            <div class="row">
+              <div class="col mb-4 ml-1">
 
-        <th><%= submit_tag ("Buscar") %>  </th>
+                <%= label :ciudad, "Origen" %>
 
-    </tr>
+                <%= select_tag :origen_id,
+                options_from_collection_for_select(Ciudad.all, "id", "nombre", params[:origen_id]),
+                include_blank: true,
+                class: "form-control js-select2-box"
+                %>
 
+              </div>
 
-    <%= form_tag viajes_path ,  method: :get do %>
-      <%= label :ciudad, "Origen" %>
-      <%= select_tag :origen_id , options_from_collection_for_select(Ciudad.all, "id", "nombre", params[:origen_id]) , class: "form-control js-select2-box"%>
-      <%= label :ciudad,  "Destino" %>
-    <%= select_tag :destino_id , options_from_collection_for_select(Ciudad.all, "id", "nombre", params[:destino_id]) , class: "form-control js-select2-box"%>
-      <%= submit_tag 'Buscar' %>
-    <%end %>
+              <div class="col mb-4">
+                <%= label :ciudad,  "Destino" %>
 
+                <%= select_tag :destino_id ,
+                options_from_collection_for_select(Ciudad.all, "id", "nombre", params[:destino_id]),
+                include_blank: true,
+                class: "form-control js-select2-box"
+                %>
+              </div>
+              <div class="col mb-4">
+                <%= label :fecha,  "Fecha" %>
+                <%=%>
+              </div>
+              <div class="col mb-4 align-self-end mr-1">
+                <%= submit_tag 'Buscar', class: "form-control"%>
+              </div>
+            </div>
+            <%end %>
+          </div>
+        </div>
+      </div>
 
-    <!-- CAMBIAR LOS LINKS A ALGUNOS QUE ANDEN POSTA -->
-    <h3 class="card-title"> </h3>
+      <!-- CAMBIAR LOS LINKS A ALGUNOS QUE ANDEN POSTA -->
 
-    <table class="table">
+      <!-- COMIENZO DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
+      <div class="row mt-2">
+        <div class="container ListadoViajes">
 
-    <tr>
-      <th> Nombre </th>
-      <th> Origen </th>
-      <th> Destino </th>
-      <th> Fecha </th>
-      <th> Hora de salida </th>
-      <th> Duracion </th>
-    </tr>
+          <table class="table table-dark">
 
-      <% @viajes.each do |v| %>
-        <tr>
-          <td> <%=v.nombre%> </td>
-          <td> <%=Ciudad.find(v.ruta.origen_id).nombre%> </td>
-          <td> <%=Ciudad.find(v.ruta.destino_id).nombre%> </td>
-          <td> <%=v.fecha.to_formatted_s(:long)%> </td>
-          <td> <%=v.hora_salida.to_formatted_s(:time)%> hs </td>
-          <td> <%=v.duracion.to_s(:time)%> hs </td>
-        </tr>
-      <% end %>
+          <tr>
+            <th> Nombre </th>
+            <th> Origen </th>
+            <th> Destino </th>
+            <th> Fecha </th>
+            <th> Hora de salida </th>
+            <th> Duracion </th>
+            <th> Comprar </th>
+          </tr>
 
-      <% if @viajes.size == 0 %>
-        <tr> <td colspan="3"> No hay viajes disponibles. </td> </tr>
-      <% end %>
+            <% @viajes.each do |v| %>
+              <tr>
+                <td> <%=v.nombre%> </td>
+                <td> <%=Ciudad.find(v.ruta.origen_id).nombre%> </td>
+                <td> <%=Ciudad.find(v.ruta.destino_id).nombre%> </td>
+                <td> <%=v.fecha.to_formatted_s(:long)%> </td>
+                <td> <%=v.hora_salida.to_formatted_s(:time)%> hs </td>
+                <td> <%=v.duracion.to_s(:time)%> hs </td>
+                <td> <%=link_to 'Comprar',armado_pasaje_path(v.id),class: "comprarBtn btn btn-primary"%> </td>
+              </tr>
+            <% end %>
 
-    </table>
+            <% if @viajes.size == 0 %>
+              <tr> <td colspan="3"> No hay viajes disponibles. </td> </tr>
+            <% end %>
 
+          </table>
+
+          </div>
+          <!-- FIN DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
+      </div>
+    
     </div>
+<<<<<<< HEAD
     <!-- FIN DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
 
 
@@ -112,10 +128,8 @@
         <tr> <td colspan="3"> No hay comentarios disponibles. </td> </tr>
       <% end %>
 
+=======
+>>>>>>> 2d87518cc2494cbe0a1d0cb08ad7fc0783d5fe45
   </div>
 
-
-
 </header>
-  </body>
-</html>
