@@ -98,12 +98,13 @@
     <!-- FIN DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
 
 
+<!-- COMENTARIOS tiene mensaje, user_id -->
     <div class="Comentarios table">
 
       <% @comentarios.each do |j| %>
-      <tr>
-        <td> <%= j.mensaje %> </td>
-      </tr>
+        <%= j.mensaje %>
+        <br>
+        <br>
       <% end %>
 
 
