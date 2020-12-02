@@ -1,5 +1,6 @@
 class PagarViajeController < ApplicationController
     def main
+        
 
     end
 

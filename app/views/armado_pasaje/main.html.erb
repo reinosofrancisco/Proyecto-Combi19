@@ -5,15 +5,22 @@
                 <h1 class="text-light text-center"> Viaje seleccionado: <%=@viaje.nombre%> </h1>
             </div>
         </div>
-      <%@adicionales.each do |ad|%>
-        <div class="row">
-        <div class="col align-self-start">
-            <p class="text-light text-center"> Adicional: <%=ad.nombre%> </p>
-        </div>
-        </div>
 
-
-      <%end%>
+     <%= form_with(url: pagar_viaje_path(@viaje.id), method: :get,local: true) do  |form|%>
+        <%= form.collection_check_boxes :adicional_id, @adicionales.all, :id, :nombre do |c|%>
+        <div class="row align-items-center ml-5"> 
+                <%=c.label(class: "col text-light") do %>                    
+                    <%= c.check_box(class: "check_box") %>
+                    <%= c.object.nombre %>      
+                <% end %>            
+        </div>
+        <%end%>
+        <div class="row align-items-center ml-5 mr-5">
+            <div class="col col-sm col align-self-center ml-5 mr-5">
+            <%= submit_tag 'Pagar', class: "form-control btn btn-primary"%>
+            </div>
+        </div>
+     <%end%>
 
 
 

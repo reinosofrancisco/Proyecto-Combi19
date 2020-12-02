@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_193215) do
+ActiveRecord::Schema.define(version: 2020_12_01_234216) do
 
   create_table "adicionales", force: :cascade do |t|
     t.string "nombre"
@@ -117,6 +117,15 @@ ActiveRecord::Schema.define(version: 2020_11_25_193215) do
     t.integer "viaje_id"
     t.index ["user_id"], name: "index_users_viajes_on_user_id"
     t.index ["viaje_id"], name: "index_users_viajes_on_viaje_id"
+  end
+
+  create_table "viaje_usuarios", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "viaje_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_viaje_usuarios_on_user_id"
+    t.index ["viaje_id"], name: "index_viaje_usuarios_on_viaje_id"
   end
 
   create_table "viajes", force: :cascade do |t|
