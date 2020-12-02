@@ -9,7 +9,7 @@ class Viaje < ApplicationRecord
   default_scope -> {order(:nombre)}
 
 
-  has_and_belongs_to_many :users
+  has_many :pasajes
   has_many :comentarios
 
   validate :combi_no_ocupada
