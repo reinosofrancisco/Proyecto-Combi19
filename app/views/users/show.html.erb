@@ -17,11 +17,13 @@
     </div>
   <% end %>
 
+
+<!-- PONER QUE SOLO SE ARME EL COMENTARIO PARA CUANDO ESTOY EN UN VIAJE ESPECIFICO -->
   <%= form_with model: @comentario, class: "nifty_form" do |f| %>
   Comentarios
    <ul>
     <%= f.text_field :mensaje %>
-    <%= f.number_field :viaje_id %>
+    <%= f.hidden_field :viaje_id %>
     <%= f.hidden_field :user_id %>
     <%= f.submit "Comentar" %>
   </ul>
