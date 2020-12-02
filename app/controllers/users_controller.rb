@@ -11,11 +11,17 @@ class UsersController < ApplicationController
     # byebug  
     aux=Pasaje.where(user_id: @user.id)
     @viajesPendientes=[]
+    @viajesPasados=[]
+    t= Date.today
     aux.each do |a|
-      @viajesPendientes=@viajesPendientes.append(Viaje.find_by_id(a.viaje_id))
+      v=Viaje.find_by_id(a.viaje_id)
+      if(v.fecha>=t)
+        @viajesPendientes=@viajesPendientes.append(v)
+      else
+        @viajesPasados=@viajesPasados.append(v)
+      end
+        
     end
-
-    @viajesPasados=@viajesPendientes.where(fecha:)
 
 
   end
