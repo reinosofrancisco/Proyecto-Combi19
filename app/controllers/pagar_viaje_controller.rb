@@ -20,7 +20,7 @@ class PagarViajeController < ApplicationController
 
 
   def new
-    if params[:viaje_id] == "sign_out" then
+    if params[:viaje_id] != "sign_out" then
       #Salir de la pantalla de compra
     end
 

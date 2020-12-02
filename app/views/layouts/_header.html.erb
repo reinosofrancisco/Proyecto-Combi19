@@ -8,17 +8,26 @@
 
         <% if user_signed_in? %>
 
-          <%= link_to 'VER CUENTA', 'sign_out' , class: "a-primary"%>
+
+          <%= #Nose porque user_path(current_user) devuelve root /
+              #LO SOLUCIONE A LA RUSTICA. NO HAY QUEJAS.
+          link_to current_user.nombre, "/user/#{current_user.id}", class: "a-primary"%>
+
+
 
           <%= link_to 'Cerrar Sesion', 'sign_out' , class: "a-primary"%>
+
+
+
 
         <% end %>
 
         <% if chofer_signed_in? %>
 
-          <%= link_to 'VER CUENTA', 'sign_out' , class: "a-primary"%>
+          <%= link_to 'VER CUENTA', user_path(current_chofer.id) , class: "a-primary"%>
 
           <%= link_to 'Cerrar Sesion', 'sign_out' , class: "a-primary"%>
+
 
         <% end %>
 

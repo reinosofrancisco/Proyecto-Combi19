@@ -27,4 +27,6 @@ class User < ApplicationRecord
       errors[:dni] << 'El dni ingresado no es un documento valido'
     end
   end
+
+
 end

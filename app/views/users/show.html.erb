@@ -1,0 +1,20 @@
+
+
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="card">
+
+  <h1>Nombre: <%= @user.nombre %></h1>
+  <h1>Apellido: <%= @user.apellido %></h1>
+  <h1>DNI: <%= @user.dni %></h1>
+  <h1>Fecha de Nacimiento: <%= @user.fecha_nacimiento %></h1>
+
+  <% @comentarios.each do |j| %>
+    <div class="card bg-dark text-white">
+      <ul class="font-italic"> "<%= j.mensaje %>"
+    </ul>
+    </div>
+  <% end %>
+
+</div>

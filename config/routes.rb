@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
 
 
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
 
@@ -19,6 +20,11 @@ Rails.application.routes.draw do
 
 
 
+    get "armado_pasaje/pagar/:viaje_id/sign_out" => "devise/sessions#destroy"
+
+
+
+
 
 
 
@@ -27,10 +33,21 @@ Rails.application.routes.draw do
   devise_scope :user do
     authenticated :user do
       root 'pages#ver_viajes', as: :user
+
+      get 'user/:id', to: 'users#show'
     end
+
+
+
       get 'sign_out' => "devise/sessions#destroy"
 
+
+
       get 'armado_pasaje/:viaje_id/sign_out' => "devise/sessions#destroy"
+      get "armado_pasaje/pagar/sign_out" => "devise/sessions#destroy"
+
+
+
   end
 
 
