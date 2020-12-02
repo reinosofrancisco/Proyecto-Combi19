@@ -29,6 +29,17 @@ def new
   #Nose cuales adicionales selecciono el usuario. Por ende no los puedo sumar
 
 
+
+  #POR AHORA HAGO QUE SE RESERVE AUTOMATICAMENTE
+  pasaje= Pasaje.new
+  arr.each do |a|
+    pasaje.adicionales=pasaje.adicionales.append(Adicional.find_by_id(a))
+  end
+  pasaje.viaje_id=params[:viaje_id]
+  pasaje.user_id=current_user.id
+  byebug
+  pasaje.save
+
 end
 
 def create
@@ -83,8 +94,4 @@ def create
 
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 19b6977b7237d9050f47090cdbd4d5e56262289b
 end

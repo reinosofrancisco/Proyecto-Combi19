@@ -16,8 +16,10 @@ ActiveRecord::Schema.define(version: 2020_12_02_184443) do
     t.string "nombre"
     t.string "descripcion"
     t.float "precio"
+    t.integer "pasaje_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["pasaje_id"], name: "index_adicionales_on_pasaje_id"
   end
 
   create_table "adicionales_rutas", id: false, force: :cascade do |t|

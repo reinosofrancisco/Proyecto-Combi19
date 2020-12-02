@@ -4,6 +4,7 @@ class CreateAdicionales < ActiveRecord::Migration[6.0]
       t.string :nombre
       t.string :descripcion
       t.float :precio
+      t.belongs_to :pasaje
 
 
       t.timestamps
