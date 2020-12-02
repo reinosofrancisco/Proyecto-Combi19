@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     authenticated :user do
       root 'pages#ver_viajes', as: :user
 
-      get 'user/:id', to: 'users#show'
+      get 'user/:id', to: 'users#show', as: "user_info"
     end
 
 

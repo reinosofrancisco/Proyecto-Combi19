@@ -82,7 +82,11 @@
                   <td> <%=v.fecha.to_formatted_s(:long)%> </td>
                   <td> <%=v.hora_salida.to_formatted_s(:time)%> hs </td>
                   <td> <%=v.duracion.to_s(:time)%> hs </td>
-                  <td> <%=link_to 'Comprar',armado_pasaje_path(v.id),class: "comprarBtn btn btn-primary"%> </td>
+                  <td> <%=link_to 'Comprar',
+                  armado_pasaje_path(v.id),
+                  class: "comprarBtn btn btn-primary",
+                  data: { confirm: 'Seguro que quieres cancelar el viaje,
+                  podria no reitegrarse el costo del mismo '}%> </td>
                 </tr>
               <% end %>
 
