@@ -5,8 +5,6 @@ Rails.application.routes.draw do
 
   resources :comentarios
 
-  resources :charges
-
 
 
 
