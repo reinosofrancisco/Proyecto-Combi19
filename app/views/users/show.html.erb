@@ -45,7 +45,7 @@
                   <td> <%=v.fecha.to_formatted_s(:long)%> </td>
                   <td> <%=v.hora_salida.to_formatted_s(:time)%> hs </td>
                   <td> <%=v.duracion.to_s(:time)%> hs </td>
-                  <td> <%=link_to 'Cancelar',cancelar_viaje_path(v),method: 'post',class: "btn btn-primary",
+                  <td> <%=link_to 'Cancelar',cancelar_viaje_path(v), method:'post',class: "btn btn-primary",
                   data: { confirm: 'Seguro que quieres cancelar el viaje, podria no reitegrarse el costo del mismo ' }
                   %> </td>
                 </tr>
@@ -83,7 +83,7 @@
               <th> Comentar </th>
             </tr>
 
-              <% @viajesPendientes.each do |v| %>
+              <% @viajesPasados.each do |v| %>
                 <tr>
                   <td> <%=v.nombre%> </td>
                   <td> <%=Ciudad.find(v.ruta.origen_id).nombre%> </td>
