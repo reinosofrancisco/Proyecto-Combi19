@@ -1,0 +1,2 @@
+class Tarjeta < ApplicationRecord
+end
