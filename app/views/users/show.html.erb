@@ -18,27 +18,97 @@
       <div class="row mb-2">
         <h1>Fecha de Nacimiento: <%= @user.fecha_nacimiento %></h1>
       </div>
+      <div class="row mt-2">
+        <h2>¡Viajes pendientes!</h2>
+      </div>
+
+      <div class="row mt-2">
+        <div class="container ListadoViajes">
+          <div class="mr-5">
+            <table class="table table-dark" cellspacing="0" cellpadding="1" border="1">
+            <tr>
+              <th> Nombre </th>
+              <th> Origen </th>
+              <th> Destino </th>
+              <th> Fecha </th>
+              <th> Hora de salida </th>
+              <th> Duracion </th>
+              <th> Cancelar </th>
+            </tr>
+
+              <% @viajesPendientes.each do |v| %>
+                <tr>
+                  <td> <%=v.nombre%> </td>
+                  <td> <%=Ciudad.find(v.ruta.origen_id).nombre%> </td>
+                  <td> <%=Ciudad.find(v.ruta.destino_id).nombre%> </td>
+                  <td> <%=v.fecha.to_formatted_s(:long)%> </td>
+                  <td> <%=v.hora_salida.to_formatted_s(:time)%> hs </td>
+                  <td> <%=v.duracion.to_s(:time)%> hs </td>
+                  <td> <%=link_to 'Cancelar',cancelar_viaje_path(v),method: 'post',class: "btn btn-primary"%> </td>
+                </tr>
+              <% end %>
+
+              <% if @viajesPendientes.size == 0 %>
+                <tr> <td colspan="3"> No hay viajes disponibles. </td> </tr>
+              <% end %>
+
+            </table>
+
+            </div>
+            <!-- FIN DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="container ListadoViajes">
+          <div class="mr-5">
+            <table class="table table-dark" cellspacing="0" cellpadding="1" border="1">
+            <tr>
+              <th> Nombre </th>
+              <th> Origen </th>
+              <th> Destino </th>
+              <th> Fecha </th>
+              <th> Hora de salida </th>
+              <th> Duracion </th>
+              <th> Comprar </th>
+            </tr>
+
+              <% @viajesPasados.each do |v| %>
+                <tr>
+                  <td> <%=v.nombre%> </td>
+                  <td> <%=Ciudad.find(v.ruta.origen_id).nombre%> </td>
+                  <td> <%=Ciudad.find(v.ruta.destino_id).nombre%> </td>
+                  <td> <%=v.fecha.to_formatted_s(:long)%> </td>
+                  <td> <%=v.hora_salida.to_formatted_s(:time)%> hs </td>
+                  <td> <%=v.duracion.to_s(:time)%> hs </td>
+                  <td> <%=link_to 'Comprar',armado_pasaje_path(v.id),class: "comprarBtn btn btn-primary"%> </td>
+                </tr>
+              <% end %>
+
+              <% if @viajesPendientes.size == 0 %>
+                <tr> <td colspan="3"> No hay viajes disponibles. </td> </tr>
+              <% end %>
+
+            </table>
+
+            </div>
+            <!-- FIN DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
+          </div>
+      </div>
+      <div class="row">
 
 
-      <% @comentarios.each do |j| %>
-        <div class="card bg-dark text-white">
-          <ul class="font-italic"> "<%= j.mensaje %>"
-          <%= button_to "Borrar Comentario", j, method: :delete, data: { confirm: "¿Estas seguro?" } %>
+        <!-- PONER QUE SOLO SE ARME EL COMENTARIO PARA CUANDO ESTOY EN UN VIAJE ESPECIFICO -->
+        <%= form_with model: @comentario, class: "nifty_form" do |f| %>
+        Comentarios
+        <ul>
+          <%= f.text_field :mensaje %>
+          <%= f.hidden_field :viaje_id %>
+          <%= f.hidden_field :user_id %>
+          <%= f.submit "Comentar", data: { confirm: "¿Seguro que desea agregar este comentario?" }%>
         </ul>
-        </div>
-      <% end %>
-
-      <!-- PONER QUE SOLO SE ARME EL COMENTARIO PARA CUANDO ESTOY EN UN VIAJE ESPECIFICO -->
-      <%= form_with model: @comentario, class: "nifty_form" do |f| %>
-      Comentarios
-      <ul>
-        <%= f.text_field :mensaje %>
-        <%= f.hidden_field :viaje_id %>
-        <%= f.hidden_field :user_id %>
-        <%= f.submit "Comentar", data: { confirm: "¿Seguro que desea agregar este comentario?" }%>
-      </ul>
-      <% end %>
-
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

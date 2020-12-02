@@ -29,53 +29,21 @@ def new
   #Nose cuales adicionales selecciono el usuario. Por ende no los puedo sumar
 
 
+
+  #POR AHORA HAGO QUE SE RESERVE AUTOMATICAMENTE
+  pasaje= Pasaje.new
+  arr.each do |a|
+    pasaje.adicionales=pasaje.adicionales.append(Adicional.find_by_id(a))
+  end
+  pasaje.viaje_id=params[:viaje_id]
+  pasaje.user_id=current_user.id
+  pasaje.save
+  Viaje.find_by_id(viaje_id).asientos_restantes=Viaje.find_by_id(viaje_id).asientos_restantes-1
+
 end
 
 def create
-  # Amount in cents
-  @amount = 500
+  
+end
 
-  customer = Stripe::Customer.create({
-    email: params[:stripeEmail],
-    source: params[:stripeToken],
-  })
-
-  charge = Stripe::Charge.create({
-    customer: customer.id,
-    amount: @amount,
-    description: 'Rails Stripe customer',
-    currency: 'usd',
-  })
-
-  #DEFINIR COMPORTAMIENTO PARA CUANDO EL PAGO ES REALIZADO CON EXITO.
-  #EN ESTE CASO, DISMINUIR UN ASIENTO DISPONIBLE PARA EL VIAJE
-  #Y EVITAR QUE EL USUARIO EN PARTICULAR PUEDA COMPRAR DENUEVO EL PASAJE
-  if charge["paid"] == true
-
-  end
-
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to new_charge_path
-
-
-    charge = Stripe::Charge.create({
-      customer: customer.id,
-      amount: @amount,
-      description: 'Rails Stripe customer',
-      currency: 'usd',
-    })
-    #DEFINIR COMPORTAMIENTO PARA CUANDO EL PAGO ES REALIZADO CON EXITO.
-    #EN ESTE CASO, DISMINUIR UN ASIENTO DISPONIBLE PARA EL VIAJE
-    #Y EVITAR QUE EL USUARIO EN PARTICULAR PUEDA COMPRAR DENUEVO EL PASAJE
-    if charge["paid"] == true
-      #COMPORTAMIENTO
-    end
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
-      redirect_to new_charge_path
-
-
-
-    end
 end

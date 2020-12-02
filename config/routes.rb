@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
     get 'armado_pasaje/pagar/create', to: 'pagar_viaje#create'
 
-
+    post 'cancelar_pasaje/user/:viaje_id', to: 'acciones_viaje#cancelar', as: "cancelar_viaje"
 
     get "armado_pasaje/pagar/:viaje_id/sign_out" => "devise/sessions#destroy"
 

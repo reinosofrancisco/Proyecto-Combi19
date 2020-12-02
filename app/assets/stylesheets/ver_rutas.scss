@@ -3,10 +3,12 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-.comprarBtn{
 
-    color: orange;
-
-
-
+.my-custom-scrollbar {
+    position: relative;
+    height: 300px;
+    overflow: auto;
+    }
+.table-wrapper-scroll-y {
+    display: block;
 }

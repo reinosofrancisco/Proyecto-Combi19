@@ -6,7 +6,7 @@ class PagesController < ApplicationController
 
 
     t= Date.today
-    @viajes = Viaje.where(['fecha > ? AND fecha < ?', t, t+100])
+    @viajes = Viaje.where(['fecha >= ? AND fecha < ?', t, t+100])
 
     #Agarra 5 comentarios al azar
     @comentarios = Comentario.all.sample(5)
