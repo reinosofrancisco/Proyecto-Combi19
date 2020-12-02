@@ -44,6 +44,12 @@ class AccionesViajeController < ApplicationController
 
     end
 
+    def borrarComentario
+
+        #logica para borrar comentario
+        redirect_to user_info_path(current_user.id)
+    end
+
 
 
 end
