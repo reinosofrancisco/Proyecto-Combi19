@@ -25,8 +25,16 @@ class AccionesViajeController < ApplicationController
     end
 
     def comentar
+        byebug
+        @viaje_id=params[:viaje_id]
+    end
+
+    def comentarPost
+        #DEFINIR LOS VALORES PARA EL COMENTARIO
         comentario=Comentario.new
-        
+        #comentario=params.require.permit....
+        #comentario.save
+        redirect_to user_info_path(current_user.id)
         
 
     end
