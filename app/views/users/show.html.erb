@@ -3,43 +3,42 @@
 <!-- Add icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="card">
+<div class="container mt-2">
+  <div class="card bg-dark text-light mt-2">
+    <div class="container ml-5">
+      <div class="row mt-2 mb-2">
+        <h1>Nombre: <%= @user.nombre %></h1>
+      </div>
+      <div class="row mb-2">
+        <h1>Apellido: <%= @user.apellido %></h1>
+      </div>
+      <div class="row mb-2">
+        <h1>DNI: <%= @user.dni %></h1>
+      </div>
+      <div class="row mb-2">
+        <h1>Fecha de Nacimiento: <%= @user.fecha_nacimiento %></h1>
+      </div>
 
-  <h1>Nombre: <%= @user.nombre %></h1>
-  <h1>Apellido: <%= @user.apellido %></h1>
-  <h1>DNI: <%= @user.dni %></h1>
-  <h1>Fecha de Nacimiento: <%= @user.fecha_nacimiento %></h1>
 
+      <% @comentarios.each do |j| %>
+        <div class="card bg-dark text-white">
+          <ul class="font-italic"> "<%= j.mensaje %>"
+          <%= button_to "Borrar Comentario", j, method: :delete, data: { confirm: "¿Estas seguro?" } %>
+        </ul>
+        </div>
+      <% end %>
 
+      <!-- PONER QUE SOLO SE ARME EL COMENTARIO PARA CUANDO ESTOY EN UN VIAJE ESPECIFICO -->
+      <%= form_with model: @comentario, class: "nifty_form" do |f| %>
+      Comentarios
+      <ul>
+        <%= f.text_field :mensaje %>
+        <%= f.hidden_field :viaje_id %>
+        <%= f.hidden_field :user_id %>
+        <%= f.submit "Comentar", data: { confirm: "¿Seguro que desea agregar este comentario?" }%>
+      </ul>
+      <% end %>
 
-
-<!-- DEBERIAS DE TENER QUE ENTRAR A UN VIAJE
-    PARA LUEGO PODER CREAR UN COMENTARIO
-    O VER LOS COMENTARIOS QUE PUSISTE EN
-    LOS VIAJES
- -->
-
-
-
-  <% @comentarios.each do |j| %>
-    <div class="card bg-dark text-white">
-      <ul class="font-italic"> "<%= j.mensaje %>"
-      <%= button_to "Borrar Comentario", j, method: :delete, data: { confirm: "¿Estas seguro?" } %>
-    </ul>
     </div>
-  <% end %>
-
-
-<!-- PONER QUE SOLO SE ARME EL COMENTARIO PARA CUANDO ESTOY EN UN VIAJE ESPECIFICO -->
-  <%= form_with model: @comentario, class: "nifty_form" do |f| %>
-  Comentarios
-   <ul>
-    <%= f.text_field :mensaje %>
-    <%= f.hidden_field :viaje_id %>
-    <%= f.hidden_field :user_id %>
-    <%= f.submit "Comentar", data: { confirm: "¿Seguro que desea agregar este comentario?" }%>
-  </ul>
-  <% end %>
-
-
+  </div>
 </div>

@@ -40,11 +40,19 @@ Chofer.delete_all
 Admin.create(email: "admin@hotmail.com", password: "admin1234", password_confirmation: "admin1234")
 
 #Usuario Generico de prueba
+# User.create(
+#   email: "admin@hotmail.com", password: "admin1234", password_confirmation: "admin1234",
+#   nombre: Faker::Name.first_name, apellido: Faker::Name.last_name,
+#   fecha_nacimiento: Faker::Date.birthday(min_age: 18, max_age: 65),
+#   dni: rand(45555555 .. 99999999), telefono: Faker::PhoneNumber.phone_number)
+
 User.create(
   email: "admin@hotmail.com", password: "admin1234", password_confirmation: "admin1234",
-  nombre: Faker::Name.first_name, apellido: Faker::Name.last_name,
+  nombre: "Federico", apellido: "Adra",
   fecha_nacimiento: Faker::Date.birthday(min_age: 18, max_age: 65),
-  dni: rand(45555555 .. 99999999), telefono: Faker::PhoneNumber.phone_number)
+  dni: 42352144, telefono: 221548584)
+
+
 
 #Chofer Generico de prueba
 Chofer.create(
@@ -93,7 +101,7 @@ Provincia.populate 4 do |j|
 end
 
 #Genero una ruta de prueba
-Ruta.populate 1 do |j|
+Ruta.populate 3 do |j|
   j.nombre = Faker::Mountain.range
   j.origen_id = Ciudad.all.sample.id
   j.destino_id = Ciudad.all.sample.id
@@ -119,7 +127,7 @@ end
 
 
 #Genero un viaje de prueba
-Viaje.populate 1 do |j|
+Viaje.populate 5 do |j|
   j.nombre = Faker::Space.nebula
   j.fecha = Faker::Date.forward(days: 5)
   j.hora_salida = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
