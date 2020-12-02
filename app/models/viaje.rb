@@ -10,6 +10,8 @@ class Viaje < ApplicationRecord
 
 
   has_and_belongs_to_many :users
+  has_many :comentarios
+
   validate :combi_no_ocupada
   validate :chofer_no_ocupado
   validate :fecha_pasada

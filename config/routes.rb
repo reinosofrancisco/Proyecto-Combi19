@@ -24,8 +24,15 @@ Rails.application.routes.draw do
       get 'sign_out' => "devise/sessions#destroy"
   end
 
+
+
   get 'ver_rutas/:id', to: 'ver_rutas#show',  as: "rutas"
   get 'ver_viajes', to: 'pages#ver_viajes', as: "viajes"
+
+  get 'armado_pasaje/:viaje_id', to: 'armado_pasaje#main', as: "armado_pasaje"
+
+  get 'armado_pasaje/pagar/:viaje_id', to: 'pagar_viaje#main', as: "pagar_viaje"
+
 
   #Cambia la ruta por defecto a la ruta especificada segun el device
   devise_scope :admin do
@@ -40,7 +47,7 @@ Rails.application.routes.draw do
       root 'pages#index'
     end
 
-
   end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <div class="card bg-dark">
+        <div class="row align-items-center mb-5">
+            <div class="col align-self-center">
+                <h1 class="text-light text-center"> Viaje seleccionado: <%=@viaje.nombre%> </h1>
+            </div>
+        </div>
+      <%@adicionales.each do |ad|%>
+        <div class="row">
+        <div class="col align-self-start">
+            <p class="text-light text-center"> Adicional: <%=ad.nombre%> </p>
+        </div>
+        </div>
+
+
+      <%end%>
+
+
+
+
+    </div>
+
+
+
+</div>

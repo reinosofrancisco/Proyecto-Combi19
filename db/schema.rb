@@ -73,9 +73,11 @@ ActiveRecord::Schema.define(version: 2020_11_25_193215) do
   create_table "comentarios", force: :cascade do |t|
     t.string "mensaje"
     t.integer "user_id"
+    t.integer "viaje_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_comentarios_on_user_id"
+    t.index ["viaje_id"], name: "index_comentarios_on_viaje_id"
   end
 
   create_table "provincia", force: :cascade do |t|
