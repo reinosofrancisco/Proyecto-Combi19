@@ -45,11 +45,6 @@ class PagarViajeController < ApplicationController
       currency: 'usd',
     })
 
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
-      redirect_to new_charge_path
-    end
-
     #DEFINIR COMPORTAMIENTO PARA CUANDO EL PAGO ES REALIZADO CON EXITO.
     #EN ESTE CASO, DISMINUIR UN ASIENTO DISPONIBLE PARA EL VIAJE
     #Y EVITAR QUE EL USUARIO EN PARTICULAR PUEDA COMPRAR DENUEVO EL PASAJE
@@ -59,6 +54,13 @@ class PagarViajeController < ApplicationController
 
       ###
     end
+
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to new_charge_path
+    end
+
+
 
 
 end

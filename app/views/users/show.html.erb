@@ -10,6 +10,17 @@
   <h1>DNI: <%= @user.dni %></h1>
   <h1>Fecha de Nacimiento: <%= @user.fecha_nacimiento %></h1>
 
+
+
+
+<!-- DEBERIAS DE TENER QUE ENTRAR A UN VIAJE
+    PARA LUEGO PODER CREAR UN COMENTARIO
+    O VER LOS COMENTARIOS QUE PUSISTE EN
+    LOS VIAJES
+ -->
+
+
+
   <% @comentarios.each do |j| %>
     <div class="card bg-dark text-white">
       <ul class="font-italic"> "<%= j.mensaje %>"
