@@ -21,7 +21,7 @@ class Viaje < ApplicationRecord
   #Valida que la combi a utilizar en el viaje no este ocupada
 
   def agregar_asientos
-    self.asientos_restantes = self.combi.cantidad_de_asientos - self.users.length
+    self.asientos_restantes = self.combi.cantidad_de_asientos - self.pasajes.length
   end
   protected
 

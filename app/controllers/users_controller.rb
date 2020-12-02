@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       else
         @viajesPasados=@viajesPasados.append(v)
       end
-        
+      
     end
 
 
