@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :comentarios
 
+  resources :charges
+
 
 
 
@@ -19,6 +21,8 @@ Rails.application.routes.draw do
     get 'armado_pasaje/:viaje_id', to: 'armado_pasaje#main', as: "armado_pasaje"
 
     get 'armado_pasaje/pagar/:viaje_id', to: 'pagar_viaje#new', as: "pagar_viaje"
+
+    get 'armado_pasaje/pagar/create', to: 'pagar_viaje#create'
 
 
 

@@ -74,10 +74,17 @@ def create
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
+
+
+
     end
 
 
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 19b6977b7237d9050f47090cdbd4d5e56262289b
 end
