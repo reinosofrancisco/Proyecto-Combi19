@@ -31,7 +31,9 @@ Rails.application.routes.draw do
 
   get 'armado_pasaje/:viaje_id', to: 'armado_pasaje#main', as: "armado_pasaje"
 
-  get 'armado_pasaje/pagar/:viaje_id', to: 'pagar_viaje#main', as: "pagar_viaje"
+  get 'armado_pasaje/pagar/:viaje_id', to: 'pagar_viaje#new', as: "pagar_viaje"
+
+  resources :pagar_viaje
 
 
   #Cambia la ruta por defecto a la ruta especificada segun el device
@@ -48,6 +50,8 @@ Rails.application.routes.draw do
     end
 
   end
+
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

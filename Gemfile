@@ -67,3 +67,5 @@ gem "select2-rails"
 #gem "rails_admin_simple_has_many"
 
 gem 'activemerchant'
+
+gem 'stripe'
