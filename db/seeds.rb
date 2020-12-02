@@ -119,7 +119,7 @@ end
 
 
 #Genero un viaje de prueba
-Viaje.populate 1 do |j|
+Viaje.populate 10 do |j|
   j.nombre = Faker::Space.nebula
   j.fecha = Faker::Date.forward(days: 5)
   j.hora_salida = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)

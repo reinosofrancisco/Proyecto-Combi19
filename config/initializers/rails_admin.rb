@@ -70,11 +70,10 @@ RailsAdmin.config do |config|
           hide
         end
         edit do
-          exclude_fields :users , :asientos_restantes
+          exclude_fields :users , :asientos_restantes, :comentarios
         end
         create do
           exclude_fields :users , :asientos_restantes
-
         end
   end
   config.model 'Ciudad' do
