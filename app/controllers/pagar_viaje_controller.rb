@@ -20,10 +20,15 @@ class PagarViajeController < ApplicationController
 
 
   def new
+    if params[:viaje_id] == "sign_out" then
+      #Salir de la pantalla de compra
+    end
+
     #Aun no calcula adicionales
     @precio = Viaje.find_by_id(params[:viaje_id]).precio
 
     #Nose cuales adicionales selecciono el usuario. Por ende no los puedo sumar
+
 
   end
 

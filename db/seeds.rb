@@ -56,7 +56,10 @@ Chofer.create(
 
 
 
-
+##################################################
+#PARA GENERAR SEEDS ANDATE A LA DOCUMENTACION DE #
+##########     POPULATE   &&   FAKER    ##########
+##################################################
 
 
 

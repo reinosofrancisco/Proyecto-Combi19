@@ -7,15 +7,37 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  #Creo una ruta /sign_out para chofers y usuarios. Admin usa rails_admin, la cual ya tiene una forma de cerrar Sesion
 
+#RUTAS GENERICAS
+
+    get 'ver_rutas/:id', to: 'ver_rutas#show',  as: "rutas"
+    get 'ver_viajes', to: 'pages#ver_viajes', as: "viajes"
+
+    get 'armado_pasaje/:viaje_id', to: 'armado_pasaje#main', as: "armado_pasaje"
+
+    get 'armado_pasaje/pagar/:viaje_id', to: 'pagar_viaje#new', as: "pagar_viaje"
+
+
+
+
+
+
+
+#RUTAS PARA USUARIOS
   devise_scope :user do
     authenticated :user do
       root 'pages#ver_viajes', as: :user
     end
       get 'sign_out' => "devise/sessions#destroy"
+
+      get 'armado_pasaje/:viaje_id/sign_out' => "devise/sessions#destroy"
   end
 
+
+
+
+
+#RUTAS PARA CHOFERES
   devise_scope :chofer do
       authenticated :chofer do
         root 'pages#ver_viajes', as: :chofer
@@ -26,19 +48,14 @@ Rails.application.routes.draw do
 
 
 
-  get 'ver_rutas/:id', to: 'ver_rutas#show',  as: "rutas"
-  get 'ver_viajes', to: 'pages#ver_viajes', as: "viajes"
-
-  get 'armado_pasaje/:viaje_id', to: 'armado_pasaje#main', as: "armado_pasaje"
-
-  get 'armado_pasaje/pagar/:viaje_id', to: 'pagar_viaje#new', as: "pagar_viaje"
 
 
 
+#RUTAS PARA ADMINISTRADORES
   #Cambia la ruta por defecto a la ruta especificada segun el device
   devise_scope :admin do
 
-    #Si sos administrador te manda a la pagian de /ADMIN
+    #Si sos administrador te manda a la pagina de /ADMIN
     authenticated :admin do
       root 'rails_admin/main#dashboard', as: :authenticated_root
     end
@@ -49,6 +66,7 @@ Rails.application.routes.draw do
     end
 
   end
+
 
 
 
