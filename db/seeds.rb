@@ -124,6 +124,7 @@ Viaje.populate 1 do |j|
   j.ruta_id = Ruta.all.sample.id
   j.chofer_id = Chofer.all.sample.id
   j.combi_id = Combi.all.sample.id
+  j.precio = rand(1000 .. 6000)
 end
 
 #Genero 10 comentarios de prueba

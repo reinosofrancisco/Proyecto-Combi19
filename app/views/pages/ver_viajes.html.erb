@@ -11,7 +11,7 @@
             <% @comentarios.each do |j| %>
               <div class="card bg-dark m-1">
               <ul class="font-italic"> "<%= j.mensaje %>" -
-              <%=j.user_id==nil ? "Usuario Anónimo":(@users.find(j.user_id).empty? @users.find(j.user_id).nombre:"na")%>
+              <%=j.user_id==nil ? "Usuario Anónimo":(@users.find(j.user_id).nombre)%>
               </ul>
               </div>
             <% end %>
