@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
 
 
+
 #RUTAS PARA USUARIOS
   devise_scope :user do
     authenticated :user do
@@ -40,8 +41,6 @@ Rails.application.routes.draw do
 
 
       get 'sign_out' => "devise/sessions#destroy"
-
-
 
       get 'armado_pasaje/:viaje_id/sign_out' => "devise/sessions#destroy"
       get "armado_pasaje/pagar/sign_out" => "devise/sessions#destroy"

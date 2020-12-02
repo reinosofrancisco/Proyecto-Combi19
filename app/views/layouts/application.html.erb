@@ -11,8 +11,10 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+
     <!-- This refers to app/javascript/stylesheets/application.scss-->
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
 
 
 
@@ -30,7 +32,7 @@
   <div class="container">
     <div class="defaultContainer">
 
-  
+
     <% if flash[:notice] %>
       <div class="alert alert-info"> <%= flash[:notice] %> </div>
     <% end %>

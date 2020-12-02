@@ -1,3 +1,4 @@
+
 <header>
     <nav class="navbar p-0 navbar-expand navbar-dark bg-dark">
       <div class="container">
@@ -15,7 +16,7 @@
 
 
 
-          <%= link_to 'Cerrar Sesion', 'sign_out' , class: "a-primary"%>
+          <%= link_to 'Cerrar Sesion', destroy_user_session_path, :method => :delete, class: "a-primary"%>
 
 
 
