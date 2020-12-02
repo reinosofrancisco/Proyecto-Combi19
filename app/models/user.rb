@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :fecha_nacimiento , presence: true
   validate :mayor_18
   validate :dni_correcto
-  has_and_belongs_to_many :viajes
+  has_many :pasajes
   has_many :comentarios
 
   #Valida que el usuario a crear sea mayor de 18 años
