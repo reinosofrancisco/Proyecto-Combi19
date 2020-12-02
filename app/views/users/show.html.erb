@@ -62,7 +62,16 @@
           </div>
       </div>
 
-      <div class="row">
+
+
+
+      <div class="row mt-2">
+        <h2>Viajes pasados</h2>
+      </div>
+
+
+
+      <div class="row mt-2">
         <div class="container ListadoViajes">
           <div class="mr-5">
             <table class="table table-dark" cellspacing="0" cellpadding="1" border="1">
@@ -71,25 +80,21 @@
               <th> Origen </th>
               <th> Destino </th>
               <th> Fecha </th>
-              <th> Hora de salida </th>
-              <th> Duracion </th>
-              <th> Comprar </th>
+              <th> Comentar </th>
             </tr>
 
-              <% @viajesPasados.each do |v| %>
+              <% @viajesPendientes.each do |v| %>
                 <tr>
                   <td> <%=v.nombre%> </td>
                   <td> <%=Ciudad.find(v.ruta.origen_id).nombre%> </td>
                   <td> <%=Ciudad.find(v.ruta.destino_id).nombre%> </td>
                   <td> <%=v.fecha.to_formatted_s(:long)%> </td>
-                  <td> <%=v.hora_salida.to_formatted_s(:time)%> hs </td>
-                  <td> <%=v.duracion.to_s(:time)%> hs </td>
-                  <td> <%=link_to 'Comprar',armado_pasaje_path(v.id),class: "comprarBtn btn btn-primary"%> </td>
+                  <td> <%=link_to 'Comentar',comentar_viaje_path(v.id),class: "comprarBtn btn btn-primary",method:'post'%> </td>
                 </tr>
               <% end %>
 
-              <% if @viajesPendientes.size == 0 %>
-                <tr> <td colspan="3"> No hay viajes disponibles. </td> </tr>
+              <% if @viajesPasados.empty?%>
+                <tr> <td colspan="3"> No hay viajes pasados. ¡Compra uno! </td> </tr>
               <% end %>
 
             </table>

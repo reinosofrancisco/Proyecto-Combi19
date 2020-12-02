@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
 
 
+    post 'comentar_viaje/user/:viaje_id', to: 'acciones_viaje#comentar', as: "comentar_viaje"
 
 
 

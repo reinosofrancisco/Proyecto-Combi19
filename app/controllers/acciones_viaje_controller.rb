@@ -13,7 +13,7 @@ class AccionesViajeController < ApplicationController
         pasaje.destroy
         if(viaje.fecha.day - fecha_deHoy.day > 3)
             redirect_to user_info_path(current_user.id),notice: "Se le reintegro el 100% del costo del viaje"
-        elsif (viaje.fecha.day - fecha_dehoy.day >1)
+        elsif (viaje.fecha.day - fecha_deHoy.day >1)
             redirect_to user_info_path(current_user.id),notice: "Se le reintegro el 50% del costo del viaje"
         else
             redirect_to user_info_path(current_user.id),notice: "Se le reintegro el 0% del costo del viaje"
@@ -23,6 +23,14 @@ class AccionesViajeController < ApplicationController
         
         #redirect_to(:back)
     end
+
+    def comentar
+        comentario=Comentario.new
+        
+        
+
+    end
+
 
 
 end
