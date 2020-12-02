@@ -16,11 +16,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # encoding: UTF-8
 
-
+require_relative '../lib/populator_fix.rb'
 
 Ruta.destroy_all
 Adicional.destroy_all
 Admin.destroy_all
+User.destroy_all
 
 
 
@@ -51,33 +52,24 @@ a5=Adicional.find_or_create_by(
     precio: 2005.35
 )
 
-
-#
-# Ruta.find_or_create_by(
-#     origen: "La Plata",
-#     destino: "Buenos Aires",
-#     aditionals_ids: [a1,a2,a3]
-# )
-# Ruta.find_or_create_by(
-#     origen: "La Plata",
-#     destino: "BuRSACO",
-#     aditionals_ids: a2
-# )
-# Ruta.find_or_create_by(
-#     origen: "Mar del Plata",
-#     destino: "Buenos Aires",
-#     aditionals_ids: a3
-# )
-# Ruta.find_or_create_by(
-#     origen: "El Condor",
-#     destino: "Buenos Aires",
-#     aditionals_ids: a4
-# )
-# Ruta.find_or_create_by(
-#     origen: "Buenos Aires",
-#     destino: "Mar del Plata",
-#     aditionals_ids: [a1,a2,a3,a4,a5]
-# )
-
-
+#Administrador Generico de prueba
 Admin.create(email: "admin@hotmail.com", password: "admin1234", password_confirmation: "admin1234")
+
+#Usuario Generico de prueba
+User.create(
+  email: "admin@hotmail.com", password: "admin1234", password_confirmation: "admin1234",
+  nombre: Faker::Name.first_name, apellido: Faker::Name.last_name,
+  fecha_nacimiento: Faker::Date.birthday(min_age: 18, max_age: 65),
+  dni: rand(45555555 .. 99999999), telefono: Faker::PhoneNumber.phone_number)
+
+
+#Genero 10 usuarios aleatorios
+User.populate 10 do |u|
+  u.nombre = Faker::Name.first_name
+  u.apellido = Faker::Name.last_name
+  u.fecha_nacimiento = Faker::Date.birthday(min_age: 18, max_age: 65)
+  u.email = Faker::Internet.email
+  u.dni = rand(45555555 .. 99999999)
+  u.encrypted_password = "KASJDIJASLD"
+  u.telefono = Faker::PhoneNumber.phone_number
+end

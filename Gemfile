@@ -69,3 +69,8 @@ gem "select2-rails"
 gem 'activemerchant'
 
 gem 'stripe'
+
+group :development, :test do
+  gem 'faker'
+  gem 'populator'
+end

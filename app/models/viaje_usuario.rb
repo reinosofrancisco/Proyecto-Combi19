@@ -1,5 +1,5 @@
 class ViajeUsuario < ApplicationRecord
 
-    has_many: adicionales
-    
+    has_many :adicionales
+
 end
