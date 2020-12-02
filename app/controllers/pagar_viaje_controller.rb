@@ -38,7 +38,7 @@ class PagarViajeController < ApplicationController
       source: params[:stripeToken],
     })
 
-    charge = Stripe::Charge.create({
+    pagar_viaje = Stripe::Charge.create({
       customer: customer.id,
       amount: @amount,
       description: 'Rails Stripe customer',
@@ -48,7 +48,7 @@ class PagarViajeController < ApplicationController
     #DEFINIR COMPORTAMIENTO PARA CUANDO EL PAGO ES REALIZADO CON EXITO.
     #EN ESTE CASO, DISMINUIR UN ASIENTO DISPONIBLE PARA EL VIAJE
     #Y EVITAR QUE EL USUARIO EN PARTICULAR PUEDA COMPRAR DENUEVO EL PASAJE
-    if charge["paid"] == true
+    if pagar_viaje["paid"] == true
       #COMPORTAMIENTO
 
 
@@ -58,6 +58,9 @@ class PagarViajeController < ApplicationController
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
+
+
+
     end
 
 
