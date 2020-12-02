@@ -63,6 +63,11 @@ GEM
     activejob (6.0.3.4)
       activesupport (= 6.0.3.4)
       globalid (>= 0.3.6)
+    activemerchant (1.117.0)
+      activesupport (>= 4.2)
+      builder (>= 2.1.2, < 4.0.0)
+      i18n (>= 0.6.9)
+      nokogiri (~> 1.4)
     activemodel (6.0.3.4)
       activesupport (= 6.0.3.4)
     activemodel-serializers-xml (1.0.2)
@@ -238,6 +243,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
+    stripe (5.28.0)
     temple (0.8.2)
     thor (1.0.1)
     thread_safe (0.3.6)
@@ -273,6 +279,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activemerchant
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
@@ -293,6 +300,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
+  stripe
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
