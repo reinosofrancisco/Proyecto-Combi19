@@ -13,6 +13,12 @@ class ComentariosController < ApplicationController
     end
   end
 
+  def destroy
+    Comentario.find(params[:id]).destroy
+    flash[:success] = "Comentario Eliminado."
+    redirect_to root_path
+  end
+
 
 
 end

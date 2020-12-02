@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
 
 
 
-
   #Permite que determinados datos puedan ser visibles en el Registro de
   #un nuevo usuario
   before_action :configure_permitted_parameters, if: :devise_controller?
