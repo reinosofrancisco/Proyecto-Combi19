@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :comentarios
 
-  resources :charges
+  resources :pagar_viaje
 
 
 
@@ -20,9 +20,8 @@ Rails.application.routes.draw do
 
     get 'armado_pasaje/:viaje_id', to: 'armado_pasaje#main', as: "armado_pasaje"
 
-    get 'armado_pasaje/pagar/:viaje_id', to: 'pagar_viaje#new', as: "pagar_viaje"
 
-    get 'armado_pasaje/pagar/create', to: 'pagar_viaje#create'
+    post 'armado_pasaje/pagar/create', to: 'pagar_viaje#create'
 
     post 'cancelar_pasaje/user/:viaje_id', to: 'acciones_viaje#cancelar', as: "cancelar_viaje"
 
