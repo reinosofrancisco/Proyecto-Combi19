@@ -1,0 +1,14 @@
+<div class="container mt-2">
+    <div class="card bg-dark text-light mt-2">
+        <!-- PONER QUE SOLO SE ARME EL COMENTARIO PARA CUANDO ESTOY EN UN VIAJE ESPECIFICO -->
+        <%= form_with url: comentar_viaje_post_path(@viaje_id), method: :post,local: true, class: "nifty_form" do |f| %>
+        Comentario
+        <ul>
+          <%= f.text_field :mensaje %>
+          <%= f.hidden_field :viaje_id %>
+          <%= f.hidden_field :user_id %>
+          <%= f.submit "Comentar", data: { confirm: "¿Seguro que desea agregar este comentario?" }%>
+        </ul>
+        <% end %>
+    </div>
+</div>
