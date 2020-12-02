@@ -93,6 +93,9 @@
                   <% if Comentario.where(user_id: @user.id).where(viaje_id: v.id).empty?%>
                   <%=link_to 'Comentar',comentar_viaje_path(v.id),class: "comprarBtn btn btn-primary",method:'get'%>
                   <% end%>
+                  <% if !Comentario.where(user_id: @user.id).where(viaje_id: v.id).empty?%>
+                  <%=link_to 'Borrar comentario',borrar_comentario(v.id),class: "comprarBtn btn btn-danger",method:'get'%>
+                  <% end%>
                   </td>
                 </tr>
               <% end %>
