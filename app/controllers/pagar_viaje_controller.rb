@@ -20,9 +20,6 @@ class PagarViajeController < ApplicationController
 
 
   def new
-    if params[:viaje_id] != "sign_out" then
-      #Salir de la pantalla de compra
-    end
 
     #Aun no calcula adicionales
     @precio = Viaje.find_by_id(params[:viaje_id]).precio
@@ -49,9 +46,19 @@ class PagarViajeController < ApplicationController
     })
 
     rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to new_charge_path
-  end
+      flash[:error] = e.message
+      redirect_to new_charge_path
+    end
+
+    #DEFINIR COMPORTAMIENTO PARA CUANDO EL PAGO ES REALIZADO CON EXITO.
+    #EN ESTE CASO, DISMINUIR UN ASIENTO DISPONIBLE PARA EL VIAJE
+    #Y EVITAR QUE EL USUARIO EN PARTICULAR PUEDA COMPRAR DENUEVO EL PASAJE
+    if charge["paid"] == true
+      #COMPORTAMIENTO
+
+
+      ###
+    end
 
 
 end

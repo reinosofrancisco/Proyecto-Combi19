@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :chofers
   devise_for :users
 
+  resources :comentarios
+
 
 
 

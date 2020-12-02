@@ -17,4 +17,15 @@
     </div>
   <% end %>
 
+  <%= form_with model: @comentario, class: "nifty_form" do |f| %>
+  Comentarios
+   <ul>
+    <%= f.text_field :mensaje %>
+    <%= f.number_field :viaje_id %>
+    <%= f.hidden_field :user_id %>
+    <%= f.submit "Comentar" %>
+  </ul>
+  <% end %>
+
+
 </div>
