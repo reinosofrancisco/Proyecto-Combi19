@@ -38,12 +38,14 @@ def new
   pasaje.viaje_id=params[:viaje_id]
   pasaje.user_id=current_user.id
   pasaje.save
-  Viaje.find_by_id(viaje_id).asientos_restantes=Viaje.find_by_id(viaje_id).asientos_restantes-1
+  if (Viaje.find_by_id(pasaje.viaje_id).asientos_restantes !=nil)
+    Viaje.find_by_id(pasaje.viaje_id).asientos_restantes = (Viaje.find_by_id(pasaje.viaje_id).asientos_restantes) - 1
+  end
 
 end
 
 def create
-  
+
 end
 
 end
