@@ -10,23 +10,24 @@ class PagarViajeController < ApplicationController
 
 #VERIFICO QUE LA TARJETA CUMPLA DETERMINADAS CONDICIONES PARA SER VALIDA
   def create
-    byebug
 
 
 
-    @numero = params[:numero]
-    @cvv = params[:cvv]
-    @fecha_vencimiento = params[:fecha_vencimiento]
+    @numero = params[:tarjeta][:numero]
+    @cvv = params[:tarjeta][:cvv]
+    @fecha_vencimiento = params[:tarjeta][:fecha_vencimiento]
+
 
     @compra_exitosa = false
 
     if !(@numero.nil? || @cvv.nil? || @fecha_vencimiento.nil?)
 
-      if @numero.digits(1) == 12
+      if @numero.length == 12
 
-        if @cvv.digits(1) == 3
+        if @cvv.length== 3
 
-          if @fecha_vencimiento > date.today
+          if DateTime.parse(@fecha_vencimiento) > Date.today
+
 
             @compra_exitosa = true
 
