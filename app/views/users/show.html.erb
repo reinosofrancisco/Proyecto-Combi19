@@ -7,10 +7,7 @@
   <div class="card bg-dark text-light mt-2">
     <div class="container ml-5">
       <div class="row mt-2 mb-2">
-        <h1>Nombre: <%= @user.nombre %></h1>
-      </div>
-      <div class="row mb-2">
-        <h1>Apellido: <%= @user.apellido %></h1>
+        <h1>Nombre: <%= @user.nombre + " " + @user.apellido %></h1>
       </div>
       <div class="row mb-2">
         <h1>DNI: <%= @user.dni %></h1>
@@ -19,7 +16,7 @@
         <h1>Fecha de Nacimiento: <%= @user.fecha_nacimiento %></h1>
       </div>
       <div class="row mt-2">
-        <h2>¡Viajes pendientes!</h2>
+        <h2 class="font-weight-bold">¡Viajes pendientes!</h2>
       </div>
 
       <div class="row mt-2">
@@ -46,7 +43,12 @@
                   <td> <%=v.hora_salida.to_formatted_s(:time)%> hs </td>
                   <td> <%=v.duracion.to_s(:time)%> hs </td>
                   <td> <%=link_to 'Cancelar',cancelar_viaje_path(v), method:'post',class: "btn btn-primary",
-                  data: { confirm: 'Seguro que quieres cancelar el viaje, podria no reitegrarse el costo del mismo ' }
+                  data: { confirm: 'Al cancelar el viaje se le reintegrará:
+
+                  -El 100% si hizo la cancelación en más de 72hs previo a la fecha del mismo
+                  -El 50% si hizo la cancelación en menos de 72hs y más de 24hs a la fecha del mismo
+                  -No se le reintegrará nada si cancela faltando menos de un día para el viaje.
+                  ¿Está seguro? '}
                   %> </td>
                 </tr>
               <% end %>
@@ -66,7 +68,7 @@
 
 
       <div class="row mt-2">
-        <h2>Viajes pasados</h2>
+        <h2 class="font-weight-bold">Viajes pasados</h2>
       </div>
 
 
