@@ -25,11 +25,29 @@ class AccionesViajeController < ApplicationController
     end
 
     def comentar
+        @viaje_id=params[:viaje_id]
+    end
+
+    def comentarPost
         comentario=Comentario.new
+        comentario.mensaje=params[:mensaje]
+        comentario.user_id=current_user.id
+        comentario.viaje_id=params[:viaje_id]
+
+        #comentario=params.require.permit....
+        comentario.save
+        redirect_to user_info_path(current_user.id)
         
         
 
     end
+
+    def borrarComentario
+        Comentario.find_by_id(params[:comentario_id]).destroy
+        flash[:alert] = "Comentario Eliminado."
+        redirect_to user_info_path(current_user.id)
+    end
+
 
 
 

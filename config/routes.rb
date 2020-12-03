@@ -35,7 +35,11 @@ Rails.application.routes.draw do
 
 
 
-    post 'comentar_viaje/user/:viaje_id', to: 'acciones_viaje#comentar', as: "comentar_viaje"
+    get 'comentar_viaje/user/:viaje_id', to: 'acciones_viaje#comentar', as: "comentar_viaje"
+    post 'comentar_viaje/user/:viaje_id', to: 'acciones_viaje#comentarPost', as: "comentar_viaje_post"
+
+    delete 'borrar_comentario/user/:comentario_id', to: 'acciones_viaje#borrarComentario', as: "borrar_comentario"
+
 
 
 
