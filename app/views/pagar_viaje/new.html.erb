@@ -12,7 +12,6 @@
 
 
 
-<<<<<<< HEAD
           <%= form_for confirmar_Tarjeta_path()  do |f|%>
 
 
@@ -34,17 +33,7 @@
           <% end %>
 
 
-=======
->>>>>>> 3f94ed8c3497ad3918a16625ba24915833f96b95
 
-
-          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-              data-description="Pago unico"
-              data-amount= <%= (@precio)*(100) %>
-              data-locale="auto"
-              >
-          </script>
 
         </label>
 
