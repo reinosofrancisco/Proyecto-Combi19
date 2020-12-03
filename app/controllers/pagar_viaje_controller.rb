@@ -46,8 +46,9 @@ class PagarViajeController < ApplicationController
 
 
   def new
-
+  
   arr=params[:adicional_id]
+  viaje=Viaje.find_by_id(params[:viaje_id])
   #arr=["","1","2"...]
   arr = arr.delete_if { |x| x.empty? }
   total=0
@@ -55,7 +56,7 @@ class PagarViajeController < ApplicationController
     total= total + Adicional.find(a).precio
   end
 
-  total=total+ Viaje.find_by_id(params[:viaje_id]).precio
+  total=total+ viaje.precio
 
   #Acá se calculó el total
   #podrías poner "render create" o alguna cosa así pa que se ejecute el método este create que habías hecho
@@ -76,10 +77,14 @@ class PagarViajeController < ApplicationController
   end
   pasaje.viaje_id=params[:viaje_id]
   pasaje.user_id=current_user.id
-  pasaje.save
-  if (Viaje.find_by_id(pasaje.viaje_id).asientos_restantes !=nil)
-    Viaje.find_by_id(pasaje.viaje_id).asientos_restantes = (Viaje.find_by_id(pasaje.viaje_id).asientos_restantes) - 1
+  if (viaje.asientos_restantes !=nil and viaje.asientos_restantes>0)
+    viaje.asientos_restantes=viaje.asientos_restantes-1
+    viaje.save
+  elsif viaje.asientos_restantes<=0
+    flash[:danger] = "Viaje con asientos ocupados"
+    redirect_to viajes_path
   end
+  pasaje.save
 
 end
 

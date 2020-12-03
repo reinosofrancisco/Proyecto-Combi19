@@ -16,13 +16,17 @@ class Viaje < ApplicationRecord
   validate :chofer_no_ocupado
   validate :fecha_pasada
   #validate :asientos_en_rango
-  validate :agregar_asientos
+  before_save :default_values
 
   #Valida que la combi a utilizar en el viaje no este ocupada
 
-  def agregar_asientos
-    self.asientos_restantes = self.combi.cantidad_de_asientos - self.pasajes.length
+  def default_values
+    if self.combi!=nil
+      self.asientos_restantes = self.combi.cantidad_de_asientos 
+    end
   end
+
+
   protected
 
   # validate :validaciones_generales
@@ -78,7 +82,7 @@ end
       end
   end
   def destroy
-      if !(self.users.empty?)
+      if !(Pasaje.where(viaje_id: self.id).empty?)
         errors[:nombre] << "Viaje no puede eliminarse"
         return false
       else

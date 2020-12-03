@@ -99,9 +99,14 @@
                   <td> <%=v.fecha.to_formatted_s(:long)%> </td>
                   <td> <%=v.hora_salida.to_formatted_s(:time)%> hs </td>
                   <td> <%=v.duracion.to_s(:time)%> hs </td>
-                  <% if (Pasaje.where(viaje_id: v.id).where(user_id:current_user.id).empty?)%>
+                  <%if (v.asientos_restantes <= 0)%>
+                  <td><%=button_to 'Sin asientos','#',:disabled => true,class: "comprarBtn btn btn-danger"%> </td>                  
+                  <% elsif (Pasaje.where(viaje_id: v.id).where(user_id:current_user.id).empty?)%>
                   <td> <%=link_to 'Comprar',armado_pasaje_path(v.id),class: "comprarBtn btn btn-primary"%> </td>
+                  <% else%>
+                  <td><%=button_to 'Ya compraste','#',:disabled => true,class: "comprarBtn btn btn-success"%> </td> 
                   <% end %>
+
                 </tr>
               <% end %>
 
