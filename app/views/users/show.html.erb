@@ -45,7 +45,7 @@
                   <td> <%=v.fecha.to_formatted_s(:long)%> </td>
                   <td> <%=v.hora_salida.to_formatted_s(:time)%> hs </td>
                   <td> <%=v.duracion.to_s(:time)%> hs </td>
-                  <td> <%=link_to 'Cancelar',cancelar_viaje_path(v),method: 'post',class: "btn btn-primary",
+                  <td> <%=link_to 'Cancelar',cancelar_viaje_path(v), method:'post',class: "btn btn-primary",
                   data: { confirm: 'Seguro que quieres cancelar el viaje, podria no reitegrarse el costo del mismo ' }
                   %> </td>
                 </tr>
@@ -83,20 +83,13 @@
               <th> Comentar </th>
             </tr>
 
-              <% @viajesPendientes.each do |v| %>
+              <% @viajesPasados.each do |v| %>
                 <tr>
                   <td> <%=v.nombre%> </td>
                   <td> <%=Ciudad.find(v.ruta.origen_id).nombre%> </td>
                   <td> <%=Ciudad.find(v.ruta.destino_id).nombre%> </td>
                   <td> <%=v.fecha.to_formatted_s(:long)%> </td>
-                  <td> 
-                  <% if Comentario.where(user_id: @user.id).where(viaje_id: v.id).empty?%>
-                  <%=link_to 'Comentar',comentar_viaje_path(v.id),class: "comprarBtn btn btn-primary",method:'get'%>
-                  <% end%>
-                  <% if !Comentario.where(user_id: @user.id).where(viaje_id: v.id).empty?%>
-                  <%=link_to 'Borrar comentario',borrar_comentario_path(v.id),class: "comprarBtn btn btn-danger",method:'get'%>
-                  <% end%>
-                  </td>
+                  <td> <%=link_to 'Comentar',comentar_viaje_path(v.id),class: "comprarBtn btn btn-primary",method:'post'%> </td>
                 </tr>
               <% end %>
 
@@ -109,6 +102,20 @@
             </div>
             <!-- FIN DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
           </div>
+      </div>
+      <div class="row">
+
+
+        <!-- PONER QUE SOLO SE ARME EL COMENTARIO PARA CUANDO ESTOY EN UN VIAJE ESPECIFICO -->
+        <%= form_with model: @comentario, class: "nifty_form" do |f| %>
+        Comentarios
+        <ul>
+          <%= f.text_field :mensaje %>
+          <%= f.hidden_field :viaje_id %>
+          <%= f.hidden_field :user_id %>
+          <%= f.submit "Comentar", data: { confirm: "¿Seguro que desea agregar este comentario?" }%>
+        </ul>
+        <% end %>
       </div>
     </div>
   </div>

@@ -6,9 +6,6 @@ class PagarViajeController < ApplicationController
 
   end
 
-  def verificarTarjeta
-
-  end
 
 
 #VERIFICO QUE LA TARJETA CUMPLA DETERMINADAS CONDICIONES PARA SER VALIDA
@@ -49,8 +46,6 @@ class PagarViajeController < ApplicationController
 
 
   def new
-
-  @tarjeta = Tarjeta.new
 
   arr=params[:adicional_id]
   #arr=["","1","2"...]
