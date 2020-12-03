@@ -6,13 +6,8 @@ class PagarViajeController < ApplicationController
 
   end
 
-  def verificarTarjeta
-
-  end
 
 def new
-
-  @tarjeta = Tarjeta.new
 
   arr=params[:adicional_id]
   #arr=["","1","2"...]

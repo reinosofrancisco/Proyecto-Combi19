@@ -1,2 +1,0 @@
-class Tarjeta < ApplicationRecord
-end
