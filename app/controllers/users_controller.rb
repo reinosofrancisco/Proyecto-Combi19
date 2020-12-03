@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   def show
 
     #Si borras esto no se crea el comentario
-    @comentario = Comentario.new(user_id: current_user.id)
 
     @user = User.find_by_id(params[:id])
     @comentarios = User.find_by_id(params[:id]).comentarios
@@ -22,9 +21,19 @@ class UsersController < ApplicationController
       end
       
     end
+    @viajesPendientes=@viajesPendientes.sort_by(&:fecha)
+    @viajesPasados=@viajesPasados.sort_by(&:fecha)
 
 
   end
+
+
+  def getComentario(v,u)
+    return Comentario.where(viaje_id: v).where(user_id: u).first
+    
+  end
+  helper_method :getComentario
+
 
 
 
