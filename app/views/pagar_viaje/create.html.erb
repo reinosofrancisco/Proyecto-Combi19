@@ -1,1 +1,8 @@
-<h2>Gracias, su compra ha sido procesada!</h2>
+
+
+
+<% if @compra_exitosa %>
+    <h2>Gracias, su compra ha sido procesada!</h2>
+<% else %>
+    <h2>Su tarjeta ha sido rechazada. Intente nuevamente</h2>
+<% end %>

@@ -11,21 +11,20 @@
 
 
 
-          <%= form_for @tarjeta, :url => {:action => 'create'} do |f|%>
+          <%= form_for confirmar_Tarjeta_path()  do |f|%>
 
 
           <%= label_tag('cc-number', 'Numero de Tarjeta:' ) %>
-          <%= text_field('cc-number', nil, maxlength: 12, autocomplete: 'off', autofocus: true, placeholder: "424242424242") %>
+          <%= f.number_field :numero  %>
           <br>
 
 
           <%= label_tag('cc-cvc', 'CVC:') %>
-          <%= text_field('cc-cvc', nil, maxlength: 4, autocomplete: 'off', placeholder: "159") %>
+          <%= f.number_field :cvv %>
           <br>
 
           <%= label_tag('cc-exp-month', 'Expiry Date:') %>
-          <%= select_month(Date.new(Date.today.year, 1).beginning_of_month, {use_two_digit_numbers: true}, {id: 'cc-exp-month'}) %>
-          <%= select_year(Date.today, {start_year: Date.today.year, end_year: Date.today.year+10}, {id: 'cc-exp-year'}) %>
+          <%= f.date_field :fecha_vencimiento %>
           <br>
 
           <%= f.submit "Pagar" %>
