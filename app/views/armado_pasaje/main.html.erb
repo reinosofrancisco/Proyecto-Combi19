@@ -8,11 +8,12 @@
 
      <%= form_with(url: pagar_viaje_path(@viaje.id), method: :get,local: true) do  |form|%>
         <%= form.collection_check_boxes :adicional_id, @adicionales.all, :id, :nombre do |c|%>
-        <div class="row align-items-center ml-5"> 
-                <%=c.label(class: "col text-light") do %>                    
+        <div class="row align-items-center ml-5">
+                <%=c.label(class: "col text-light") do %>
                     <%= c.check_box(class: "check_box") %>
-                    <%= c.object.nombre %>      
-                <% end %>            
+                    <%= c.object.nombre %>
+                    $<%= c.object.precio %>  
+                <% end %>
         </div>
         <%end%>
         <div class="row align-items-center ml-5 mr-5">
