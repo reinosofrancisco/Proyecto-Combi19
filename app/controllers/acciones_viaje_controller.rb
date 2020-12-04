@@ -4,6 +4,7 @@ class AccionesViajeController < ApplicationController
     def cancelar
         #cancelar con las reglas de cancelacion
         pasaje=Pasaje.where(viaje_id: params[:viaje_id]).where(user_id: current_user.id).first
+        precio= Viaje.find_by_id(params[:viaje_id]).precio
         fecha_deHoy= Date.today
         #logica de control
         viaje= Viaje.find_by_id(pasaje.viaje_id)
@@ -12,15 +13,16 @@ class AccionesViajeController < ApplicationController
         end
         pasaje.destroy
         if(viaje.fecha.day - fecha_deHoy.day > 3)
-            redirect_to user_info_path(current_user.id),notice: "Se le reintegro el 100% del costo del viaje"
+            redirect_to user_info_path(current_user.id),notice: "Se le reintegraron $" + precio.to_s()
         elsif (viaje.fecha.day - fecha_deHoy.day >1)
-            redirect_to user_info_path(current_user.id),notice: "Se le reintegro el 50% del costo del viaje"
+          precio= precio/2
+            redirect_to user_info_path(current_user.id),notice: "Se le reintegraron $" + precio.to_s()
         else
-            redirect_to user_info_path(current_user.id),notice: "Se le reintegro el 0% del costo del viaje"
+            redirect_to user_info_path(current_user.id),notice: "Se le reintegraron $0"
         end
 
 
-        
+
         #redirect_to(:back)
     end
 
@@ -37,8 +39,8 @@ class AccionesViajeController < ApplicationController
         #comentario=params.require.permit....
         comentario.save
         redirect_to user_info_path(current_user.id)
-        
-        
+
+
 
     end
 

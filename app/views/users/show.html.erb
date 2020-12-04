@@ -31,6 +31,7 @@
               <th> Fecha </th>
               <th> Hora de salida </th>
               <th> Duracion </th>
+              <th> Precio </th>
               <th> Cancelar </th>
             </tr>
 
@@ -42,19 +43,14 @@
                   <td> <%=v.fecha.to_formatted_s(:long)%> </td>
                   <td> <%=v.hora_salida.to_formatted_s(:time)%> hs </td>
                   <td> <%=v.duracion.to_s(:time)%> hs </td>
-<<<<<<< HEAD
-                  <td> <%=<%=link_to 'Cancelar',cancelar_viaje_path(v),method: 'post',class: "btn btn-primary",
-                  data: { confirm: 'Seguro que quieres cancelar el viaje, podria no reitegrarse el costo del mismo ' }
-=======
+                  <td> $<%= v.precio %></td>
                   <td> <%=link_to 'Cancelar',cancelar_viaje_path(v), method:'post',class: "btn btn-primary",
-                  data: { confirm: 'Al cancelar el viaje se le reintegrará:
-
-                  -El 100% si hizo la cancelación en más de 72hs previo a la fecha del mismo
-                  -El 50% si hizo la cancelación en menos de 72hs y más de 24hs a la fecha del mismo
-                  -No se le reintegrará nada si cancela faltando menos de un día para el viaje.
-                  ¿Está seguro? '}
->>>>>>> 95c710d6e5acc60309492f29581f10d776b664c0
-                  %> </td>
+                    data: { confirm: 'Al cancelar el viaje se le reintegrarán:
+                    -' + v.precio.to_s() +'(100%)si hizo la cancelación en más de 72hs previo a la fecha del mismo
+                    -' + (v.precio/2).to_s()+ '(50%)si hizo la cancelación en menos de 72hs y más de 24hs a la fecha del mismo
+                    -No se le reintegrará nada si cancela faltando menos de un día para el viaje.
+                    ¿Está seguro?' }
+                         %> </td>
                 </tr>
               <% end %>
 
@@ -87,6 +83,7 @@
               <th> Origen </th>
               <th> Destino </th>
               <th> Fecha </th>
+              <th> Preicio </th>
               <th> Comentar </th>
             </tr>
 
@@ -96,10 +93,9 @@
                   <td> <%=Ciudad.find(v.ruta.origen_id).nombre%> </td>
                   <td> <%=Ciudad.find(v.ruta.destino_id).nombre%> </td>
                   <td> <%=v.fecha.to_formatted_s(:long)%> </td>
-<<<<<<< HEAD
+                  <td> <%= v.precio%></td>
                   <td> <%=link_to 'Comentar',comentar_viaje_path(v.id),class: "comprarBtn btn btn-primary",method:'post'%> </td>
-=======
-                  <td> 
+                 <td>
                   <% if Comentario.where(user_id: @user.id).where(viaje_id: v.id).empty?%>
                   <%=link_to 'Comentar',comentar_viaje_path(v.id),class: "comprarBtn btn btn-primary",method:'get'%>
                   <% end%>
@@ -111,7 +107,6 @@
                   data: { confirm: "¿Seguro que desea borrar su comentario: \"" + getComentario(v,current_user).mensaje + "\" en este viaje ?" }%>
                   <% end%>
                   </td>
->>>>>>> 95c710d6e5acc60309492f29581f10d776b664c0
                 </tr>
               <% end %>
 

@@ -25,14 +25,16 @@ class PagarViajeController < ApplicationController
 
           if DateTime.parse(@fecha_vencimiento) > Date.today
 
-            
+
             arr=params[:adicionales]
             viaje=Viaje.find_by_id(params[:viaje_id])
 
             #POR AHORA HAGO QUE SE RESERVE AUTOMATICAMENTE
             pasaje= Pasaje.new
-            arr.each do |a|
-              pasaje.adicionales=pasaje.adicionales.append(Adicional.find_by_id(a))
+            if(arr != nil)
+              arr.each do |a|
+                pasaje.adicionales=pasaje.adicionales.append(Adicional.find_by_id(a))
+              end
             end
             pasaje.viaje_id=params[:viaje_id]
             pasaje.user_id=current_user.id
@@ -66,7 +68,7 @@ class PagarViajeController < ApplicationController
 
 
   def new
-  
+
   arr=params[:adicional_id]
   viaje=Viaje.find_by_id(params[:viaje_id])
   #arr=["","1","2"...]
