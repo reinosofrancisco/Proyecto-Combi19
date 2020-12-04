@@ -25,14 +25,11 @@ class AccionesViajeController < ApplicationController
     end
 
     def comentar
-        byebug
         @viaje_id=params[:viaje_id]
     end
 
     def comentarPost
-        #DEFINIR LOS VALORES PARA EL COMENTARIO
         comentario=Comentario.new
-        byebug
         comentario.mensaje=params[:mensaje]
         comentario.user_id=current_user.id
         comentario.viaje_id=params[:viaje_id]
@@ -41,14 +38,16 @@ class AccionesViajeController < ApplicationController
         comentario.save
         redirect_to user_info_path(current_user.id)
         
+        
 
     end
 
     def borrarComentario
-
-        #logica para borrar comentario
+        Comentario.find_by_id(params[:comentario_id]).destroy
+        flash[:alert] = "Comentario Eliminado."
         redirect_to user_info_path(current_user.id)
     end
+
 
 
 

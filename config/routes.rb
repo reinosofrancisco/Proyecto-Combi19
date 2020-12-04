@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :comentarios
 
+  resources :charges
+
 
 
 
@@ -20,7 +22,10 @@ Rails.application.routes.draw do
 
     get 'armado_pasaje/pagar/:viaje_id', to: 'pagar_viaje#new', as: "pagar_viaje"
 
-    get 'armado_pasaje/pagar/create', to: 'pagar_viaje#create'
+
+    post 'armado_pasaje/abonar/create/', to: 'pagar_viaje#create', as: "confirmar_Tarjeta"
+
+
 
     post 'cancelar_pasaje/user/:viaje_id', to: 'acciones_viaje#cancelar', as: "cancelar_viaje"
 
@@ -31,7 +36,8 @@ Rails.application.routes.draw do
     get 'comentar_viaje/user/:viaje_id', to: 'acciones_viaje#comentar', as: "comentar_viaje"
     post 'comentar_viaje/user/:viaje_id', to: 'acciones_viaje#comentarPost', as: "comentar_viaje_post"
 
-    post 'borrar_comentario/user/:viaje_id', to: 'acciones_viaje#borrarComentario', as: "borrar_comentario"
+    delete 'borrar_comentario/user/:comentario_id', to: 'acciones_viaje#borrarComentario', as: "borrar_comentario"
+
 
 
 
