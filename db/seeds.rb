@@ -48,9 +48,9 @@ Admin.create(email: "admin@hotmail.com", password: "admin1234", password_confirm
 
 User.create(
   email: "admin@hotmail.com", password: "admin1234", password_confirmation: "admin1234",
-  nombre: "Federico", apellido: "Adra",
+  nombre: "Reinoso", apellido: "Francisco",
   fecha_nacimiento: Faker::Date.birthday(min_age: 18, max_age: 65),
-  dni: 42352144, telefono: 221548584)
+  dni: 42095198, telefono: 221548584)
 
 
 
