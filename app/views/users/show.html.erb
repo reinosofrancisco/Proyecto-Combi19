@@ -44,13 +44,35 @@
                   <td> <%=v.hora_salida.to_formatted_s(:time)%> hs </td>
                   <td> <%=v.duracion.to_s(:time)%> hs </td>
                   <td> $<%= v.precio %></td>
-                  <td> <%=link_to 'Cancelar',cancelar_viaje_path(v), method:'post',class: "btn btn-primary",
-                    data: { confirm: 'Al cancelar el viaje se le reintegrarán:
-                    -' + v.precio.to_s() +'(100%)si hizo la cancelación en más de 72hs previo a la fecha del mismo
-                    -' + (v.precio/2).to_s()+ '(50%)si hizo la cancelación en menos de 72hs y más de 24hs a la fecha del mismo
-                    -No se le reintegrará nada si cancela faltando menos de un día para el viaje.
-                    ¿Está seguro?' }
-                      %> </td>
+                  <% if(v.fecha.day - Date.today.day > 3) %>
+                    <td> <%=link_to 'Cancelar',cancelar_viaje_path(v), method:'post',class: "btn btn-primary",
+                      data: { confirm: 'Al cancelar el viaje se le reintegrarán $'+ v.precio.to_s()+ '
+                      Reglas del negocio:
+                      -Se reintegra el 100% si hizo la cancelación en más de 72hs previo a la fecha del mismo
+                      -Se reintegra el 50%si hizo la cancelación en menos de 72hs y más de 24hs a la fecha del mismo
+                      -No se le reintegrará nada si cancela faltando menos de un día para el viaje.
+                      ¿Está seguro?' }
+                        %> </td>
+                    <%elsif (v.fecha.day - Date.today.day.day >1)%>
+                      <td> <%=link_to 'Cancelar',cancelar_viaje_path(v), method:'post',class: "btn btn-primary",
+                        data: { confirm: 'Al cancelar el viaje se le reintegrarán $'+ (v.precio/2).to_s()+ '
+                        Reglas del negocio:
+                        -Se reintegra el 100% si hizo la cancelación en más de 72hs previo a la fecha del mismo
+                        -Se reintegra el 50%si hizo la cancelación en menos de 72hs y más de 24hs a la fecha del mismo
+                        -No se le reintegrará nada si cancela faltando menos de un día para el viaje.
+                        ¿Está seguro?' }
+                          %> </td>
+                      <%else%>
+                        <td><%=link_to 'Cancelar',cancelar_viaje_path(v), method:'post',class: "btn btn-primary",
+                          data: { confirm: 'Al cancelar el viaje se le reintegrarán $0
+                          Reglas del negocio:
+                          -Se reintegra el 100% si hizo la cancelación en más de 72hs previo a la fecha del mismo
+                          -Se reintegra el 50%si hizo la cancelación en menos de 72hs y más de 24hs a la fecha del mismo
+                          -No se le reintegrará nada si cancela faltando menos de un día para el viaje.
+                          ¿Está seguro?' }
+                          %> </td>
+
+                  <%end%>
                 </tr>
               <% end %>
 
