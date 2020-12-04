@@ -12,23 +12,26 @@
 
 
 
-          <%= form_for :tarjeta do |f|%>
+          <%= form_with(url: confirmar_Tarjeta_path(), method: :post, local: :true) do |f|%>
+            <%= f.hidden_field :viaje_id, :value =>@viaje_id.to_i %>
+            <% @adicionales.each do |ad| %>
+              <%= f.hidden_field :adicionales, :multiple => true, :value => ad %>
+            <% end %>
+
+            <%= label_tag('cc-number', 'Numero de Tarjeta:' ) %>
+            <%= f.number_field :numero  %>
+            <br>
 
 
-          <%= label_tag('cc-number', 'Numero de Tarjeta:' ) %>
-          <%= f.number_field :numero  %>
-          <br>
+            <%= label_tag('cc-cvc', 'CVC:') %>
+            <%= f.number_field :cvv %>
+            <br>
 
+            <%= label_tag('cc-exp-month', 'Expiry Date:') %>
+            <%= f.date_field :fecha_vencimiento %>
+            <br>
 
-          <%= label_tag('cc-cvc', 'CVC:') %>
-          <%= f.number_field :cvv %>
-          <br>
-
-          <%= label_tag('cc-exp-month', 'Expiry Date:') %>
-          <%= f.date_field :fecha_vencimiento %>
-          <br>
-
-          <%= f.submit "Pagar" %>
+            <%= f.submit "Pagar" %>
 
           <% end %>
 

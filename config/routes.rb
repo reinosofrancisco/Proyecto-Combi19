@@ -23,9 +23,7 @@ Rails.application.routes.draw do
     get 'armado_pasaje/pagar/:viaje_id', to: 'pagar_viaje#new', as: "pagar_viaje"
 
 
-    post 'armado_pasaje/pagar/:viaje_id', to: 'pagar_viaje#create'
-
-    post 'armado_pasaje/pagar/create/', to: 'pagar_viaje#create', as: "confirmar_Tarjeta"
+    post 'armado_pasaje/abonar/create/', to: 'pagar_viaje#create', as: "confirmar_Tarjeta"
 
 
 

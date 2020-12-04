@@ -10,13 +10,10 @@ class PagarViajeController < ApplicationController
 
 #VERIFICO QUE LA TARJETA CUMPLA DETERMINADAS CONDICIONES PARA SER VALIDA
   def create
-
-
-
-    @numero = params[:tarjeta][:numero]
-    @cvv = params[:tarjeta][:cvv]
-    @fecha_vencimiento = params[:tarjeta][:fecha_vencimiento]
-
+    @numero = params[:numero]
+    @cvv = params[:cvv]
+    @fecha_vencimiento = params[:fecha_vencimiento]
+    @viaje_id=params[:viaje_id]
 
     @compra_exitosa = false
 
@@ -28,17 +25,39 @@ class PagarViajeController < ApplicationController
 
           if DateTime.parse(@fecha_vencimiento) > Date.today
 
+            
+            arr=params[:adicionales]
+            viaje=Viaje.find_by_id(params[:viaje_id])
 
-            @compra_exitosa = true
+            #POR AHORA HAGO QUE SE RESERVE AUTOMATICAMENTE
+            pasaje= Pasaje.new
+            arr.each do |a|
+              pasaje.adicionales=pasaje.adicionales.append(Adicional.find_by_id(a))
+            end
+            pasaje.viaje_id=params[:viaje_id]
+            pasaje.user_id=current_user.id
+            if (viaje.asientos_restantes !=nil and viaje.asientos_restantes>0)
+              viaje.asientos_restantes=viaje.asientos_restantes-1
+              viaje.save
+            elsif viaje.asientos_restantes<=0
+              flash[:danger] = "Viaje con asientos ocupados"
+            end
+
+            pasaje.save
+            @compra_exitosa=true
 
 
-
+          else
+            flash[:alert]="Debe ingresar una fecha posterior a hoy"
           end
-
+        else
+          flash[:alert]="Debe ingresar un código de tarjeta válido de tres dígitos"
         end
-
+      else
+        flash[:alert]="Debe ingresar una tarjeta válida de doce dígitos"
       end
-
+    else
+      flash[:notice]="Debe ingresar una tarjeta válida"
     end
 
   end
@@ -71,22 +90,8 @@ class PagarViajeController < ApplicationController
 
 
 
-  #POR AHORA HAGO QUE SE RESERVE AUTOMATICAMENTE
-  pasaje= Pasaje.new
-  arr.each do |a|
-    pasaje.adicionales=pasaje.adicionales.append(Adicional.find_by_id(a))
-  end
-  pasaje.viaje_id=params[:viaje_id]
-  pasaje.user_id=current_user.id
-  if (viaje.asientos_restantes !=nil and viaje.asientos_restantes>0)
-    viaje.asientos_restantes=viaje.asientos_restantes-1
-    viaje.save
-  elsif viaje.asientos_restantes<=0
-    flash[:danger] = "Viaje con asientos ocupados"
-    redirect_to viajes_path
-  end
-  pasaje.save
-
+  @adicionales=params[:adicional_id]
+  @viaje_id=params[:viaje_id]
 end
 
 end

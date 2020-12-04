@@ -1,8 +1,12 @@
+<div class="text-light">
+    <div class="card bg-dark ml-5">
+        <% if @compra_exitosa %>
+            <h2 class="ml-2">Gracias, su compra ha sido procesada!</h2>
+        <% else %>
+            <h2 class="ml-2">Su tarjeta ha sido rechazada. Intente nuevamente</h2>
+            <%=button_to "Reintentar", armado_pasaje_path(@viaje_id),class:"btn btn-primary mt-2 mb-2 ml-2",method: :get%>
+        <% end %>
 
-
-
-<% if @compra_exitosa %>
-    <h2>Gracias, su compra ha sido procesada!</h2>
-<% else %>
-    <h2>Su tarjeta ha sido rechazada. Intente nuevamente</h2>
-<% end %>
+        <%=button_to "Ver viajes", viajes_path,class:"btn btn-primary ml-2 mb-2",method: :get%>
+    </div>
+</div>
