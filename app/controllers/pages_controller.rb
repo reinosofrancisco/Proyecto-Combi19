@@ -6,7 +6,7 @@ class PagesController < ApplicationController
 
 
     t= Date.today
-    @viajes = Viaje.where(['fecha >= ? AND fecha < ?', t, t+100]).sort_by &:fecha
+    @viajes = Viaje.where(['fecha >= ? AND fecha < ?', t, t+100])
 
     #Agarra 5 comentarios al azar
     @comentarios = Comentario.all.sample(5)
@@ -25,11 +25,12 @@ class PagesController < ApplicationController
           elsif (@origen_id .present?) && (@destino_id .present?) && !(@fecha .present?)
             @viajes= @viajes.where(ruta: Ruta.where(origen_id: @origen_id)).where(ruta: Ruta.where(destino_id: @destino_id))
             elsif (@origen_id .present?) && !(@destino_id .present?) && (@fecha .present?)
-              @viajes= @viajes.where(ruta: Ruta.where(origen_id: @origen_id)).where(fecha: @fecha)
+              @viajes= @viajes.where(ruta: Ruta.where(origen_id: @origen_id)).where('fecha >= ?', @fecha)
               elsif !(@origen_id .present?) && (@destino_id .present?) && (@fecha .present?)
-                @viajes= @viajes.where(ruta: Ruta.where(destino_id: @destino_id)).where(fecha: @fecha)
+                @viajes= @viajes.where(ruta: Ruta.where(destino_id: @destino_id)).where('fecha >= ?', @fecha)
                 elsif (@origen_id .present?) && (@destino_id .present?) && (@fecha .present?)
-                  @viajes= @viajes.where(ruta: Ruta.where(origen_id: @origen_id)).where(ruta: Ruta.where(destino_id: @destino_id)).where(fecha: @fecha)
+                  @viajes= @viajes.where(ruta: Ruta.where(origen_id: @origen_id)).where(ruta: Ruta.where(destino_id: @destino_id)).where('fecha >= ?', @fecha)
     end
+    @viajes=@viajes.sort_by &:fecha
   end
 end
