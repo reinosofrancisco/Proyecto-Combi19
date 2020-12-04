@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @comentarios = User.find_by_id(params[:id]).comentarios
     #Tambien puedo usar current_user que provee devise
     #@user = current_user
-    # byebug  
+    # byebug
     aux=Pasaje.where(user_id: @user.id)
     @viajesPendientes=[]
     @viajesPasados=[]
@@ -19,18 +19,17 @@ class UsersController < ApplicationController
       else
         @viajesPasados=@viajesPasados.append(v)
       end
-      
+
     end
     @viajesPendientes=@viajesPendientes.sort_by(&:fecha)
     @viajesPasados=@viajesPasados.sort_by(&:fecha)
-
 
   end
 
 
   def getComentario(v,u)
     return Comentario.where(viaje_id: v).where(user_id: u).first
-    
+
   end
   helper_method :getComentario
 
