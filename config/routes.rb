@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
     get 'ver_rutas/:id', to: 'ver_rutas#show',  as: "rutas"
     get 'ver_viajes', to: 'pages#ver_viajes', as: "viajes"
+    get 'ver_viajes_chofer/:id', to: 'ver_viajes_choferes#ver_viajes', as:"viajes_choferes"
 
     get 'armado_pasaje/:viaje_id', to: 'armado_pasaje#main', as: "armado_pasaje"
 

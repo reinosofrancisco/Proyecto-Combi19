@@ -1,0 +1,55 @@
+<header class="showcase">
+
+    <div class="mainContainer showcase-inner">
+      <div class="container container-fluid">
+        <div class="row">
+          <%= form_tag viajes_choferes_path ,  method: :get do %>
+            <div class="row">
+              <div class="col mb-4 ml-1">
+                <div class="col mb-4">
+                  <%= label :fecha,  "Ingrese el mes y el año donde desea ver los viajes realizados por el chofer (el dia no se toma en cuenta)" %>
+                  <%= date_field(:viaje, :fecha,class: "form-control") %>
+                </div>
+              <div class="col mb-4 align-self-end mr-1">
+                <%= submit_tag 'Buscar', class: "form-control"%>
+              </div>
+            </div>
+          <%end %>
+  <div class="row mt-2">
+    <div class="container ListadoViajes">
+      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table table-dark" cellspacing="0" cellpadding="1" border="1">
+          <tr>
+            <th> Nombre </th>
+            <th> Origen </th>
+            <th> Destino </th>
+            <th> Fecha </th>
+            <th> Duracion </th>
+          </tr>
+
+          <% @viajes.each do |v| %>
+            <tr>
+              <td> <%=v.nombre%> </td>
+              <td> <%=Ciudad.find(v.ruta.origen_id).nombre%> </td>
+              <td> <%=Ciudad.find(v.ruta.destino_id).nombre%> </td>
+              <td> <%=v.fecha.to_formatted_s(:long)%> </td>
+              <td> <%=v.duracion.to_s(:time)%> hs </td>
+              </tr>
+          <% end %>
+          <% if @viajes.size == 0 %>
+            <tr> <td colspan="3"> No hay viajes disponibles. </td> </tr>
+          <% end %>
+
+        </table>
+        <%= link_to "Volver", '/admin/chofer', class: "btn btn-secondary" %>
+        </div>
+        <!-- FIN DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
+      </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  </div>
+
+</header>

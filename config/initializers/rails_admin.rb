@@ -117,6 +117,26 @@ RailsAdmin.config do |config|
     object_label_method do
       :dni
     end
+    list do
+      field :nombre do
+
+      end
+      field :apellido do
+
+      end
+      field :dni do
+
+      end
+
+      field :viajes do
+        pretty_value do
+         v = bindings[:view]
+         id= (bindings[:object].id).to_s
+         url= '/ver_viajes_chofer/'+id
+         v.link_to "Generar informe del chofer", url
+       end
+     end
+   end
   #  Chofer.class_eval do
   #  def custom_label_method
   #    "#{self.nombre} (#{self.dni})"
