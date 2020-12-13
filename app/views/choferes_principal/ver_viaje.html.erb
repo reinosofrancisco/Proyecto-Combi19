@@ -23,7 +23,6 @@
             <table class="table table-dark" cellspacing="0" cellpadding="1" border="1">
               <table class="table table-dark" cellspacing="0" cellpadding="1" border="1">
                 <h1>Pasajeros Proximo Viaje</h1>
-<<<<<<< HEAD
                 <tr>
                   <th> Nombre </th>
                   <th> Apellido </th>
@@ -31,19 +30,10 @@
                   <th> Llenar DDJJ </th>
                   <th> Cancelar asciento</th>
                 </tr>
-=======
-
->>>>>>> 5ecd821b6a12b47a4affbde3a446059b0c54650a
-                <% if @pasajes == nil %>
+                <% if @pasajes.empty? %>
                   <tr> <td colspan="3"> No hay viajes disponibles. </td> </tr>
                   <%else%>
                     <% @pasajes.each do |v| %>
-                    <tr>
-                      <th> Nombre </th>
-                      <th> Apellido </th>
-                      <th> Dni </th>
-                      <th> Llenar DDJJ </th>
-                    </tr>
                       <tr>
                         <td> <%=User.find_by_id(v.user_id).nombre%> </td>
                         <td> <%=User.find_by_id(v.user_id).apellido%> </td>
@@ -51,8 +41,10 @@
                         <td> <%=button_to("Llenar DDJJ", llenar_ddjj_path(v.user_id))%> </td>
                         <td> <%=button_to("Cancelar", cancelar_viaje_path(v.viaje_id,v.user_id))  %></td>
                       </tr>
-                    <%= button_to("Cancelar Viaje") %>
                     <% end %>
+                    <tr>
+                      <td><%= button_to("Cancelar Viaje", cancelar_choferes_path(@pasajes.first.id)) %> </td>
+                    </tr>
                   <% end %>
             </table>
 

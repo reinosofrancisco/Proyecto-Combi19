@@ -4,7 +4,7 @@ class CreatePasajes < ActiveRecord::Migration[6.0]
 
       t.belongs_to :viaje
       t.belongs_to :user
-
+      t.string :estado
       t.timestamps
     end
   end
