@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
     post 'cancelar_pasaje/user/:viaje_id', to: 'acciones_viaje#cancelar', as: "cancelar_viaje"
 
+    post 'cancelar_pasaje/user/:user_id/:viaje_id', to: 'acciones_viaje#cancelar', as: "cancelar_viaje_choferes"
+
     get "armado_pasaje/pagar/:viaje_id/sign_out" => "devise/sessions#destroy"
 
     post 'completar_ddjj/:user_id',  to: 'ddjj#llenar' , as: "llenar_ddjj"
@@ -39,10 +41,6 @@ Rails.application.routes.draw do
     post 'comentar_viaje/user/:viaje_id', to: 'acciones_viaje#comentarPost', as: "comentar_viaje_post"
 
     delete 'borrar_comentario/user/:comentario_id', to: 'acciones_viaje#borrarComentario', as: "borrar_comentario"
-
-
-
-
 
 
 

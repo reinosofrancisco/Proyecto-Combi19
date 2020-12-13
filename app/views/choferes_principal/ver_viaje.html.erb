@@ -28,6 +28,7 @@
                   <th> Apellido </th>
                   <th> Dni </th>
                   <th> Llenar DDJJ </th>
+                  <th> Cancelar asciento</th>
                 </tr>
                 <% if @pasajes == nil %>
                   <tr> <td colspan="3"> No hay viajes disponibles. </td> </tr>
@@ -37,7 +38,8 @@
                         <td> <%=User.find_by_id(v.user_id).nombre%> </td>
                         <td> <%=User.find_by_id(v.user_id).apellido%> </td>
                         <td> <%=User.find_by_id(v.user_id).dni%> </td>
-                        <td> <%= button_to("Llenar DDJJ", llenar_ddjj_path(v.user_id))%> </td>
+                        <td> <%=button_to("Llenar DDJJ", llenar_ddjj_path(v.user_id))%> </td>
+                        <td> <%=button_to("Cancelar", cancelar_viaje_path(v.viaje_id,v.user_id))  %></td>
                       </tr>
                     <% end %>
                   <% end %>
