@@ -23,28 +23,28 @@
             <table class="table table-dark" cellspacing="0" cellpadding="1" border="1">
               <table class="table table-dark" cellspacing="0" cellpadding="1" border="1">
                 <h1>Pasajeros Proximo Viaje</h1>
-                <tr>
-                  <th> Nombre </th>
-                  <th> Apellido </th>
-                  <th> Dni </th>
-                  <th> Llenar DDJJ </th>
-                </tr>
+
                 <% if @pasajes == nil %>
                   <tr> <td colspan="3"> No hay viajes disponibles. </td> </tr>
                   <%else%>
                     <% @pasajes.each do |v| %>
+                    <tr>
+                      <th> Nombre </th>
+                      <th> Apellido </th>
+                      <th> Dni </th>
+                      <th> Llenar DDJJ </th>
+                    </tr>
                       <tr>
                         <td> <%=User.find_by_id(v.user_id).nombre%> </td>
                         <td> <%=User.find_by_id(v.user_id).apellido%> </td>
                         <td> <%=User.find_by_id(v.user_id).dni%> </td>
                         <td> <%= button_to("Llenar DDJJ", llenar_ddjj_path(v.user_id))%> </td>
                       </tr>
+                    <%= button_to("Cancelar Viaje") %>
                     <% end %>
                   <% end %>
             </table>
-            <% if @pasajes != nil %>
-              <%= button_to("Cancelar Viaje") %>
-            <% end%>
+
             </div>
             <!-- FIN DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
           </div>
