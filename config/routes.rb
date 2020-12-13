@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
     get "armado_pasaje/pagar/:viaje_id/sign_out" => "devise/sessions#destroy"
 
+    post 'completar_ddjj/:user_id',  to: 'ddjj#llenar' , as: "llenar_ddjj"
 
 
     get 'comentar_viaje/user/:viaje_id', to: 'acciones_viaje#comentar', as: "comentar_viaje"
@@ -71,7 +72,7 @@ Rails.application.routes.draw do
 #RUTAS PARA CHOFERES
   devise_scope :chofer do
       authenticated :chofer do
-        root 'pages#ver_viajes', as: :chofer
+        root 'choferes_principal#ver_viaje', as: :chofer
       end
 
       get 'sign_out' => "devise/sessions#destroy"

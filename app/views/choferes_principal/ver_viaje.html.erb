@@ -1,0 +1,57 @@
+<header class="showcase">
+
+  <div class="mainContainer showcase-inner">
+    <div class="container container-fluid">
+      <div class="row">
+        <div class="col align-self-center ml-3">
+            <div class="boxForPic"></div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="container container-fluid">
+        </div>
+      </div>
+
+      <!-- CAMBIAR LOS LINKS A ALGUNOS QUE ANDEN POSTA -->
+
+      <!-- COMIENZO DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
+      <div class="row mt-2">
+        <div class="container ListadoViajes">
+          <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-dark" cellspacing="0" cellpadding="1" border="1">
+              <table class="table table-dark" cellspacing="0" cellpadding="1" border="1">
+                <h1>Pasajeros Proximo Viaje</h1>
+                <tr>
+                  <th> Nombre </th>
+                  <th> Apellido </th>
+                  <th> Dni </th>
+                  <th> Llenar DDJJ </th>
+                </tr>
+                <% if @pasajes == nil %>
+                  <tr> <td colspan="3"> No hay viajes disponibles. </td> </tr>
+                  <%else%>
+                    <% @pasajes.each do |v| %>
+                      <tr>
+                        <td> <%=User.find_by_id(v.user_id).nombre%> </td>
+                        <td> <%=User.find_by_id(v.user_id).apellido%> </td>
+                        <td> <%=User.find_by_id(v.user_id).dni%> </td>
+                        <td> <%= button_to("Llenar DDJJ", llenar_ddjj_path(v.user_id))%> </td>
+                      </tr>
+                    <% end %>
+                  <% end %>
+            </table>
+            <% if @pasajes != nil %>
+              <%= button_to("Cancelar Viaje") %>
+            <% end%>
+            </div>
+            <!-- FIN DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
+          </div>
+      </div>
+
+    </div>
+
+    <!-- FIN DEL SEPARADOR PARA EL LISTADO DE VIAJES -->
+
+</header>

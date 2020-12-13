@@ -1,0 +1,2 @@
+module DdjjHelper
+end

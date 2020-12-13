@@ -24,8 +24,8 @@
         <% end %>
 
         <% if chofer_signed_in? %>
-
-          <%= link_to 'VER CUENTA', user_path(current_chofer.id) , class: "a-primary"%>
+  
+          <%= link_to 'Añadir Pasajero a Viaje', user_path(current_chofer.id) , class: "a-primary"%>
 
           <%= link_to 'Cerrar Sesion', 'sign_out' , class: "a-primary"%>
 
