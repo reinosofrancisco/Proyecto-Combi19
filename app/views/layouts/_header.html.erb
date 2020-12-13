@@ -24,8 +24,13 @@
         <% end %>
 
         <% if chofer_signed_in? %>
-  
+
+          No usar aca un link a Anadir pasajero a viaje. Buscar otro lugar
           <%= link_to 'Añadir Pasajero a Viaje', user_path(current_chofer.id) , class: "a-primary"%>
+
+          <%= link_to 'Registrar Pasajero', 'sign_out' , class: "a-primary"%>
+
+          <%= link_to 'Llenar DDJJ', 'sign_out' , class: "a-primary"%>
 
           <%= link_to 'Cerrar Sesion', 'sign_out' , class: "a-primary"%>
 
