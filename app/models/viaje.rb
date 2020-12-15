@@ -37,7 +37,6 @@ class Viaje < ApplicationRecord
   
   
   
-  
   protected
   def combi_no_ocupada
     viajes= Viaje.where(combi:combi).where(fecha: fecha)
@@ -50,7 +49,8 @@ class Viaje < ApplicationRecord
         else sum1= 0
         end
         if(viaje.hora_salida + viaje.duracion).change(year: hora_salida.year , month: hora_salida.month , day: hora_salida.day + sum1) > hora_salida
-          errors[:combi] << 'La combi seleccionada esta ocupada'
+          errors[:combi] << "La combi seleccionada esta ocupada para el día #{I18n.localize(viaje.fecha,format: '%d de %B del año %Y')}"
+          byebug
         end
       end
   end
@@ -68,7 +68,7 @@ end
         else sum1= 0
         end
         if(viaje.hora_salida + viaje.duracion).change(year: hora_salida.year , month: hora_salida.month , day: hora_salida.day+ sum1) > hora_salida
-            errors[:chofer] << 'El chofer seleccionado esta ocupado'
+            errors[:chofer] << "El chofer seleccionado esta ocupado para el día #{I18n.localize(viaje.fecha,format: '%d de %B del año %Y')}"
         end
       end
   end
