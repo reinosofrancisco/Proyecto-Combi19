@@ -50,7 +50,6 @@ class Viaje < ApplicationRecord
         end
         if(viaje.hora_salida + viaje.duracion).change(year: hora_salida.year , month: hora_salida.month , day: hora_salida.day + sum1) > hora_salida
           errors[:combi] << "La combi seleccionada esta ocupada para el día #{I18n.localize(viaje.fecha,format: '%d de %B del año %Y')}"
-          byebug
         end
       end
   end
@@ -75,7 +74,7 @@ end
   end
   protected
   def fecha_pasada
-    fecha_y_hora = DateTime.new(fecha.year,fecha.month, fecha.day, hora_salida.hour, hora_salida.min, hora_salida.sec )
+    fecha_y_hora = DateTime.new(fecha.year,fecha.month, fecha.day, hora_salida.hour, hora_salida.min, hora_salida.sec ) if !fecha.nil?
       if(fecha_y_hora.to_s(:number) <= Time.now.to_s(:number))
         errors[:fecha] << 'La fecha seleccionada es anterior al dia de hoy'
       end

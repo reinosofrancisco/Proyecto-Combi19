@@ -25,11 +25,29 @@ module RailsAdmin
                                     repe=aux[:repeticion]
                                     hasta=aux[:hasta_cuando]
                                     if(hasta.nil? || hasta<aux[:fecha])
+
+                                        #intentar crear el viaje                                                    
+                                        @object=@abstract_model.new(params.require(@abstract_model.to_param)
+                                        .permit(:nombre,
+                                            :fecha,
+                                            :hora_salida,
+                                            :duracion,
+                                            :ruta_id,
+                                            :chofer_id,
+                                            :combi_id,
+                                            :precio))
+                                        
+                                        @object.fecha=aux[:fecha].to_date
                                         #se crea solo una entrada
+                                        if !@object.save
+                                            handle_save_error(:whereto => :new_recursively)
+                                        end
+                                        
                                     else
                                         if(!repe.nil?)
                                             repe.downcase!
                                             repe=repe.match(/((?<int>([\d]+)\s?)(?<unit>(d|m|a|$)))/)
+                                            
                                             if(!(repe[:int].empty? || repe[:unit].empty?))
                                                 int=repe[:int]
                                                 unit=repe[:unit]
@@ -63,7 +81,15 @@ module RailsAdmin
                                                         #customizar el error
                                                         flash.now[:error] = I18n.t('admin.flash.error', name: @model_config.label, action: I18n.t("admin.actions.#{@action.key}.done").html_safe).html_safe
                                                         flash.now[:error] += %(<br>- #{@object.errors.full_messages.join('<br>- ')}).html_safe
-                                                        #redirect_to back_or_index
+
+                                                        whereto= :new_recursively
+
+                                                        respond_to do |format|
+                                                            format.html { render whereto, status: :not_acceptable }
+                                                            format.js   { render whereto, layout: false, status: :not_acceptable }
+                                                        end
+
+                                                        #redirect_to index
                                                         #handle_save_error #???
                                                         hubo_errores=true
                                                         break
@@ -75,9 +101,29 @@ module RailsAdmin
                                                 
                                             else
                                                 #error mal escrito repe
+                                                flash.now[:error] = I18n.t('admin.flash.error', name: @model_config.label, action: I18n.t("admin.actions.#{@action.key}.done").html_safe).html_safe
+                                                flash.now[:error] += %(<br>- Formato de periodicidad no válido).html_safe
+
+                                                whereto= :new_recursively
+                                                respond_to do |format|
+                                                    format.html { render whereto, status: :not_acceptable }
+                                                    format.js   { render whereto, layout: false, status: :not_acceptable }
+                                                end
+                                                @object=@abstract_model.new
+                                                
                                             end
                                         else
                                             #nil en repe
+                                            #error mal escrito repe
+                                            flash.now[:error] = I18n.t('admin.flash.error', name: @model_config.label, action: I18n.t("admin.actions.#{@action.key}.done").html_safe).html_safe
+                                            flash.now[:error] += %(<br>- Debe ingresar periodicidad).html_safe
+                                            
+                                            whereto= :new_recursively
+                                            respond_to do |format|
+                                                format.html { render whereto, status: :not_acceptable }
+                                                format.js   { render whereto, layout: false, status: :not_acceptable }
+                                            end
+                                            @object=@abstract_model.new
                                         end
                                     end
                                 end
@@ -87,9 +133,9 @@ module RailsAdmin
                                 #si llego acá todo piola
 
                                 @object=@abstract_model.new #jaja
-                                byebug
+                                
                                 flash[:notice] = "Creado #{@model_name} recursivamente" if !hubo_errores
-                                redirect_path = !hubo_errores ? index_path : index
+                                redirect_path = index_path if !hubo_errores
                             elsif request.get?
                                 @object=@abstract_model.new                        
                             end
@@ -136,7 +182,7 @@ end
                     else
                         #WTF BRO
                     end
-                    byebug
+                    
                     
     
     

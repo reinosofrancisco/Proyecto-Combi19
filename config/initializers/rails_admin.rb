@@ -92,7 +92,7 @@ RailsAdmin.config do |config|
       field :combi
       field :precio
       field :repeticion, :string do
-        label "Periodicidad (días)"
+        label "Periodicidad (Días o Meses o Años)"
         help "Formato: 'xT' --- x: número, T: 'd','m','a'. ---  Ej: 8d -> cada 8 días"
       end
       field :hasta_cuando, :date do
