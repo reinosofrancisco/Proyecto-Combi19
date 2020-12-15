@@ -35,6 +35,7 @@
                     <tr> <td colspan="3"> No hay viajes disponibles. </td> </tr>
                     <%else%>
                       <% @pasajes.each do |v| %>
+                      <% if User.find_by_id(v.user_id) != nil %>
                         <tr>
                           <td> <%=User.find_by_id(v.user_id).nombre%> </td>
                           <td> <%=User.find_by_id(v.user_id).apellido%> </td>
@@ -42,6 +43,7 @@
                           <td> <%=button_to("Llenar DDJJ", llenar_ddjj_path(v.user_id))%> </td>
                           <td> <%=button_to("Cancelar", cancelar_viaje_path(v.viaje_id,v.user_id))  %></td>
                         </tr>
+                        <% end %>
                       <% end %>
                       <div>
                       <%= button_to("Cancelar Viaje", cancelar_choferes_path(@pasajes.first.id)) %>

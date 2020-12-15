@@ -59,13 +59,16 @@ class DdjjController < ApplicationController
     usuario_actual = User.find(params[:user_id])
     usuario_actual.fecha_desbaneo = Date.today + 14.days
     usuario_actual.save
+    usuario_actual.pasajes = []
 
   end
 
+  redirect_to root_path
 
 
 
-  byebug
+
+
 
 
 
