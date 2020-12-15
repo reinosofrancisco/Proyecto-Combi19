@@ -1,14 +1,18 @@
 
 
-<%= form_with(model: @ddjj, local: true) do |f| %>
+<%= form_for :ddjj, url: "ddjj_controller/new" do |f| %>
+<%= token_tag %>
+
   <div class="showcase">
     Declaracion Jurada de:
     <%= @usuario.nombre %>
     <%= @usuario.apellido %>
     <br/><br/>
 
+    <%= hidden_field_tag 'user_id', @usuario.id  %>
+
     (!) - Temperatura actual [número con un decimal]
-    <%= f.number_field :temperatura_actual_en_Grados_C %> <br/>
+    <%= f.number_field :temperatura_actual %> <br/>
 
     (!) - ¿Ha retornado del exterior del país en los últimos 14 días?
     <%= f.check_box :retorno_14_dias %> <br/>
@@ -44,11 +48,6 @@
     <%= f.check_box :convive_embarazada %> <br/>
     - ¿Convive en su hogar con alguna persona que presenta fiebre de al menos 37,5ºC y además síntomas respiratorios (tos, dolor de garganta, dificultad respiratoria)?
     <%= f.check_box :convive_fiebre %> <br/> <br/>
-
-    //MEMO PARA MI
-    si contesta temperatura actual >= 37,5 más alguna otra entonces se rechaza <br/>
-    si contesta afirmativa cualquiera de las (!) más cualquier otra, entonces se rechaza <br/> <br/>
-
 
     <%= f.submit "Enviar DDJJ" %>
   </div>

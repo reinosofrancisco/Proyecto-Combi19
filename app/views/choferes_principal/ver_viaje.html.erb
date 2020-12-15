@@ -43,11 +43,11 @@
                           <td> <%=button_to("Cancelar", cancelar_viaje_path(v.viaje_id,v.user_id))  %></td>
                         </tr>
                       <% end %>
-                      <tr>
-                        <td><%= button_to("Cancelar Viaje", cancelar_choferes_path(@pasajes.first.id)) %> </td>
-                      </tr>
+                      <div>
+                      <%= button_to("Cancelar Viaje", cancelar_choferes_path(@pasajes.first.id)) %>
+                      </div>
                     <% end %>
-                  <% end %> 
+                  <% end %>
             </table>
 
             </div>

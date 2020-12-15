@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     get "armado_pasaje/pagar/:viaje_id/sign_out" => "devise/sessions#destroy"
 
     post 'completar_ddjj/:user_id',  to: 'ddjj#llenar' , as: "llenar_ddjj"
+    post 'completar_ddjj/ddjj_controller/new',  to: 'ddjj#new' , as: "new_ddjj"
+
 
 
     get 'comentar_viaje/user/:viaje_id', to: 'acciones_viaje#comentar', as: "comentar_viaje"
