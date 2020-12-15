@@ -1,3 +1,4 @@
+require Rails.root.join('lib', 'rails_admin', 'custom_actions.rb')
 RailsAdmin.config do |config|
 
   ### Popular gems integration
@@ -33,6 +34,9 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
+    new_recursively do
+      only ["Viaje"]
+    end
 
     ## With an audit adapter, you can add:
     # history_index
@@ -66,15 +70,16 @@ RailsAdmin.config do |config|
     configure :updated_at do
         hide
       end
-      configure :created_at do
-          hide
-        end
-        edit do
-          exclude_fields :users , :asientos_restantes, :comentarios
-        end
-        create do
-          exclude_fields :users , :asientos_restantes
-        end
+    configure :created_at do
+        hide
+      end
+    edit do
+      exclude_fields :users , :asientos_restantes, :comentarios, :pasajes
+    end
+    create do
+      exclude_fields :users , :asientos_restantes, :pasajes
+    end
+    
   end
   config.model 'Ciudad' do
     object_label_method do
