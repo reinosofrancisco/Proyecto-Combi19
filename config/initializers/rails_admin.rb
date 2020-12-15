@@ -1,4 +1,6 @@
-require Rails.root.join('lib', 'rails_admin', 'custom_actions.rb')
+#require Rails.root.join('lib', 'rails_admin', 'custom_actions.rb')
+require "rails_admin/config/actions/custom_actions.rb"
+require "rails_admin/config/sections/custom_sections.rb"
 RailsAdmin.config do |config|
 
   ### Popular gems integration
@@ -79,7 +81,30 @@ RailsAdmin.config do |config|
     create do
       exclude_fields :users , :asientos_restantes, :pasajes
     end
-    
+    create_recursively do
+      exclude_fields :users , :asientos_restantes, :pasajes
+      configure :viaje_recursivo do
+        
+      end
+      field :nombre
+      field :fecha
+      field :hora_salida
+      field :duracion
+      field :ruta
+      field :chofer
+      field :combi
+      field :precio
+      field :repeticion, :string do
+        label "Periodicidad (días)"
+        help "Formato: 'xT' --- x: número, T: 'd','m','a'. ---  Ej: 8d -> cada 8 días"
+      end
+      field :hasta_cuando, :date do
+        label "Hasta que fecha se repite"
+        help "Si no se indica se creará por un año"
+      end
+    end
+
+
   end
   config.model 'Ciudad' do
     object_label_method do
