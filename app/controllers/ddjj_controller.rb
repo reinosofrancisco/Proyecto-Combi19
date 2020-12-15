@@ -48,41 +48,79 @@ class DdjjController < ApplicationController
   end
 
   usuario_actual = User.find(params[:user_id])
+
   if banear_usuario then
 
     usuario_actual.fecha_desbaneo = Date.today + 14.days
     usuario_actual.save
-    #ASI NO BESTIABorro los pasajes del usuario
-    #usuario_actual.pasajes = []
 
-    fecha= Date.today
-    viaje= Viaje.where((['fecha >= ? AND fecha < ?', fecha, fecha+100])).where(chofer_id:current_chofer).order(:fecha).first
-    if(viaje != nil)
-      pasaje= Pasaje.find_by_user_id(usuario_actual.id)
+    #Si el usuario tiene pasajes, se los borro
+    if (usuario_actual.pasajes != nil) then
+      fecha= Date.today
+      viaje= Viaje.where((['fecha >= ? AND fecha < ?', fecha, fecha+100])).where(chofer_id:current_chofer).order(:fecha).first
+      if(viaje != nil)
+        pasaje= Pasaje.find_by_user_id(usuario_actual.id)
+      end
+      Pasaje.delete(pasaje.id)
     end
-
-    Pasaje.delete(pasaje.id)
 
     flash.alert = "El usuario no puede comprar viajes por las proximas 2 semanas"
 
   else
     #Si el usuario esta admitido, su fecha de desbaneo es hoy
     flash.alert = "Se completo la DDJJ con exito"
-    usuario_actual.fecha_desbaneo = Date.today
+    usuario_actual.fecha_desbaneo = Date.today - 1.days
     usuario_actual.save
 
+
   end
+
+
 
   redirect_to root_path
 
 
 
+  end
 
 
+  def registrar_usuario
+
+    fecha= Date.today
+    viaje = Viaje.where((['fecha >= ? AND fecha < ?', fecha, fecha+100])).where(chofer_id:current_chofer).order(:fecha).first
+
+    if (viaje != nil) then
+    usuario_actual = User.create(
+      email: params[:usuario_nuevo][:email],
+      password: "temp_pass_please_change",
+      nombre: params[:usuario_nuevo][:nombre],
+      apellido: params[:usuario_nuevo][:apellido],
+      fecha_nacimiento: params[:usuario_nuevo][:fecha_nacimiento],
+      telefono: params[:usuario_nuevo][:telefono],
+      dni: params[:usuario_nuevo][:dni])
+
+      if usuario_actual.save
+          flash.alert = "Registrado con exito"
+        else
+            flash.alert = "Hubo un error en el registro"
+          end
 
 
+      pasaje_nuevo = Pasaje.create(
+        user_id: usuario_actual.id,
+        viaje_id: viaje.id)
 
-
+    else
+      flash.alert = "No tiene viajes, por lo que no puede registrar pasajeros"
+    end
+      redirect_to root_path
 
   end
+
+
+
+
+
+
+
 end

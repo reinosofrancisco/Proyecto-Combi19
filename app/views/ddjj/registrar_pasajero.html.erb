@@ -1,0 +1,32 @@
+
+  <%= form_for :usuario_nuevo, url: "ddjj_controller/registrar_usuario" do |f| %>
+  <%= token_tag %>
+
+    <div class="showcase">
+
+
+      Nombre:
+      <%= f.text_field :nombre , :required => true%> <br/>
+
+      Apellido:
+      <%= f.text_field :apellido , :required => true%> <br/>
+
+      Email:
+      <%= f.email_field :email , :required => true%> <br/>
+
+      DNI:
+      <%= f.number_field :dni , :required => true%> <br/>
+
+      Telefono:
+      <%= f.number_field :telefono , :required => true%> <br/>
+
+      Fecha de Nacimiento:
+      <%= f.date_field :fecha_nacimiento , :required => true%> <br/>
+
+
+
+      <%= f.submit "Registrar Usuario" %>
+    </div>
+
+
+  <% end %>

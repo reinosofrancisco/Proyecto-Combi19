@@ -31,6 +31,8 @@ Ciudad.delete_all
 Ruta.delete_all
 Chofer.delete_all
 
+Pasaje.delete_all
+
 
 
 
