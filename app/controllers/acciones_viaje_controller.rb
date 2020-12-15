@@ -39,7 +39,7 @@ class AccionesViajeController < ApplicationController
             # else
             #     redirect_to user_info_path(current_user.id),notice: "Se le reintegraron $0"
             # end
-            redirect_to chofer_path, notice: "El asciento fue cancelado con exito"
+            redirect_to chofer_path, notice: "El asiento fue cancelado con exito"
         end
 
 
