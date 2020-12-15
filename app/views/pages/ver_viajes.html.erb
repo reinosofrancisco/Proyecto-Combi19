@@ -91,7 +91,9 @@
               <th> Precio </th>
               <th> Comprar </th>
             </tr>
-
+            <% #POR COMO FUNCIONAN LOS OPERADORES. SI EL CURRENT USER ES NIL, ENTRARA DE UNA SIN CHEQUEAR LA SEGUNDA CONDICION%>
+            <% #POR LO TANTO, NO GENERARA UN ERROR. SI ES DISTINTO DE NIL, VERIFICARA LA OTRA CONDICION%>
+            <% if (current_user.fecha_desbaneo == nil) ||  (current_user.fecha_desbaneo < Date.today) %>
               <% @viajes.each do |v| %>
                 <tr>
                   <td> <%=v.nombre%> </td>
@@ -110,10 +112,17 @@
                   <% end %>
 
                 </tr>
+
+
+              <% end %>
+              <% else %>
+                <tr> <td colspan="8"> No podra comprar viajes hasta el <%= current_user.fecha_desbaneo.day%>/<%= current_user.fecha_desbaneo.month%>/<%= current_user.fecha_desbaneo.year%> </td> </tr>
               <% end %>
 
+
+
               <% if @viajes.size == 0 %>
-                <tr> <td colspan="3"> No hay viajes disponibles. </td> </tr>
+                <tr> <td colspan="8"> No hay viajes disponibles. </td> </tr>
               <% end %>
 
             </table>
