@@ -59,7 +59,11 @@ class DdjjController < ApplicationController
     usuario_actual = User.find(params[:user_id])
     usuario_actual.fecha_desbaneo = Date.today + 14.days
     usuario_actual.save
+    #Borro los pasajes del usuario
     usuario_actual.pasajes = []
+    flash.alert = "El usuario no puede comprar viajes por las proximas 2 semanas"
+  else
+    flash.alert = "Se completo la DDJJ con exito"
 
   end
 
