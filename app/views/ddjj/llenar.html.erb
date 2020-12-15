@@ -1,0 +1,57 @@
+
+
+<%= form_with(model: @ddjj, local: true) do |f| %>
+  <div class="showcase">
+    Declaracion Jurada de:
+    <%= @usuario.nombre %>
+    <%= @usuario.apellido %>
+    <br/><br/>
+
+    (!) - Temperatura actual [número con un decimal]
+    <%= f.number_field :temperatura_actual_en_Grados_C %> <br/>
+
+    (!) - ¿Ha retornado del exterior del país en los últimos 14 días?
+    <%= f.check_box :retorno_14_dias %> <br/>
+
+    (!) - ¿Ha estado en contacto con alguien que haya presentado síntomas respiratorios o fiebre, o haya sido caso confirmado de COVID en los últimos 14 días?
+    <%= f.check_box :contacto_riesgoso %> <br/><br/>
+
+
+    En los últimos 14 días: <br/>
+    (!) - ¿Presentó síntomas respiratorios (tos, dificultad respiratoria?
+    <%= f.check_box :sintomas_respiratorios %> <br/>
+    (!) - ¿Tuvo fiebre de 37,5ºC o más?
+    <%= f.check_box :fiebre %> <br/>
+    (!) - ¿Tuvo dolor de garganta?
+    <%= f.check_box :dolor_garganta %> <br/><br/>
+
+    Prevalencia <br/>
+    - ¿Es hipertenso?
+    <%= f.check_box :hipertenso %> <br/>
+    - ¿Tiene enfermedades respiratorias?
+    <%= f.check_box :enfermedades_respiratorias %> <br/>
+    - ¿Es diabético?
+    <%= f.check_box :diabetico %> <br/>
+    - ¿Es una persona inmunodeprimida?
+    <%= f.check_box :inmunodeprimida %> <br/>
+    - ¿Tiene problemas cardíacos?
+    <%= f.check_box :problemas_cardiacos %> <br/><br/>
+
+    Entorno familiar <br/>
+    - ¿Tiene hijos menores de edad escolarizados?
+    <%= f.check_box :hijos_menores %> <br/>
+    - ¿Convive en su hogar persona embarazada?
+    <%= f.check_box :convive_embarazada %> <br/>
+    - ¿Convive en su hogar con alguna persona que presenta fiebre de al menos 37,5ºC y además síntomas respiratorios (tos, dolor de garganta, dificultad respiratoria)?
+    <%= f.check_box :convive_fiebre %> <br/> <br/>
+
+    //MEMO PARA MI
+    si contesta temperatura actual >= 37,5 más alguna otra entonces se rechaza <br/>
+    si contesta afirmativa cualquiera de las (!) más cualquier otra, entonces se rechaza <br/> <br/>
+
+
+    <%= f.submit "Enviar DDJJ" %>
+  </div>
+
+
+<% end %>
