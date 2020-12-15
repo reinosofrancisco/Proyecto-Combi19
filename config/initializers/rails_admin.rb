@@ -83,9 +83,6 @@ RailsAdmin.config do |config|
     end
     create_recursively do
       exclude_fields :users , :asientos_restantes, :pasajes
-      configure :viaje_recursivo do
-        
-      end
       field :nombre
       field :fecha
       field :hora_salida
@@ -101,6 +98,7 @@ RailsAdmin.config do |config|
       field :hasta_cuando, :date do
         label "Hasta que fecha se repite"
         help "Si no se indica se creará por un año"
+        date_format :default
       end
     end
 

@@ -32,6 +32,7 @@ module RailsAdmin
                                             if(!(repe[:int].empty? || repe[:unit].empty?))
                                                 int=repe[:int]
                                                 unit=repe[:unit]
+                                                fecha=aux[:fecha]
                                                 schedule = IceCube::Schedule.new
                                                 if(unit=="d")
                                                     schedule.add_recurrence_rule IceCube::Rule.daily(int)
@@ -42,17 +43,30 @@ module RailsAdmin
                                                 else
                                                     #WTF BRO
                                                 end
-                                                schedule.occurrences hasta.to_date do |d|
-                                                    #intentar crear el viaje
+                                                schedule.occurrences(hasta.to_date).each do |d|
 
-                                                    
+                                                    #intentar crear el viaje                                                    
+                                                    @object=@abstract_model.new(params.require(@abstract_model.to_param)
+                                                                .permit(:nombre,
+                                                                    :fecha,
+                                                                    :hora_salida,
+                                                                    :duracion,
+                                                                    :ruta_id,
+                                                                    :chofer_id,
+                                                                    :combi_id,
+                                                                    :precio))
+                                                    @object.fecha=d
+                                                    byebug
+
+                                                    #si sale mal
+                                                    if !@object.save
+                                                        handle_save_error #???
+                                                    end
                                                 end
-
-
-                                                byebug
                                                 
-                                
-                                
+                                                
+                                                
+                                                
                                             else
                                                 #error mal escrito repe
                                             end
@@ -62,11 +76,14 @@ module RailsAdmin
                                     end
                                 end
                                 
-
-
                                 
-                                flash[:notice] = "Creado #{@model_name} recursivamente"
+                                
+                                #si llego acá todo piola
+
+                                @object=@abstract_model.new #jaja
                                 byebug
+                                flash[:notice] = "Creado #{@model_name} recursivamente"
+                                redirect_path = index_path
                             elsif request.get?
                                 @object=@abstract_model.new                        
                             end
