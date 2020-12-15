@@ -7,4 +7,10 @@ class ChoferesPrincipalController < ApplicationController
       @pasajes= Pasaje.where(viaje_id: viaje.id)
     end
   end
+
+
+
+
+
+
 end

@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
     post 'completar_ddjj/:user_id',  to: 'ddjj#llenar' , as: "llenar_ddjj"
     post 'completar_ddjj/ddjj_controller/new',  to: 'ddjj#new' , as: "new_ddjj"
+    post 'ddjj_controller/registrar_usuario',  to: 'ddjj#registrar_usuario' , as: "registrar_usuario_ddjj"
 
 
 
@@ -43,6 +44,8 @@ Rails.application.routes.draw do
     post 'comentar_viaje/user/:viaje_id', to: 'acciones_viaje#comentarPost', as: "comentar_viaje_post"
 
     delete 'borrar_comentario/user/:comentario_id', to: 'acciones_viaje#borrarComentario', as: "borrar_comentario"
+
+    get 'registrar_pasajero', to: 'ddjj#registrar_pasajero', as: "registrar_pasajero_ddjj"
 
 
 
