@@ -9,11 +9,11 @@ module RailsAdmin
                 register_instance_option :collection do
                     true
                 end
-        
+
                 register_instance_option :http_methods do
                     [:get, :post]
                 end
-        
+
                 register_instance_option :controller do
                     Proc.new do
                         hubo_errores=false
@@ -24,9 +24,9 @@ module RailsAdmin
                                     aux=params[:viaje]
                                     repe=aux[:repeticion]
                                     hasta=aux[:hasta_cuando]
-                                    if(hasta.nil? || hasta<aux[:fecha])
+                                    if(hasta.nil? || hasta.to_date < aux[:fecha].to_date)
 
-                                        #intentar crear el viaje                                                    
+                                        #intentar crear el viaje
                                         @object=@abstract_model.new(params.require(@abstract_model.to_param)
                                         .permit(:nombre,
                                             :fecha,
@@ -36,18 +36,18 @@ module RailsAdmin
                                             :chofer_id,
                                             :combi_id,
                                             :precio))
-                                        
+
                                         @object.fecha=aux[:fecha].to_date
                                         #se crea solo una entrada
                                         if !@object.save
                                             handle_save_error(:whereto => :new_recursively)
                                         end
-                                        
+
                                     else
                                         if(!repe.nil?)
                                             repe.downcase!
                                             repe=repe.match(/((?<int>([\d]+)\s?)(?<unit>(d|m|a|$)))/)
-                                            
+
                                             if(!(repe[:int].empty? || repe[:unit].empty?))
                                                 int=repe[:int]
                                                 unit=repe[:unit]
@@ -64,7 +64,7 @@ module RailsAdmin
                                                 end
                                                 schedule.occurrences(hasta.to_date).each do |d|
 
-                                                    #intentar crear el viaje                                                    
+                                                    #intentar crear el viaje
                                                     @object=@abstract_model.new(params.require(@abstract_model.to_param)
                                                                 .permit(:nombre,
                                                                     :fecha,
@@ -75,7 +75,7 @@ module RailsAdmin
                                                                     :combi_id,
                                                                     :precio))
                                                     @object.fecha=d
-                            
+
                                                     #si sale mal
                                                     if !@object.save
                                                         #customizar el error
@@ -95,10 +95,10 @@ module RailsAdmin
                                                         break
                                                     end
                                                 end
-                                                
-                                                
-                                                
-                                                
+
+
+
+
                                             else
                                                 #error mal escrito repe
                                                 flash.now[:error] = I18n.t('admin.flash.error', name: @model_config.label, action: I18n.t("admin.actions.#{@action.key}.done").html_safe).html_safe
@@ -110,14 +110,14 @@ module RailsAdmin
                                                     format.js   { render whereto, layout: false, status: :not_acceptable }
                                                 end
                                                 @object=@abstract_model.new
-                                                
+
                                             end
                                         else
                                             #nil en repe
                                             #error mal escrito repe
                                             flash.now[:error] = I18n.t('admin.flash.error', name: @model_config.label, action: I18n.t("admin.actions.#{@action.key}.done").html_safe).html_safe
                                             flash.now[:error] += %(<br>- Debe ingresar periodicidad).html_safe
-                                            
+
                                             whereto= :new_recursively
                                             respond_to do |format|
                                                 format.html { render whereto, status: :not_acceptable }
@@ -127,17 +127,17 @@ module RailsAdmin
                                         end
                                     end
                                 end
-                                
-                                
-                                
+
+
+
                                 #si llego acá todo piola
 
                                 @object=@abstract_model.new #jaja
-                                
+
                                 flash[:notice] = "Creado #{@model_name} recursivamente" if !hubo_errores
                                 redirect_path = index_path if !hubo_errores
                             elsif request.get?
-                                @object=@abstract_model.new                        
+                                @object=@abstract_model.new
                             end
                         else
                             flash[:notice] = "¡NO DEBERÍA DE ESTAR VIENDO ESTO!"
@@ -155,8 +155,8 @@ module RailsAdmin
 end
 
 
-  
-  
+
+
   def crear_recursivo
 
     if !params.nil?
@@ -182,10 +182,10 @@ end
                     else
                         #WTF BRO
                     end
-                    
-                    
-    
-    
+
+
+
+
                 else
                     #error mal escrito repe
                 end
@@ -193,10 +193,10 @@ end
                 #nil en repe
             end
         end
-    
 
 
-        
+
+
         @object=@abstract_model.new(params.require(@abstract_model.to_param)
         .permit(:nombre,
             :fecha,
@@ -211,4 +211,3 @@ end
         return false
     end
 end
-
