@@ -27,19 +27,18 @@ class Viaje < ApplicationRecord
   end
 
 
+  def repeticion
+    
+  end
+  def hasta_cuando
+    
+  end
+  
+  
+  
+  
+  
   protected
-
-  # validate :validaciones_generales
-  # def validaciones_generales
-  #   combi_no_ocupada
-  #   chofer_no_ocupado
-  # end
-
-
-
-
-
-
   def combi_no_ocupada
     viajes= Viaje.where(combi:combi).where(fecha: fecha)
     horaref= Time.new(2020,1,1,23,59)
