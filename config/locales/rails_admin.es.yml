@@ -82,6 +82,12 @@ es:
         breadcrumb: "Nuevo"
         link: "Agregar un nuevo %{model_label}"
         done: "creado"
+      new_recursively:
+        title: "Nuevos %{model_label}"
+        menu: "Agregar nuevos"
+        breadcrumb: "Nuevos"
+        link: "Agregar un nuevos %{model_label}"
+        done: "creados"
       edit:
         title: "Editar %{model_label} '%{object_label}'"
         menu: "Editar"
