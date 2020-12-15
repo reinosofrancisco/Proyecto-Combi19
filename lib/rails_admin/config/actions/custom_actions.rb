@@ -16,7 +16,8 @@ module RailsAdmin
         
                 register_instance_option :controller do
                     Proc.new do
-                        if @model_name="viaje"
+                        hubo_errores=false
+                        if @model_name=="Viaje"
                             #model_config.
                             if request.post?
                                 if !params.nil?
@@ -56,11 +57,16 @@ module RailsAdmin
                                                                     :combi_id,
                                                                     :precio))
                                                     @object.fecha=d
-                                                    byebug
-
+                            
                                                     #si sale mal
                                                     if !@object.save
-                                                        handle_save_error #???
+                                                        #customizar el error
+                                                        flash.now[:error] = I18n.t('admin.flash.error', name: @model_config.label, action: I18n.t("admin.actions.#{@action.key}.done").html_safe).html_safe
+                                                        flash.now[:error] += %(<br>- #{@object.errors.full_messages.join('<br>- ')}).html_safe
+                                                        #redirect_to back_or_index
+                                                        #handle_save_error #???
+                                                        hubo_errores=true
+                                                        break
                                                     end
                                                 end
                                                 
@@ -82,8 +88,8 @@ module RailsAdmin
 
                                 @object=@abstract_model.new #jaja
                                 byebug
-                                flash[:notice] = "Creado #{@model_name} recursivamente"
-                                redirect_path = index_path
+                                flash[:notice] = "Creado #{@model_name} recursivamente" if !hubo_errores
+                                redirect_path = !hubo_errores ? index_path : index
                             elsif request.get?
                                 @object=@abstract_model.new                        
                             end
