@@ -29,14 +29,6 @@ class DdjjController < ApplicationController
 
   temperatura_actual = params[:ddjj][:temperatura_actual]
 
-  #EL USUARIO DEBE TENER UN CAMPO FECHA EL CUAL SERA LA FECHA EN LA CUAL
-  #SERA DESBANEADO. SI LA FECHA ES MENOR QUE LA FECHA ACTUAL, EL USUARIO
-  #ESTA DESBANEADO.
-  #POR DEFECTO, AL CREAR UN USUARIO HABRIA QUE HACER QUE LA FECHA
-  #DE DESBANEAR SEA LA FECHA ACTUAL
-
-  #SI FECHA DESBANEO ES NIL, EL USUARIO NUNCA FUE BANEADO. DEJALO EN PAZ HACER SU VIDA
-
   banear_usuario = false;
 
   if temperatura_actual != nil then
@@ -55,8 +47,9 @@ class DdjjController < ApplicationController
 
   end
 
+  usuario_actual = User.find(params[:user_id])
   if banear_usuario then
-    usuario_actual = User.find(params[:user_id])
+
     usuario_actual.fecha_desbaneo = Date.today + 14.days
     usuario_actual.save
     #ASI NO BESTIABorro los pasajes del usuario
@@ -70,12 +63,13 @@ class DdjjController < ApplicationController
 
     Pasaje.delete(pasaje.id)
 
-
-
-
     flash.alert = "El usuario no puede comprar viajes por las proximas 2 semanas"
+
   else
+    #Si el usuario esta admitido, su fecha de desbaneo es hoy
     flash.alert = "Se completo la DDJJ con exito"
+    usuario_actual.fecha_desbaneo = Date.today
+    usuario_actual.save
 
   end
 
