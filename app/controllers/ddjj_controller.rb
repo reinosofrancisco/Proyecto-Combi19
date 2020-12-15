@@ -35,8 +35,33 @@ class DdjjController < ApplicationController
   #POR DEFECTO, AL CREAR UN USUARIO HABRIA QUE HACER QUE LA FECHA
   #DE DESBANEAR SEA LA FECHA ACTUAL
 
+  #SI FECHA DESBANEO ES NIL, EL USUARIO NUNCA FUE BANEADO. DEJALO EN PAZ HACER SU VIDA
+
+  banear_usuario = false;
+
   if temperatura_actual != nil then
-    if temperatura_actual
+    if temperatura_actual.to_f >= 37.5 then
+        #Select me devuelve los valores que corroboran la condicion. Por lo tanto
+        #Si el usuario tildo alguna casilla, lenght sera mayor a 0
+        #y debera ser baneado por 2 semanas
+        if ((arr.select { |number| number.to_i > 0 }).length != 0) then
+          banear_usuario = true;
+        end
+
+    #Si el usuario tildo mas de una casilla, es baneado
+  elsif ((arr.select { |number| number.to_i > 0 }).length > 1) then
+      banear_usuario = true;
+    end
+
+  end
+
+  if banear_usuario then
+    usuario_actual = User.find(params[:user_id])
+    usuario_actual.fecha_desbaneo = Date.today + 14.days
+    usuario_actual.save
+
+  end
+
 
 
 

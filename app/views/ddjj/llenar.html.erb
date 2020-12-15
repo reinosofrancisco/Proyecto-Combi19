@@ -12,7 +12,7 @@
     <%= hidden_field_tag 'user_id', @usuario.id  %>
 
     (!) - Temperatura actual [número con un decimal]
-    <%= f.number_field :temperatura_actual %> <br/>
+    <%= f.number_field :temperatura_actual , :required => true%> <br/>
 
     (!) - ¿Ha retornado del exterior del país en los últimos 14 días?
     <%= f.check_box :retorno_14_dias %> <br/>
