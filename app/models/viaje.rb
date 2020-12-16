@@ -33,7 +33,9 @@ class Viaje < ApplicationRecord
   def hasta_cuando
     
   end
-  
+  def unidad
+    
+  end
   
   
   

@@ -22,8 +22,9 @@ module RailsAdmin
                             if request.post?
                                 if !params.nil?
                                     aux=params[:viaje]
-                                    repe=aux[:repeticion]
                                     hasta=aux[:hasta_cuando]
+                                    int=aux[:repeticion].to_i
+                                    unit=aux[:unidad]
                                     if(hasta.nil? || hasta.to_date < aux[:fecha].to_date)
 
                                         #intentar crear el viaje
@@ -44,13 +45,9 @@ module RailsAdmin
                                         end
 
                                     else
-                                        if(!repe.nil?)
-                                            repe.downcase!
-                                            repe=repe.match(/((?<int>([\d]+)\s?)(?<unit>(d|m|a|$)))/)
-
-                                            if(!(repe[:int].empty? || repe[:unit].empty?))
-                                                int=repe[:int]
-                                                unit=repe[:unit]
+                                        byebug
+                                        if !(int==0)
+                                            if(!unit.empty?)
                                                 fecha=aux[:fecha]
                                                 schedule = IceCube::Schedule.new(fecha.to_date)
                                                 if(unit=="d")
@@ -101,28 +98,29 @@ module RailsAdmin
                                             else
                                                 #error mal escrito repe
                                                 flash.now[:error] = I18n.t('admin.flash.error', name: @model_config.label, action: I18n.t("admin.actions.#{@action.key}.done").html_safe).html_safe
-                                                flash.now[:error] += %(<br>- Formato de periodicidad no válido).html_safe
+                                                flash.now[:error] += %(<br>- No se ha ingresado una unidad).html_safe
 
+                                                @object=@abstract_model.new
                                                 whereto= :new_recursively
                                                 respond_to do |format|
                                                     format.html { render whereto, status: :not_acceptable }
                                                     format.js   { render whereto, layout: false, status: :not_acceptable }
                                                 end
-                                                @object=@abstract_model.new
-
+                                                hubo_errores=true
                                             end
                                         else
                                             #nil en repe
                                             #error mal escrito repe
                                             flash.now[:error] = I18n.t('admin.flash.error', name: @model_config.label, action: I18n.t("admin.actions.#{@action.key}.done").html_safe).html_safe
-                                            flash.now[:error] += %(<br>- Debe ingresar periodicidad).html_safe
+                                            flash.now[:error] += %(<br>- Debe ingresar una cantidad en "cada cuanto").html_safe
+                                            @object=@abstract_model.new
 
                                             whereto= :new_recursively
                                             respond_to do |format|
                                                 format.html { render whereto, status: :not_acceptable }
                                                 format.js   { render whereto, layout: false, status: :not_acceptable }
                                             end
-                                            @object=@abstract_model.new
+                                            hubo_errores=true
                                         end
                                     end
                                 end

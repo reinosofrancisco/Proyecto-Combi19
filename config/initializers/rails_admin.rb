@@ -91,9 +91,16 @@ RailsAdmin.config do |config|
       field :chofer
       field :combi
       field :precio
-      field :repeticion, :string do
-        label "Periodicidad (Días o Meses o Años)"
-        help "Formato: 'xT' --- x: número, T: 'd','m','a'. ---  Ej: 8d -> cada 8 días"
+      field :repeticion, :integer do
+        label "Cada cuanto"
+        help "Ingrese cantidad"
+      end
+      field :unidad, :enum do
+        label "Unidad de tiempo"
+        help "Días meses o años"
+        enum do
+          [['Dias',1],['Meses',2],['Años',3]]
+        end
       end
       field :hasta_cuando, :date do
         label "Hasta que fecha se repite"
@@ -101,7 +108,6 @@ RailsAdmin.config do |config|
         date_format :default
       end
     end
-
 
   end
   config.model 'Ciudad' do
