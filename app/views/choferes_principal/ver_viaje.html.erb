@@ -31,7 +31,7 @@
                   <th> Cancelar asiento</th>
                 </tr>
                 <% if @pasajes != nil %>
-                  <% if @pasajes.first.user_id= -900%>
+                  <% if @pasajes.empty?%>
                     <tr> <td colspan="5"> No hay pasajeros aun. </td> </tr>
                     <div>
                     <td> <%= button_to("Cancelar Viaje", cancelar_choferes_path(@pasajes.first.id), method: 'get') %></td>

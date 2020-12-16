@@ -10,12 +10,8 @@ class ChoferesPrincipalController < ApplicationController
           if(p.estado == nil)
               @pasajes= Pasaje.where(viaje_id: v.id)
               break
-        else
-          @pasajes = Pasaje.create(viaje_id: v.id, user_id: -900)
-          break
         end
       end
-
       end
     end
     @f = User.new
