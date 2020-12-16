@@ -50,11 +50,11 @@ module RailsAdmin
                                             if(!unit.empty?)
                                                 fecha=aux[:fecha]
                                                 schedule = IceCube::Schedule.new(fecha.to_date)
-                                                if(unit=="d")
+                                                if(unit=="1")
                                                     schedule.add_recurrence_rule IceCube::Rule.daily(int)
-                                                elsif unit=="m"
+                                                elsif unit=="2"
                                                     schedule.add_recurrence_rule IceCube::Rule.monthly(int).day_of_month(fecha.to_date.day)
-                                                elsif unit=="a"
+                                                elsif unit=="3"
                                                     schedule.add_recurrence_rule IceCube::Rule.yearly(int).day_of_year(fecha.to_date.yday)
                                                 else
                                                     #WTF BRO
@@ -132,7 +132,7 @@ module RailsAdmin
                                 @object=@abstract_model.new #jaja
 
                                 flash[:notice] = "Creado #{@model_name}s recursivamente" if !hubo_errores
-                                redirect_path = index_path if !hubo_errores
+                                redirect_to = index_path if !hubo_errores
                             elsif request.get?
                                 @object=@abstract_model.new
                             end
