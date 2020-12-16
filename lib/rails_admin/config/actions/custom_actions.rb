@@ -24,7 +24,8 @@ module RailsAdmin
                                     aux=params[:viaje]
                                     repe=aux[:repeticion]
                                     hasta=aux[:hasta_cuando]
-                                    if(hasta.nil? || hasta.to_date < aux[:fecha].to_date)
+
+                                    if(hasta.to_date.nil? || hasta.to_date < aux[:fecha].to_date)
 
                                         #intentar crear el viaje
                                         @object=@abstract_model.new(params.require(@abstract_model.to_param)
@@ -132,7 +133,7 @@ module RailsAdmin
                                 #si llego acá todo piola
 
                                 @object=@abstract_model.new #jaja
-                                
+
                                 flash[:notice] = "Creado #{@model_name}s recursivamente" if !hubo_errores
                                 redirect_path = index_path if !hubo_errores
                             elsif request.get?
