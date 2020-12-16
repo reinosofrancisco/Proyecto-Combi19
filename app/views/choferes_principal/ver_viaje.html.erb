@@ -46,13 +46,12 @@
                           <td> <%=User.find_by_id(v.user_id).apellido%> </td>
                           <td> <%=User.find_by_id(v.user_id).dni%> </td>
 
-                          <% if (User.find_by_id(v.user_id).fecha_desbaneo != (Date.today - 1.days)) %>
-                            <td> <%=button_to("Llenar DDJJ", llenar_ddjj_path(v.user_id))%> </td>
-                            <% else %>
-                            <% if  (User.find_by_id(v.user_id).pasajes.first.estado != "DDJJ Rechazada")%>
+                            <% if  (User.find_by_id(v.user_id).pasajes.first.estado == "DDJJ Rechazada")%>
                               <td> DDJJ Rechazada </td>
-                            <% else %>
+                            <% elsif (User.find_by_id(v.user_id).pasajes.first.estado == "DDJJ Aceptada") %>
                             <td> DDJJ Completa </td>
+                            <% else %>
+                              <td> <%=button_to("Llenar DDJJ", llenar_ddjj_path(v.user_id))%> </td>
                             <% end %>
                           <% end %>
 
@@ -60,7 +59,7 @@
                         </tr>
 
                         <% end %>
-                      <% end %>
+
                       <div>
                       <td> <%= button_to("Cancelar Viaje", cancelar_choferes_path(@pasajes.first.id), method: 'get') %></td>
                       </div>

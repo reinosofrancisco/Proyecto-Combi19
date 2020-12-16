@@ -7,7 +7,7 @@ class ChoferesPrincipalController < ApplicationController
       viaje.each  do |v|
         p= Pasaje.where(viaje_id: v.id).first
         if(p != nil)
-          if(p.estado == nil)
+          if (p.estado == "DDJJ Rechazada") || (p.estado == "DDJJ Aceptada") || (p.estado == nil) 
               @pasajes= Pasaje.where(viaje_id: v.id)
               break
         end

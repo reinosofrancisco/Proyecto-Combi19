@@ -71,6 +71,14 @@ class DdjjController < ApplicationController
   else
     #Si el usuario esta admitido, su fecha de desbaneo es hoy
     flash.alert = "Se completo la DDJJ con exito"
+    fecha= Date.today
+    viaje= Viaje.where((['fecha >= ? AND fecha < ?', fecha, fecha+100])).where(chofer_id:current_chofer).order(:fecha).first
+    if(viaje != nil)
+      pasaje= Pasaje.find_by_user_id(usuario_actual.id)
+      pasaje.estado = "DDJJ Aceptada"
+      pasaje.save
+    end
+
     usuario_actual.fecha_desbaneo = Date.today - 1.days
     usuario_actual.save
 
