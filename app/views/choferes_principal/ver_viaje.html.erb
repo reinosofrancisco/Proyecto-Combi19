@@ -31,8 +31,11 @@
                   <th> Cancelar asiento</th>
                 </tr>
                 <% if @pasajes != nil %>
-                  <% if @pasajes.empty? || @pasajes.first.estado != nil %>
-                    <tr> <td colspan="5"> No hay viajes disponibles. </td> </tr>
+                  <% if @pasajes.empty?%>
+                    <tr> <td colspan="5"> No hay pasajeros aun. </td> </tr>
+                    <div>
+                    <td> <%= button_to("Cancelar Viaje", cancelar_choferes_path(@pasajes.first.id), method: 'get') %></td>
+                    </div>
                     <%else%>
                       <% @pasajes.each do |v| %>
                       <% if User.find_by_id(v.user_id) != nil %>
@@ -58,7 +61,9 @@
                       <td> <%= button_to("Cancelar Viaje", cancelar_choferes_path(@pasajes.first.id), method: 'get') %></td>
                       </div>
                     <% end %>
-                  <% end %>
+                    <%else%>
+                      <tr> <td colspan="5"> No hay viajes aun. </td> </tr>
+                  <%end %>
             </table>
 
             </div>

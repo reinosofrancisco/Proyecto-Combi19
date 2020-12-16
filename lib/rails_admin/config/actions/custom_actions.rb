@@ -130,7 +130,7 @@ module RailsAdmin
                                 #si llego acá todo piola
 
                                 @object=@abstract_model.new #jaja
-                                
+
                                 flash[:notice] = "Creado #{@model_name}s recursivamente" if !hubo_errores
                                 redirect_path = index_path if !hubo_errores
                             elsif request.get?
