@@ -76,7 +76,8 @@ Rails.application.routes.draw do
   devise_scope :chofer do
       authenticated :chofer do
         root 'choferes_principal#ver_viaje', as: :chofer
-        post 'cancelar_viaje/:pasaje_id', to: 'cancelar_viaje_chofer#cancelar', as: 'cancelar_choferes'
+        get 'cancelar_viaje/:pasaje_id', to: 'cancelar_viaje_chofer#cancelar', as: 'cancelar_choferes'
+        post 'cancelar_viaje/:pasaje_id', to: 'cancelar_viaje_chofer#motivo', as: 'cancelar_cho'
       end
 
 

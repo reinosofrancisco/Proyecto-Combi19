@@ -1,7 +1,7 @@
 <div class="container mt-2">
     <div class="card bg-dark text-light mt-2">
         <!-- PONER QUE SOLO SE ARME EL COMENTARIO PARA CUANDO ESTOY EN UN VIAJE ESPECIFICO -->
-        <%= form_with url: cancelar_choferes_path, method: :post,local: true, class: "nifty_form" do |f| %>
+        <%= form_with url: cancelar_cho_path, method: :post,local: true, class: "nifty_form" do |f| %>
         Motivo
         <ul>
           <%= f.text_field :mensaje %>

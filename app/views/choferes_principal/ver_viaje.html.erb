@@ -31,7 +31,7 @@
                   <th> Cancelar asiento</th>
                 </tr>
                 <% if @pasajes != nil %>
-                  <% if @pasajes.empty? %>
+                  <% if @pasajes.empty? || @pasajes.first.estado != nil %>
                     <tr> <td colspan="5"> No hay viajes disponibles. </td> </tr>
                     <%else%>
                       <% @pasajes.each do |v| %>
@@ -55,7 +55,7 @@
                         <% end %>
                       <% end %>
                       <div>
-                      <%= button_to("Cancelar Viaje", cancelar_choferes_path(@pasajes.first.id)) %>
+                      <td> <%= button_to("Cancelar Viaje", cancelar_choferes_path(@pasajes.first.id), method: 'get') %></td>
                       </div>
                     <% end %>
                   <% end %>
