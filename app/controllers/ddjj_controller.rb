@@ -60,8 +60,10 @@ class DdjjController < ApplicationController
       viaje= Viaje.where((['fecha >= ? AND fecha < ?', fecha, fecha+100])).where(chofer_id:current_chofer).order(:fecha).first
       if(viaje != nil)
         pasaje= Pasaje.find_by_user_id(usuario_actual.id)
+        pasaje.estado = "DDJJ Rechazada"
+        pasaje.save
       end
-      Pasaje.delete(pasaje.id)
+      #Pasaje.delete(pasaje.id)
     end
 
     flash.alert = "El usuario no puede comprar viajes por las proximas 2 semanas"

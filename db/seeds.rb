@@ -48,7 +48,7 @@ Admin.create(email: "admin@hotmail.com", password: "admin1234", password_confirm
 #   fecha_nacimiento: Faker::Date.birthday(min_age: 18, max_age: 65),
 #   dni: rand(45555555 .. 99999999), telefono: Faker::PhoneNumber.phone_number)
 
-User.create(
+current_user = User.create(
   email: "admin@hotmail.com", password: "admin1234", password_confirmation: "admin1234",
   nombre: "Reinoso", apellido: "Francisco",
   fecha_nacimiento: Faker::Date.birthday(min_age: 18, max_age: 65),
@@ -132,6 +132,11 @@ Chofer.populate 1 do |k|
     j.combi_id = Combi.all.sample.id
     j.asientos_restantes = 12
     j.precio = rand(1000 .. 6000)
+
+    Pasaje.populate 1 do |p|
+      p.user_id = current_user;
+      p.viaje_id = j.id;
+    end
 
     #Genero usuarios aleatorios
     User.populate 5 do |u|
