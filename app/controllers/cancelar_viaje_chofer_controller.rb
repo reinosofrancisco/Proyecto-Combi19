@@ -13,6 +13,9 @@ class CancelarViajeChoferController < ApplicationController
       end
        if guarde
          redirect_to chofer_path , notice: "El viaje fue cancelado con exito"
+       else
+          flash[:error] =  "No se pudo eliminar el viaje"
+          render :motivo
        end
     end
   end
