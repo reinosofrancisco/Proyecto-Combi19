@@ -25,7 +25,6 @@ module RailsAdmin
                                     repe=aux[:repeticion]
                                     hasta=aux[:hasta_cuando]
                                     if(hasta.nil? || hasta<aux[:fecha])
-
                                         #intentar crear el viaje                                                    
                                         @object=@abstract_model.new(params.require(@abstract_model.to_param)
                                         .permit(:nombre,
@@ -52,7 +51,7 @@ module RailsAdmin
                                                 int=repe[:int]
                                                 unit=repe[:unit]
                                                 fecha=aux[:fecha]
-                                                schedule = IceCube::Schedule.new
+                                                schedule = IceCube::Schedule.new(fecha.to_date)
                                                 if(unit=="d")
                                                     schedule.add_recurrence_rule IceCube::Rule.daily(int)
                                                 elsif unit=="m"
@@ -88,7 +87,6 @@ module RailsAdmin
                                                             format.html { render whereto, status: :not_acceptable }
                                                             format.js   { render whereto, layout: false, status: :not_acceptable }
                                                         end
-
                                                         #redirect_to index
                                                         #handle_save_error #???
                                                         hubo_errores=true
@@ -134,7 +132,7 @@ module RailsAdmin
 
                                 @object=@abstract_model.new #jaja
                                 
-                                flash[:notice] = "Creado #{@model_name} recursivamente" if !hubo_errores
+                                flash[:notice] = "Creado #{@model_name}s recursivamente" if !hubo_errores
                                 redirect_path = index_path if !hubo_errores
                             elsif request.get?
                                 @object=@abstract_model.new                        
