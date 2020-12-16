@@ -24,9 +24,8 @@ module RailsAdmin
                                     aux=params[:viaje]
                                     repe=aux[:repeticion]
                                     hasta=aux[:hasta_cuando]
-                                    if(hasta.nil? || hasta<aux[:fecha])
-                                        #intentar crear el viaje
-                                    if(hasta.nil? || hasta.to_date < aux[:fecha].to_date)
+
+                                    if(hasta.to_date.nil? || hasta.to_date < aux[:fecha].to_date)
 
                                         #intentar crear el viaje
                                         @object=@abstract_model.new(params.require(@abstract_model.to_param)
@@ -151,65 +150,6 @@ module RailsAdmin
                     'icon-asterisk'
                 end
             end
-      end
-    end
-end
-
-
-
-
-  def crear_recursivo
-
-    if !params.nil?
-        aux=params[:viaje]
-        repe=aux[:repeticion]
-        hasta=aux[:hasta_cuando]
-        if(hasta.nil? || hasta<aux[:fecha])
-            #se crea solo una entrada
-        else
-            if(!repe.nil?)
-                repe.downcase!
-                repe=repe.match(/((?<int>([\d]+)\s?)(?<unit>(d|m|a|$)))/)
-                if(!(repe[:int].empty? || repe[:unit].empty?))
-                    int=repe[:int]
-                    unit=repe[:unit]
-                    schedule = IceCube::Schedule.new
-                    if(unit=="d")
-                        schedule.add_recurrence_rule IceCube::Rule.daily(int)
-                    elsif unit=="m"
-                        schedule.add_recurrence_rule IceCube::Rule.monthly(int).day_of_month(fecha.to_date.day)
-                    elsif unit=="a"
-                        schedule.add_recurrence_rule IceCube::Rule.yearly(int).day_of_year(fecha.to_date.yday)
-                    else
-                        #WTF BRO
-                    end
-
-
-
-
-                else
-                    #error mal escrito repe
-                end
-            else
-                #nil en repe
-            end
         end
-
-
-
-
-        @object=@abstract_model.new(params.require(@abstract_model.to_param)
-        .permit(:nombre,
-            :fecha,
-            :hora_salida,
-            :duracion,
-            :ruta,
-            :chofer,
-            :combi,
-            :precio))
-
-    else
-        return false
     end
- end
 end

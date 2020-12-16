@@ -97,7 +97,7 @@ RailsAdmin.config do |config|
       end
       field :hasta_cuando, :date do
         label "Hasta que fecha se repite"
-        help "Si no se indica se creará por un año"
+        help "Si no se indica se creara un unico viaje"
         date_format :default
       end
     end
