@@ -110,52 +110,39 @@ end
 
 
 
-#Genero 10 choferes de prueba
-Chofer.populate 1 do |k|
-  k.nombre = Faker::Name.first_name
-  k.apellido = Faker::Name.last_name
-  k.fecha_nacimiento = Faker::Date.birthday(min_age: 18, max_age: 65)
-  k.email = Faker::Internet.email
-  k.dni = rand(45555555 .. 99999999)
-  k.encrypted_password = "KASJDIJASLD"
-  k.telefono = Faker::PhoneNumber.phone_number
 
 
-  #Genero un viaje de prueba
-  Viaje.populate 1 do |j|
-    j.nombre = Faker::Space.nebula
-    j.fecha = Faker::Date.forward(days: 5)
-    j.hora_salida = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
-    j.duracion = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
-    j.ruta_id = Ruta.all.sample.id
-    j.chofer_id = current_chofer.id
-    j.combi_id = Combi.all.sample.id
-    j.asientos_restantes = 12
-    j.precio = rand(1000 .. 6000)
+#Genero un viaje de prueba
+Viaje.populate 1 do |j|
+  j.nombre = Faker::Space.nebula
+  j.fecha = Faker::Date.forward(days: 5)
+  j.hora_salida = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
+  j.duracion = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
+  j.ruta_id = Ruta.all.sample.id
+  j.chofer_id = current_chofer.id
+  j.combi_id = Combi.all.sample.id
+  j.asientos_restantes = 6
+  j.precio = rand(1000 .. 6000)
+
+  #Me creo un PASAJE para el usuario de prueba
+  Pasaje.populate 1 do |p|
+    p.user_id = current_user;
+    p.viaje_id = j.id;
+  end
+
+  #Genero usuarios aleatorios
+  User.populate 5 do |u|
+    u.nombre = Faker::Name.first_name
+    u.apellido = Faker::Name.last_name
+    u.fecha_nacimiento = Faker::Date.birthday(min_age: 18, max_age: 65)
+    u.email = Faker::Internet.email
+    u.dni = rand(45555555 .. 99999999)
+    u.encrypted_password = "KASJDIJASLD"
+    u.telefono = Faker::PhoneNumber.phone_number
 
     Pasaje.populate 1 do |p|
-      p.user_id = current_user;
+      p.user_id = u.id;
       p.viaje_id = j.id;
-    end
-
-    #Genero usuarios aleatorios
-    User.populate 5 do |u|
-      u.nombre = Faker::Name.first_name
-      u.apellido = Faker::Name.last_name
-      u.fecha_nacimiento = Faker::Date.birthday(min_age: 18, max_age: 65)
-      u.email = Faker::Internet.email
-      u.dni = rand(45555555 .. 99999999)
-      u.encrypted_password = "KASJDIJASLD"
-      u.telefono = Faker::PhoneNumber.phone_number
-
-      Pasaje.populate 1 do |p|
-        p.user_id = u.id;
-        p.viaje_id = j.id;
-      end
-
-
-
-
     end
 
   end
